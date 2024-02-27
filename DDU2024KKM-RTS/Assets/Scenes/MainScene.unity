@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 11400000, guid: 86e746088b150a94595e89245af3b624, type: 2}
   tileMap: {fileID: 914892306}
+  tree: {fileID: 5550126288888075183, guid: 844a8e144a517fe48a649bdc83228e7d, type: 3}
 --- !u!4 &435862924
 Transform:
   m_ObjectHideFlags: 0
