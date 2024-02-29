@@ -42,7 +42,7 @@ public class MapGenerator : MonoBehaviour
             {
                 float temp = Mathf.PerlinNoise(100 + i * 0.02f, 1000 + j * 0.02f);
 
-                if(Random.Range(0.15f, 1.5f)<temp) Instantiate(tree, new Vector3(i+0.5f, j+0.5f, -1), Quaternion.identity);
+                if(Random.Range(0.15f, 10f)<temp) Instantiate(tree, new Vector3(i+0.5f, j+0.5f, -1), Quaternion.identity);
             }
         }
 
