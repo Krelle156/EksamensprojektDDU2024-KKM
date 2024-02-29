@@ -13,7 +13,7 @@ public class BallisticProjectile : MonoBehaviour
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = up;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(15f,0);
+        GetComponent<Rigidbody2D>().velocity = transform.up * 15;
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class BallisticProjectile : MonoBehaviour
     {
         if (flightDistance > -maxFlightDistance / 2)
         {
-            transform.localScale = new Vector3(((2f-(Mathf.Abs(flightDistance)/maxFlightDistance)*1.2f)*(1-(Mathf.Abs(flightDistance) / maxFlightDistance)*0.9f)), 2f - (Mathf.Abs(flightDistance) / maxFlightDistance) * 1.2f, 1);
+            transform.localScale = new Vector3(2f - (Mathf.Abs(flightDistance) / maxFlightDistance) * 1.2f,((2f-(Mathf.Abs(flightDistance)/maxFlightDistance)*1.2f)*(1-(Mathf.Abs(flightDistance) / maxFlightDistance)*0.9f)), 1);
             if (flightDistance < 0)
             {
                 GetComponent<SpriteRenderer>().sprite = down;
