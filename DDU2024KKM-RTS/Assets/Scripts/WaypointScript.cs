@@ -18,6 +18,7 @@ public class Waypoint_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Deleting the waypoint if all the units have reached it
         if (UnitsAtPosition == units.Count) Destroy(gameObject); 
        
     }
