@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BallisticProjectile : MonoBehaviour
 {
-    float maxFlightDistance = 10;
-    float flightDistance = 5;
+    float maxFlightDistance = 60;
+    float flightDistance = 30;
 
     public Sprite up, down;
     
