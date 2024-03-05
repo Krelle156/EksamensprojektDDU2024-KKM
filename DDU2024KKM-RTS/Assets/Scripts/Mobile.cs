@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tonk : Mobile
+public class Mobile : Unit
 {
-    // Start is called before the first frame update
+    float speed;
+    Vector2 desiredPosition;
+
     void Start()
     {
-        type = 69;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(type);
+        
     }
 }
