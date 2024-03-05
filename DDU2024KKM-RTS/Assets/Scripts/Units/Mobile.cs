@@ -4,17 +4,32 @@ using UnityEngine;
 
 public class Mobile : Unit
 {
-    float speed;
-    Vector2 desiredPosition;
+    protected float speed = 2;
+    protected Vector3 desiredPosition;
 
-    void Start()
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public float desiredRotation()
+    {
+        return Vector2.SignedAngle(transform.up,desiredPosition - transform.position);
+    }
+
+    public void setWaypoint(Vector3 v)
+    {
+        desiredPosition = v;
+    }
+
+    public void removeWaypoint()
+    {
+        desiredPosition = transform.position;
     }
 }

@@ -4,12 +4,16 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    public int type;
+    protected int type;
+    protected float health, maxHealth, armor;
+    protected Transform target;
+    protected Rigidbody2D rb;
 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         //TODO - make work!
     }
 
