@@ -13,7 +13,7 @@ public class Infantry : Mobile
     // Update is called once per frame
     void Update()
     {
-        if((desiredPosition-transform.position).magnitude > 1)
+        if((desiredPosition-transform.position).magnitude > 2)
         {
             Debug.Log(desiredRotation());
             //Desired rotation is currently set all the way back in mobile
@@ -23,14 +23,15 @@ public class Infantry : Mobile
             if (desiredRotation() < 0) rb.angularVelocity = -1f;
 
             //if far from desired rotation turn fast
-            if (desiredRotation() > 2) rb.angularVelocity = 10;
-            if (desiredRotation() < -2) rb.angularVelocity = -10;
+            if (desiredRotation() > 2) rb.angularVelocity = 40;
+            if (desiredRotation() < -2) rb.angularVelocity = -40;
 
-            if (Mathf.Abs(desiredRotation()) < 0.5f)
+            if (Mathf.Abs(desiredRotation()) < 1f)
             {
                 rb.velocity = transform.up * speed;
             }
             else rb.velocity = Vector2.zero;
         }
+        else rb.velocity = Vector2.zero;
     }
 }
