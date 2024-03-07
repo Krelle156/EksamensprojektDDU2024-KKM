@@ -26,7 +26,7 @@ public class Infantry : Mobile
             if (desiredRotation() > 2) rb.angularVelocity = 40;
             if (desiredRotation() < -2) rb.angularVelocity = -40;
 
-            if (Mathf.Abs(desiredRotation()) < 1f)
+            if (Mathf.Abs(desiredRotation()) < 30f)
             {
                 rb.velocity = transform.up * speed;
             }
