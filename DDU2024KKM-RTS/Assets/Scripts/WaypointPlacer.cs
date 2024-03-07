@@ -6,6 +6,8 @@ public class WaypointPlacer : MonoBehaviour
 {
     public Transform waypoint;
 
+    public Transform Units; //testvalue - should be a list whose elements should be able to be chosen by the player
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +20,11 @@ public class WaypointPlacer : MonoBehaviour
         float mousePosX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float mousePosY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 
+        Units.GetComponent<Mobile>().SetWaypoint(new Vector2(mousePosX, mousePosY)); //should be done by the waypoint itself
+
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(waypoint, new Vector2(mousePosX, mousePosY), Quaternion.identity);
+            Instantiate(waypoint, new Vector2(mousePosX, mousePosY), Quaternion.identity); //Places a waypoint at the position of the mouse click
             //Debug.Log(waypoint.position);
         }
     }

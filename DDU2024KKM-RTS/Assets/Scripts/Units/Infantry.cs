@@ -15,18 +15,18 @@ public class Infantry : Mobile
     {
         if((desiredPosition-transform.position).magnitude > 2)
         {
-            Debug.Log(desiredRotation());
+            Debug.Log(DesiredRotation());
             //Desired rotation is currently set all the way back in mobile
 
             //if close to desired rotation turn slowly
-            if (desiredRotation() > 0) rb.angularVelocity = 1f;
-            if (desiredRotation() < 0) rb.angularVelocity = -1f;
+            if (DesiredRotation() > 0) rb.angularVelocity = 1f;
+            if (DesiredRotation() < 0) rb.angularVelocity = -1f;
 
             //if far from desired rotation turn fast
-            if (desiredRotation() > 2) rb.angularVelocity = 40;
-            if (desiredRotation() < -2) rb.angularVelocity = -40;
+            if (DesiredRotation() > 2) rb.angularVelocity = 100;
+            if (DesiredRotation() < -2) rb.angularVelocity = -100;
 
-            if (Mathf.Abs(desiredRotation()) < 30f)
+            if (Mathf.Abs(DesiredRotation()) < 30f)
             {
                 rb.velocity = transform.up * speed;
             }

@@ -6,16 +6,16 @@ using UnityEngine;
 public class Waypoint_Script : MonoBehaviour
 {
     public List<Transform> units;
-    public List<Mobile> infanterists;
+    public List<Mobile> mobiles;
     private int UnitsAtPosition = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i > infanterists.Count; i++)
+        for (int i = 0; i > mobiles.Count; i++)
         {
-            infanterists[i].setWaypoint(transform.position);
+            mobiles[i].SetWaypoint(transform.position);
         }
 
     }

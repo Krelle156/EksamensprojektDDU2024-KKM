@@ -18,12 +18,12 @@ public class Mobile : Unit
         
     }
 
-    public float desiredRotation()
+    public float DesiredRotation()
     {
         return Vector2.SignedAngle(transform.up,desiredPosition - transform.position);
     }
 
-    public void setWaypoint(Vector3 v)
+    public void SetWaypoint(Vector3 v)
     {
         desiredPosition = v;
     }
