@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BallisticProjectile : MonoBehaviour
 {
-    float maxFlightDistance = 60;
-    float flightDistance = 30;
+    float maxFlightDistance = 10;
+    float flightDistance = 5;
 
     public Sprite up, down;
     
@@ -13,7 +13,7 @@ public class BallisticProjectile : MonoBehaviour
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = up;
-        GetComponent<Rigidbody2D>().velocity = transform.up * 15;
+        GetComponent<Rigidbody2D>().velocity = transform.up * 5;
     }
 
     // Update is called once per frame
