@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Transform waypoint;
-    public Transform mouse;
     public List<Transform> units; //testvalue - should be a list whose elements should be able to be chosen by the player
 
     // Start is called before the first frame update
@@ -16,7 +15,17 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        mouse = Instantiate(mouse, new Vector2(Screen.width, Screen.height), Quaternion.identity);
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collisionInfo)
+    {
+        units.Add(collisionInfo.GetComponent<Transform>());
+    }
+
+    private void OnTriggerExit2D(Collider2D collisionInfo)
+    {
+        //units.Remove(collisionInfo.GetComponent<Transform>());
     }
 
     // Update is called once per frame
@@ -26,19 +35,22 @@ public class Player : MonoBehaviour
         float mousePosX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float mousePosY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 
+        GetComponent<Collider2D>().enabled = false;
+        if (Input.GetMouseButtonDown(0)) units.Clear();
         if (Input.GetMouseButton(0))
         {
-            mouse.transform.localScale = new Vector2(mousePosX - mouse.transform.position.x, mouse.transform.position.y - mousePosY);
+            GetComponent<Collider2D>().enabled = true;
+            transform.localScale = new Vector2(mousePosX - transform.position.x, transform.position.y - mousePosY);
         }
         else
         {
-            mouse.transform.position = new Vector2(mousePosX, mousePosY);
+            transform.position = new Vector2(mousePosX, mousePosY);
             
         }
         if (Input.GetMouseButtonUp(0))
         {
             
-            mouse.transform.localScale = new Vector2(1, 1);
+            transform.localScale = new Vector2(1, 1);
         }
 
         if (!(units.Count == 0))
