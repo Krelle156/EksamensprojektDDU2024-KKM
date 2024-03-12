@@ -15,7 +15,7 @@ public class Mobile : Unit
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public float DesiredRotation()
