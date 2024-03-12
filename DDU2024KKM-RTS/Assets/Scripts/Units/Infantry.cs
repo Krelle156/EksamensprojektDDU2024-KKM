@@ -15,7 +15,7 @@ public class Infantry : Mobile
     {
         if((desiredPosition-transform.position).magnitude > 2)
         {
-            Debug.Log(DesiredRotation());
+            Debug.Log(desiredPosition);
             //Desired rotation is currently set all the way back in mobile
 
             //if close to desired rotation turn slowly
@@ -32,6 +32,11 @@ public class Infantry : Mobile
             }
             else rb.velocity = Vector2.zero;
         }
-        else rb.velocity = Vector2.zero;
+        else
+        {
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+
     }
 }

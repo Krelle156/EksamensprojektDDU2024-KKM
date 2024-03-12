@@ -20,10 +20,10 @@ public class WaypointPlacer : MonoBehaviour
         float mousePosX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float mousePosY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 
-        Units.GetComponent<Mobile>().SetWaypoint(new Vector2(mousePosX, mousePosY)); //should be done by the waypoint itself
 
         if (Input.GetMouseButtonDown(0))
         {
+            Units.GetComponent<Mobile>().SetWaypoint(new Vector2(mousePosX, mousePosY)); //should be done by the waypoint itself
             Instantiate(waypoint, new Vector2(mousePosX, mousePosY), Quaternion.identity); //Places a waypoint at the position of the mouse click
             //Debug.Log(waypoint.position);
         }
