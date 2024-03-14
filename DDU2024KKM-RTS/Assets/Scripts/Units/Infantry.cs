@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class Infantry : Mobile
 {
+    gun test;
     protected override void Awake()
     {
         base.Awake();
-        desiredPosition = transform.position + new Vector3(0, 10, 0);
+        
+        test = transform.GetComponentInChildren<AssaultRifle>();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        if((desiredPosition-transform.position).magnitude > 2)
+        base.Update();
+       
+        if ((desiredPosition-transform.position).magnitude > 2)
         {
-            Debug.Log(desiredPosition);
+            //Debug.Log(desiredPosition);
             //Desired rotation is currently set all the way back in mobile
 
             //if close to desired rotation turn slowly

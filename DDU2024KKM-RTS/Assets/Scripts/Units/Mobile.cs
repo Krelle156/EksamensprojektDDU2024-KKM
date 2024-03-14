@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Mobile : Unit
@@ -13,10 +15,11 @@ public class Mobile : Unit
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-
-    }
+        base.Update();
+        transform.GetChild(0).GetComponent<AssaultRifle>().Fire();
+}
 
     public float DesiredRotation()
     {
@@ -32,4 +35,11 @@ public class Mobile : Unit
     {
         desiredPosition = transform.position;
     }
+
+    
+
+   
+
+
+    
 }

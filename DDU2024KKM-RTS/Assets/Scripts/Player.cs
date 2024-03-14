@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public Transform waypoint, tempwaypoint;
     public List<Transform> units; //testvalue - should be a list whose elements should be able to be chosen by the player
+    int allegiance;
 
     // Start is called before the first frame update
     private void Start()
@@ -20,7 +21,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collisionInfo)
     {
-        units.Add(collisionInfo.GetComponent<Transform>());
+        if (collisionInfo.GetComponent<Unit>().marked == false && allegiance== collisionInfo.GetComponent<Unit>().allegiance)
+        {
+            units.Add(collisionInfo.GetComponent<Transform>());
+            collisionInfo.GetComponent<Unit>().marked = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collisionInfo)
@@ -63,7 +68,8 @@ public class Player : MonoBehaviour
                     units[i].GetComponent<Mobile>().SetWaypoint(new Vector2(mousePosX, mousePosY)); //should be done by the waypoint itself
                     tempwaypoint=Instantiate(waypoint, new Vector2(mousePosX, mousePosY), Quaternion.identity); //Places a waypoint at the position of the mouse click
                     tempwaypoint.GetComponent<WaypointScript>().units.Add(units[i]);
-                    //Debug.Log(waypoint.position);
+                    units[i].GetComponent<Unit>().marked = false;
+                   // Debug.Log(units.Count);
 
                 }
             }

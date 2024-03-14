@@ -13,6 +13,6 @@ public class Tonk : Mobile
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(type);
+        //Debug.Log(type);
     }
 }

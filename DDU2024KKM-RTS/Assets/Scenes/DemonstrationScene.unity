@@ -921,6 +921,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1031082809}
   - component: {fileID: 1031082810}
+  - component: {fileID: 1031082811}
+  - component: {fileID: 1031082812}
   m_Layer: 0
   m_Name: AssaultRifle1
   m_TagString: Untagged
@@ -995,6 +997,115 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1031082811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031082808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2710c1307c8449640889d4f8a3a2f92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mundingsglimttemp: {fileID: 900780026}
+--- !u!82 &1031082812
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031082808}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 54dd4501cd99c164e9b1220f69d15029, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1043025047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,6 +1690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7011b67acbe82d4096dcc11bae5ef08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  marked: 0
+  allegiance: 0
 --- !u!1 &1605044211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,6 +1794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f36ee2d77b69b48a65970be3fd849c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  marked: 0
+  allegiance: 0
 --- !u!50 &1605044215
 Rigidbody2D:
   serializedVersion: 4
@@ -2150,6 +2265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoint: {fileID: 7842087784959616863, guid: 8128f19b7b5f7304babffee3c1a4339d, type: 3}
+  tempwaypoint: {fileID: 0}
   units: []
 --- !u!61 &2074106770
 BoxCollider2D:
