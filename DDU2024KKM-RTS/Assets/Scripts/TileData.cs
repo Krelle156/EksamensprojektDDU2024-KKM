@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class TileData 
 {
-    float TreeValue;
+    float treeValue;
     // Start is called before the first frame update
-    public void updatetreevalue(float tree) {
-        TreeValue = tree;
-        Debug.Log(TreeValue);
+    public void UpdateTreevalue(float tree) {
+        treeValue = tree;
+        Debug.Log(treeValue);
+    }
+
+    public void GetTerrainModifier()
+    {
+        Debug.Log(treeValue);
     }
 }

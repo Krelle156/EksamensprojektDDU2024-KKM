@@ -2,24 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
 {
     int width=400, height=200;
 
+    public Transform debuggingCanvasReference;
+    public static Transform debuggingCanvas;
+    public RectTransform debugText;
+    Transform[,] terrainDebuggingText;
+    bool terrainTextGenerated = false;
+
     public TileData bob;
-    TileData [,]terraindata;
+    public static TileData [,]terraindata;
     public Tile tile;
 
     public Tilemap tileMap;
 
-    public SpriteRenderer tree;
+    public SpriteRenderer tree, tempTree;
 
     Vector3Int position;
+    private void Awake()
+    {
+        debuggingCanvas = debuggingCanvasReference;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        bob= new TileData();
+        terrainDebuggingText = new Transform[width, height];
+        bob = new TileData();
         terraindata = new TileData[width, height];
         GenerateMap();
     }
@@ -27,16 +40,18 @@ public class MapGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("l")) UpdateTerrainText();
     }
     void GenerateMap()
     {
+        
+
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
                 terraindata[i,j] = new TileData();
-                terraindata[i, j].updatetreevalue(i+j);
+                terraindata[i, j].UpdateTreevalue(i+j);
 
             }
         }
@@ -58,9 +73,37 @@ public class MapGenerator : MonoBehaviour
             {
                 float temp = Mathf.PerlinNoise(100 + i * 0.02f, 1000 + j * 0.02f);
 
-                if(Random.Range(0.15f, 10f)<temp) Instantiate(tree, new Vector3(i+0.5f, j+0.5f, -1), Quaternion.identity);
+                if(Random.Range(0.15f, 10f)<temp) tempTree = Instantiate(tree, new Vector3(i+0.5f, j+0.5f, -1), Quaternion.identity);
             }
         }
 
+    }
+
+    void UpdateTerrainText()
+    {
+        if(!terrainTextGenerated)
+        {
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    terrainDebuggingText[i, j] = Instantiate(debugText, new Vector2(i, j), Quaternion.identity);
+                    terrainDebuggingText[i, j].GetComponent<Text>().text = "bob";
+                    terrainDebuggingText[i, j].SetParent(debuggingCanvas, true);
+                    terrainTextGenerated = true;
+                }
+            }
+        } else if (terrainTextGenerated)
+        {
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    terrainDebuggingText[i, j].GetComponent<Text>().text = "bob";
+                    terrainDebuggingText[i, j].GetComponent<Text>().enabled = false;
+                }
+            }
+        }
+        
     }
 }
