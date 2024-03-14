@@ -11,8 +11,10 @@ public class TileData
         Debug.Log(treeValue);
     }
 
-    public void GetTerrainModifier()
+    public float GetTerrainModifier()
     {
-        Debug.Log(treeValue);
+        return treeValue;
     }
+
+
 }

@@ -8,6 +8,7 @@ public class MapGenerator : MonoBehaviour
 {
     int width=400, height=200;
 
+    //An attempt to make it possible to read terrainvalues ingame
     public Transform debuggingCanvasReference;
     public static Transform debuggingCanvas;
     public RectTransform debugText;
@@ -83,27 +84,29 @@ public class MapGenerator : MonoBehaviour
     {
         if(!terrainTextGenerated)
         {
-            for (int i = 0; i < width; i++)
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < height; j++)
+                for (int j = 0; j < 11; j++)
                 {
-                    terrainDebuggingText[i, j] = Instantiate(debugText, new Vector2(i, j), Quaternion.identity);
+                    terrainDebuggingText[i, j] = Instantiate(debugText, new Vector3(i, j,-9), Quaternion.identity);
                     terrainDebuggingText[i, j].GetComponent<Text>().text = "bob";
                     terrainDebuggingText[i, j].SetParent(debuggingCanvas, true);
                     terrainTextGenerated = true;
-                }
-            }
-        } else if (terrainTextGenerated)
-        {
-            for (int i = 0; i < width; i++)
-            {
-                for (int j = 0; j < height; j++)
-                {
-                    terrainDebuggingText[i, j].GetComponent<Text>().text = "bob";
-                    terrainDebuggingText[i, j].GetComponent<Text>().enabled = false;
+
                 }
             }
         }
-        
+        int tempMouseX = (int)Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        int tempMouseY = (int)Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+        for (int i = 0; i < 11; i++)
+        {
+            for (int j = 0; j < 11; j++)
+            {
+                terrainDebuggingText[i, j].position = new Vector2(i-6f+tempMouseX + 0.5f, j - 6f + tempMouseY + 0.5f);
+
+            }
+        }
+
     }
+
 }
