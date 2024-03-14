@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 
-public class Waypoint_Script : MonoBehaviour
+public class WaypointScript : MonoBehaviour
 {
     public List<Transform> units;
     public List<Mobile> mobiles;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Transform waypoint;
+    public Transform waypoint, tempwaypoint;
     public List<Transform> units; //testvalue - should be a list whose elements should be able to be chosen by the player
 
     // Start is called before the first frame update
@@ -59,8 +59,10 @@ public class Player : MonoBehaviour
             {
                 for (int i = 0; i < units.Count; i++)
                 {
+
                     units[i].GetComponent<Mobile>().SetWaypoint(new Vector2(mousePosX, mousePosY)); //should be done by the waypoint itself
-                    Instantiate(waypoint, new Vector2(mousePosX, mousePosY), Quaternion.identity); //Places a waypoint at the position of the mouse click
+                    tempwaypoint=Instantiate(waypoint, new Vector2(mousePosX, mousePosY), Quaternion.identity); //Places a waypoint at the position of the mouse click
+                    tempwaypoint.GetComponent<WaypointScript>().units.Add(units[i]);
                     //Debug.Log(waypoint.position);
 
                 }
