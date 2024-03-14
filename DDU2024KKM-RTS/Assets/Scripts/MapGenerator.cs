@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
 {
-    int width=400, height=200;
+    static int width=400, height=200;
 
     //An attempt to make it possible to read terrainvalues ingame
     public Transform debuggingCanvasReference;
@@ -52,7 +52,7 @@ public class MapGenerator : MonoBehaviour
             for (int j = 0; j < height; j++)
             {
                 terraindata[i,j] = new TileData();
-                terraindata[i, j].UpdateTreevalue(i+j);
+                //terraindata[i, j].UpdateTreeValue(i+j);
 
             }
         }
@@ -103,10 +103,23 @@ public class MapGenerator : MonoBehaviour
             for (int j = 0; j < 11; j++)
             {
                 terrainDebuggingText[i, j].position = new Vector2(i-6f+tempMouseX + 0.5f, j - 6f + tempMouseY + 0.5f);
+                if (i + tempMouseX-6 > 0 && j + tempMouseY - 6 > 0 && i + tempMouseX-6 < width && j + tempMouseY-6 < height)
+                {
+                    terrainDebuggingText[i,j].GetComponent<Text>().text = terraindata[i + tempMouseX-6, j + tempMouseY-6].GetTerrainModifier().ToString();
+                }
 
             }
         }
 
+    }
+
+    public static float getMapWidth()
+    {
+        return width;
+    }
+    public static float getMapHeight()
+    {
+        return height;
     }
 
 }

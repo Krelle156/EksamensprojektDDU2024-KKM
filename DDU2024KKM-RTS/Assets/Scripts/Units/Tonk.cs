@@ -7,12 +7,13 @@ public class Tonk : Mobile
     // Start is called before the first frame update
     void Start()
     {
-        type = 69;
+        
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        //Debug.Log(type);
+        base.Update();
+
     }
 }
