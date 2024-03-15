@@ -8,37 +8,37 @@ public class MapGenerator : MonoBehaviour
 {
     static int width=400, height=200;
 
-    //An attempt to make it possible to read terrainvalues ingame
-    public Transform debuggingCanvasReference;
-    public static Transform debuggingCanvas;
-    public RectTransform debugText;
-    Transform[,] terrainDebuggingText;
+    //References to enable the debugging text for terrain values
+    public Transform debuggingCanvas; //Reference to the canvas
+    public RectTransform debugText; //Template for generating text
+    Transform[,] terrainDebuggingText; //The actual text
     bool terrainTextGenerated = false;
 
-    public TileData bob;
-    public static TileData [,]terraindata;
-    public Tile tile;
 
-    public Tilemap tileMap;
+
+    public static TileData [,]terraindata; //Grid of information relating to tiles
+
+    public Tile tile; //Template for Unity's tileMap
+    public Tilemap tileMap; //The tileMap in the scene
 
     public SpriteRenderer tree, tempTree;
 
     Vector3Int position;
+
+
+
     private void Awake()
     {
-        debuggingCanvas = debuggingCanvasReference;
+        
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         terrainDebuggingText = new Transform[width, height];
-        bob = new TileData();
         terraindata = new TileData[width, height];
         GenerateMap();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown("l")) UpdateTerrainText();//if "L" is pressed, show the terrain values around the mouse
@@ -97,7 +97,7 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
-        //Get the terrain-modifier and
+        //Temp mouse veriables for slightly more readability
         int tempMouseX = (int)Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         int tempMouseY = (int)Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
         for (int i = 0; i < 11; i++)
@@ -117,7 +117,8 @@ public class MapGenerator : MonoBehaviour
 
     }
 
-    public static float getMapWidth()
+    //As the dimensions of the map should'nt be changed from the outside there are only getter-functions
+    public static float getMapWidth() 
     {
         return width;
     }
