@@ -5,11 +5,11 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class TileData 
 {
-    float treeValue;
+    float treeValue = 0;
     // Start is called before the first frame update
     public void UpdateTreeValue(float tree) {
         treeValue += tree;
-        Debug.Log(treeValue);
+
     }
 
     

@@ -41,7 +41,7 @@ public class MapGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("l")) UpdateTerrainText();
+        if (Input.GetKeyDown("l")) UpdateTerrainText();//if "L" is pressed, show the terrain values around the mouse
     }
     void GenerateMap()
     {
@@ -82,6 +82,7 @@ public class MapGenerator : MonoBehaviour
 
     void UpdateTerrainText()
     {
+        //If there is no text objects, generate text objects.
         if(!terrainTextGenerated)
         {
             for (int i = 0; i < 11; i++)
@@ -96,17 +97,20 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
+        //Get the terrain-modifier and
         int tempMouseX = (int)Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         int tempMouseY = (int)Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
         for (int i = 0; i < 11; i++)
         {
             for (int j = 0; j < 11; j++)
             {
-                terrainDebuggingText[i, j].position = new Vector2(i-6f+tempMouseX + 0.5f, j - 6f + tempMouseY + 0.5f);
-                if (i + tempMouseX-6 > 0 && j + tempMouseY - 6 > 0 && i + tempMouseX-6 < width && j + tempMouseY-6 < height)
+                terrainDebuggingText[i, j].position = new Vector2(i-6f+tempMouseX, j - 6f + tempMouseY);
+                if (i + tempMouseX - 6 >= 0 && j + tempMouseY - 6 >= 0 && i + tempMouseX - 6 < width && j + tempMouseY - 6 < height)
                 {
-                    terrainDebuggingText[i,j].GetComponent<Text>().text = terraindata[i + tempMouseX-6, j + tempMouseY-6].GetTerrainModifier().ToString();
+                    terrainDebuggingText[i, j].GetComponent<Text>().text = terraindata[i + tempMouseX - 6, j + tempMouseY - 6].GetTerrainModifier().ToString();
+                    Debug.Log(terraindata[i + tempMouseX - 6, j + tempMouseY - 6].GetTerrainModifier());
                 }
+                else terrainDebuggingText[i, j].GetComponent<Text>().text = "bob";
 
             }
         }
