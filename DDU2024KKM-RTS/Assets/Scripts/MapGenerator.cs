@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -90,7 +91,7 @@ public class MapGenerator : MonoBehaviour
                 for (int j = 0; j < 11; j++)
                 {
                     terrainDebuggingText[i, j] = Instantiate(debugText, new Vector3(i, j,-9), Quaternion.identity);
-                    terrainDebuggingText[i, j].GetComponent<Text>().text = "bob";
+                    terrainDebuggingText[i, j].GetComponent<TextMeshProUGUI>().text = "bob";
                     terrainDebuggingText[i, j].SetParent(debuggingCanvas, true);
                     terrainTextGenerated = true;
 
@@ -104,13 +105,13 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = 0; j < 11; j++)
             {
-                terrainDebuggingText[i, j].position = new Vector2(i-6f+tempMouseX, j - 6f + tempMouseY);
+                terrainDebuggingText[i, j].position = new Vector2(i-5f+tempMouseX, j - 6f + tempMouseY);
                 if (i + tempMouseX - 6 >= 0 && j + tempMouseY - 6 >= 0 && i + tempMouseX - 6 < width && j + tempMouseY - 6 < height)
                 {
-                    terrainDebuggingText[i, j].GetComponent<Text>().text = terraindata[i + tempMouseX - 6, j + tempMouseY - 6].GetTerrainModifier().ToString();
+                    terrainDebuggingText[i, j].GetComponent<TextMeshProUGUI>().text = terraindata[i + tempMouseX - 6, j + tempMouseY - 6].GetTerrainModifier().ToString();
                     Debug.Log(terraindata[i + tempMouseX - 6, j + tempMouseY - 6].GetTerrainModifier());
                 }
-                else terrainDebuggingText[i, j].GetComponent<Text>().text = "bob";
+                else terrainDebuggingText[i, j].GetComponent<TextMeshProUGUI>().text = "bob";
 
             }
         }

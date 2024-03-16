@@ -9,7 +9,6 @@ public class TreeScript : Stationary
     private void Awake()
     {
         spreadTreeValue();//When the tree is created, inform surrounding tiles with decreasing strength
-        Debug.Log("Position = (" + transform.position.x + " ; " + transform.position.y + ")");
         MapGenerator.terraindata[(int)transform.position.x, (int)transform.position.y].GetTerrainModifier();
     }
     void Start()
@@ -34,7 +33,7 @@ public class TreeScript : Stationary
                 }
             }
         }
-        MapGenerator.terraindata[(int)transform.position.x, (int)transform.position.x].UpdateTreeValue(10000);//Absurdly high tree value to tell the pathfinding that there is a tree-hitbox here
+        MapGenerator.terraindata[(int)transform.position.x, (int)transform.position.y].UpdateTreeValue(10000);//Absurdly high tree value to tell the pathfinding that there is a tree-hitbox here
 
     }
 
@@ -50,7 +49,7 @@ public class TreeScript : Stationary
                 }
             }
         }
-        MapGenerator.terraindata[(int)transform.position.x, (int)transform.position.x].UpdateTreeValue(10000);//Removes absurdly high treevalue
+        MapGenerator.terraindata[(int)transform.position.x, (int)transform.position.y].UpdateTreeValue(10000);//Removes absurdly high treevalue
         Destroy(gameObject);
     }
 }
