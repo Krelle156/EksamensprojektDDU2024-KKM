@@ -1692,6 +1692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marked: 0
   allegiance: 0
+  targetTest: {fileID: 0}
 --- !u!1 &1605044211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,6 +1797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marked: 0
   allegiance: 0
+  targetTest: {fileID: 2074106772}
 --- !u!50 &1605044215
 Rigidbody2D:
   serializedVersion: 4
@@ -2008,6 +2010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf1b9f432a715344b95cd0d4f7a7c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerUnit: {fileID: 0}
 --- !u!1 &1660332378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2325,6 +2328,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!4 &2074106772 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 905468960979226363, guid: fe6accebcac54e64eb46ad83aecdb904, type: 3}
+  m_PrefabInstance: {fileID: 1383721024}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
