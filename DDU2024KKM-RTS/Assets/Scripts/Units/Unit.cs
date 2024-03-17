@@ -13,12 +13,15 @@ public abstract class Unit : MonoBehaviour
     public bool marked;
     public int allegiance;
 
+    public Transform targetTest;
+
 
     // Start is called before the first frame update
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         marked = false;
+        target = targetTest;
         //TODO - make work!
     }
 
