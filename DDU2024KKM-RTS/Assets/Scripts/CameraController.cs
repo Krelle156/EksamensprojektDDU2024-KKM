@@ -6,6 +6,8 @@ public class CameraController : MonoBehaviour
 {
     float cameraBaseSpeed = 10;
     float cameraMoveSpeed = 10;
+
+    public Mobile playerUnit;
     // Start is called before the first frame update
     void Start()
     {
