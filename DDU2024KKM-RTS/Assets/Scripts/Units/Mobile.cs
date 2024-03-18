@@ -21,7 +21,6 @@ public abstract class Mobile : Unit
     protected override void Update()
     {
         base.Update();
-        transform.GetChild(0).GetComponent<AssaultRifle>().Fire();
 
         //The following makes it so infantry can change the direction of movement instantly if they are standing still
         //otherwise the change is dependant on the speed of the unit
@@ -30,6 +29,8 @@ public abstract class Mobile : Unit
 
         float tempSpeed = Mathf.Min(rb.velocity.magnitude*0.1f,1);
         movementVector = Vector2.SmoothDamp(movementVector, DesiredMovementVector(), ref inertiaTime, tempSpeed);
+
+   
     }
 
     public float DesiredRotation() //the difference between where the unit is looking and where it "wants" to be looking

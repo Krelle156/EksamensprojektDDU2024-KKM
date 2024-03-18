@@ -35,7 +35,5 @@ public class AssaultRifle : gun
         if (cool <= 0) {
             cool = maxcool;
         }
-        Debug.Log("hi");
-
     }
 }

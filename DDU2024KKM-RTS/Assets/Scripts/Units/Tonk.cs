@@ -13,7 +13,7 @@ public class Tonk : Mobile
     // Update is called once per frame
     protected override void Update()
     {
-        base.Update();
+        //base.Update(); currently doesn't have a rigidbody or awake function as such this doesn't work as intended.
 
     }
 }

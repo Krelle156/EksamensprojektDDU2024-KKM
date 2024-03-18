@@ -17,6 +17,7 @@ public class Infantry : Mobile
     protected override void Update()
     {
         base.Update();
+        transform.GetChild(0).GetComponent<AssaultRifle>().Fire();
         //Debug.Log(desiredPosition);
         //Desired rotation is currently set all the way back in mobile
 
