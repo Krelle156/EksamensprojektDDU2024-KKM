@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class Tonk : Mobile
 {
-    // Start is called before the first frame update
+    protected Infantry hullGunner, driver, commander;
+    protected Infantry[] crew;
+
+    protected Mobile[] turrets;
+    protected Infantry turretGunner;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        Debug.Log("køb bananer!");
+    }
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     protected override void Update()
     {
         //base.Update(); currently doesn't have a rigidbody or awake function as such this doesn't work as intended.
