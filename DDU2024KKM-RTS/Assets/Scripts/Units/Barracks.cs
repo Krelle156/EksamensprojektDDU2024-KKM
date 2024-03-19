@@ -21,10 +21,12 @@ public class Barracks : MonoBehaviour
 
     }
 
+    /*
     bool resources(){
         if () {
             return false;
         }
         return true;
     }
+    */
 }
