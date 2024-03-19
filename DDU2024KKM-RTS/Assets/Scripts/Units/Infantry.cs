@@ -57,7 +57,7 @@ public class Infantry : Mobile
 
     }
 
-    void PickupGun() {
+    void PickUpGun() {
         
     }
 }
