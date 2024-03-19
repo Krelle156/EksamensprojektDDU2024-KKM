@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
 {
-    static int width=400, height=200;
+    static int width = 400, height = 200;
 
     //References to enable the debugging text for terrain values
     public Transform debuggingCanvas; //Reference to the canvas
@@ -58,12 +58,14 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
+        float tempX = Random.Range(-100, 100);
+        float tempY = Random.Range(-100, 100);
 
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                float temp = Mathf.Min(Mathf.PerlinNoise(100 + i * 0.02f, 1000 + j * 0.02f)*0.7f,0.7f);
+                float temp = Mathf.Min(Mathf.PerlinNoise((tempX + i * 0.02f), (tempY + j * 0.02f)), 0.7f);
                 tile.color = new Color(temp, 0.7f, temp);
                 tileMap.SetTile(new Vector3Int(i,j,-1), tile);
             }
@@ -73,7 +75,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                float temp = Mathf.PerlinNoise(100 + i * 0.02f, 1000 + j * 0.02f);
+                float temp = Mathf.PerlinNoise(tempX + i * 0.02f, tempY + j * 0.02f);
 
                 if(Random.Range(0.15f, 10f)<temp) tempTree = Instantiate(tree, new Vector3(i+0.5f, j+0.5f, -1), Quaternion.identity);
             }
