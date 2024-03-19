@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Infantry : Mobile
 {
-    gun test;
-    
+
+    Gun gun;
     protected override void Awake()
     {
         base.Awake();
-        
-        test = transform.GetComponentInChildren<AssaultRifle>();
+
+        gun = transform.GetChild(0).GetComponent<Gun>();
+    }
+
+    private void Start()
+    {
+        target = Player.targetTest;
     }
 
     // Update is called once per frame
@@ -18,7 +23,7 @@ public class Infantry : Mobile
     {
        
         base.Update();
-        transform.GetChild(0).GetComponent<gun>().Fire();
+        gun.Fire();
         //Debug.Log(desiredPosition);
         //Desired rotation is currently set all the way back in mobile
 
@@ -50,5 +55,9 @@ public class Infantry : Mobile
             //rb.angularVelocity = 0f;
         }
 
+    }
+
+    void PickupGun() {
+        
     }
 }

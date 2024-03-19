@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public Transform waypoint, tempwaypoint;
     public List<Unit> units; //testvalue - should be a list whose elements should be able to be chosen by the player
     int allegiance;
+    public static Transform targetTest;
 
     // Start is called before the first frame update
     private void Start()
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-
+        targetTest = transform;
     }
 
     private void OnTriggerEnter2D(Collider2D collisionInfo)

@@ -2,37 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AssaultRifle : Gun
+public class smg : Gun
 {
-    public SpriteRenderer mundingsglimttemp;
     // Start is called before the first frame update
     protected override void Awake()
     {
-        
         base.Awake();
-        firerateRPM = 600;
+        firerateRPM = 900;
         ammunition = 30;
-        range = 30;
+        range = 10;
         explosivePower = 0;
         armorPiercing = 0;
         maxcool = 60 / firerateRPM;
-        
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (cool>0) 
-        {
-            cool -= 1 * Time.deltaTime;
-            mundingsglimttemp.color = new Color(1,1,1,cool/maxcool);
-        }
         
-
     }
-
-    
 }

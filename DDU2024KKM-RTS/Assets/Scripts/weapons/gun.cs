@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gun : MonoBehaviour
+public class Gun : MonoBehaviour
 {
     protected int firerateRPM, ammunition;
     protected float range;

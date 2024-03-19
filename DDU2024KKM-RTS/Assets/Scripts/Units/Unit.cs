@@ -15,7 +15,7 @@ public abstract class Unit : MonoBehaviour
     public bool marked;
     public int allegiance;
 
-    public Transform targetTest;
+    
 
 
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public abstract class Unit : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         marked = false;
-        target = targetTest;
+        target = Player.targetTest;
         //TODO - make work!
     }
 
@@ -34,5 +34,7 @@ public abstract class Unit : MonoBehaviour
 
     }
 
-    
+
+
+
 }

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 285d2f5936c2a5645abcc0d5ffa000b5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - artroop: {fileID: 3058622996533502552, guid: 23b4f5e42b9aaf54a93f8076ec6ae462, type: 3}
+  - smgtroop: {fileID: 8750214026746168348, guid: eff25d77e798019458cb3adc1e4ad806, type: 3}
+  - attroop: {fileID: 1582036222433885222, guid: 852c30367b1a93541b34bb24b79cdc1f, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
