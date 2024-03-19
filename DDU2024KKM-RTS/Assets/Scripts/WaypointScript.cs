@@ -23,7 +23,8 @@ public class WaypointScript : MonoBehaviour
         UnitsAtPos();
         //Deleting the waypoint if all the units have reached it
         if (UnitsAtPosition == units.Count) Destroy(gameObject); 
-       
+        
+
     }
 
     void UnitsAtPos() {

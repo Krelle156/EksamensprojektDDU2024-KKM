@@ -10,6 +10,8 @@ public abstract class Unit : MonoBehaviour
     protected float health, maxHealth, armor;
     protected Transform target;
     protected Rigidbody2D rb;
+
+    public Transform wayPoint;
     public bool marked;
     public int allegiance;
 
@@ -28,7 +30,8 @@ public abstract class Unit : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        //TODO - make work!
+        
+
     }
 
     

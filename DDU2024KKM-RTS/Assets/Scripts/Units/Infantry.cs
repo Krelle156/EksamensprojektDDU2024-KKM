@@ -16,8 +16,9 @@ public class Infantry : Mobile
     // Update is called once per frame
     protected override void Update()
     {
+       
         base.Update();
-        transform.GetChild(0).GetComponent<AssaultRifle>().Fire();
+        transform.GetChild(0).GetComponent<gun>().Fire();
         //Debug.Log(desiredPosition);
         //Desired rotation is currently set all the way back in mobile
 

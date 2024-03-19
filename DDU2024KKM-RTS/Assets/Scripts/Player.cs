@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
         {
             units.Add(collisionInfo.GetComponent<Transform>());
             collisionInfo.GetComponent<Unit>().marked = true;
+            
         }
     }
 
@@ -41,7 +42,15 @@ public class Player : MonoBehaviour
         float mousePosY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 
         GetComponent<Collider2D>().enabled = false;
-        if (Input.GetMouseButtonDown(0)) units.Clear();
+        if (Input.GetMouseButtonDown(0))
+        {
+            for (int i = 0; i < units.Count; i++)
+            {
+                units[i].GetComponent<Unit>().marked = false;
+            }
+            units.Clear();
+
+        };
         if (Input.GetMouseButton(0))
         {
             GetComponent<Collider2D>().enabled = true;
@@ -68,8 +77,10 @@ public class Player : MonoBehaviour
                     units[i].GetComponent<Mobile>().SetWaypoint(new Vector2(mousePosX, mousePosY)); //should be done by the waypoint itself
                     tempwaypoint=Instantiate(waypoint, new Vector2(mousePosX, mousePosY), Quaternion.identity); //Places a waypoint at the position of the mouse click
                     tempwaypoint.GetComponent<WaypointScript>().units.Add(units[i]);
-                    units[i].GetComponent<Unit>().marked = false;
-                   // Debug.Log(units.Count);
+                    //if (units[i].GetComponent<Unit>().wayPoint != null) units[i].GetComponent<Unit>().wayPoint.Uni.Remove();
+                    units[i].GetComponent<Unit>().wayPoint = tempwaypoint;
+                    
+                    // Debug.Log(units.Count);
 
                 }
             }

@@ -42,8 +42,16 @@ public class gun : MonoBehaviour
         return armorPiercing;
     }
 
+    public void Fire()
+    {
+        if (cool <= 0)
+        {
+            cool = maxcool;
+        }
+    }
 
 
 
-    
+
+
 }

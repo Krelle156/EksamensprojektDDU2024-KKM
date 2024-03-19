@@ -6,7 +6,7 @@ public class AssaultRifle : gun
 {
     public Transform mundingsglimttemp;
     // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
         
         base.Awake();
@@ -31,9 +31,5 @@ public class AssaultRifle : gun
 
     }
 
-    public void Fire() {
-        if (cool <= 0) {
-            cool = maxcool;
-        }
-    }
+    
 }
