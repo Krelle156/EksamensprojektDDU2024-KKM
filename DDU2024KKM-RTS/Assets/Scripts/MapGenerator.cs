@@ -60,16 +60,19 @@ public class MapGenerator : MonoBehaviour
 
         float tempX = Random.Range(-100, 100);
         float tempY = Random.Range(-100, 100);
+        double scaleFactor = 0.02;
 
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                float temp = Mathf.Min(Mathf.PerlinNoise((tempX + i * 0.02f), (tempY + j * 0.02f)), 0.7f);
+                //83, 30 works
+                float temp = Mathf.Min(Mathf.PerlinNoise((83 + i * (float) scaleFactor), (30 + j * (float) scaleFactor)), 0.7f);
                 tile.color = new Color(temp, 0.7f, temp);
-                tileMap.SetTile(new Vector3Int(i,j,-1), tile);
+                tileMap.SetTile(new Vector3Int(i, j, -1), tile);
             }
         }
+        Debug.Log(tempX + "; " + tempY);
 
         for (int i = 0; i < width; i++)
         {
