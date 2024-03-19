@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Transform waypoint, tempwaypoint;
-    public List<Transform> units; //testvalue - should be a list whose elements should be able to be chosen by the player
+    public List<Unit> units; //testvalue - should be a list whose elements should be able to be chosen by the player
     int allegiance;
 
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     {
         if (collisionInfo.GetComponent<Unit>().marked == false && allegiance== collisionInfo.GetComponent<Unit>().allegiance)
         {
-            units.Add(collisionInfo.GetComponent<Transform>());
+            units.Add(collisionInfo.GetComponent<Unit>());
             collisionInfo.GetComponent<Unit>().marked = true;
             
         }
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         {
             for (int i = 0; i < units.Count; i++)
             {
-                units[i].GetComponent<Unit>().marked = false;
+                units[i].marked = false;
             }
             units.Clear();
 
@@ -77,8 +77,8 @@ public class Player : MonoBehaviour
                     units[i].GetComponent<Mobile>().SetWaypoint(new Vector2(mousePosX, mousePosY)); //should be done by the waypoint itself
                     tempwaypoint=Instantiate(waypoint, new Vector2(mousePosX, mousePosY), Quaternion.identity); //Places a waypoint at the position of the mouse click
                     tempwaypoint.GetComponent<WaypointScript>().units.Add(units[i]);
-                    if (units[i].GetComponent<Unit>().wayPoint != null) units[i].GetComponent<Unit>().wayPoint.GetComponent<WaypointScript>().units.Remove(units[i]);
-                    units[i].GetComponent<Unit>().wayPoint = tempwaypoint;
+                    if (units[i].wayPoint != null) units[i].wayPoint.GetComponent<WaypointScript>().units.Remove(units[i]);
+                    units[i].wayPoint = tempwaypoint;
                     
                     // Debug.Log(units.Count);
 

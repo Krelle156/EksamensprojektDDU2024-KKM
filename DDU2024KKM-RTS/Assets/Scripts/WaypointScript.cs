@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WaypointScript : MonoBehaviour
 {
-    public List<Transform> units;
+    public List<Unit> units;
     
     private int UnitsAtPosition = 0;
 
