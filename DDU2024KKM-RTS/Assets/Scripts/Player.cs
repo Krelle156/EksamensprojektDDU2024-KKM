@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
                     units[i].GetComponent<Mobile>().SetWaypoint(new Vector2(mousePosX, mousePosY)); //should be done by the waypoint itself
                     tempwaypoint=Instantiate(waypoint, new Vector2(mousePosX, mousePosY), Quaternion.identity); //Places a waypoint at the position of the mouse click
                     tempwaypoint.GetComponent<WaypointScript>().units.Add(units[i]);
-                    //if (units[i].GetComponent<Unit>().wayPoint != null) units[i].GetComponent<Unit>().wayPoint.Uni.Remove();
+                    if (units[i].GetComponent<Unit>().wayPoint != null) units[i].GetComponent<Unit>().wayPoint.GetComponent<WaypointScript>().units.Remove(units[i]);
                     units[i].GetComponent<Unit>().wayPoint = tempwaypoint;
                     
                     // Debug.Log(units.Count);
