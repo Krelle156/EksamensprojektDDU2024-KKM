@@ -15,7 +15,7 @@ public class AssaultRifle : Gun
         range = 30;
         explosivePower = 0;
         armorPiercing = 0;
-        maxcool = 60 / firerateRPM;
+        maxcool = 1;
         
 
 

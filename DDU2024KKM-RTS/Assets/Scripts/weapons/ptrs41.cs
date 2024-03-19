@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ptrs41 : Gun
 {
+    public SpriteRenderer mundingsglimttemp;
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -13,12 +14,16 @@ public class ptrs41 : Gun
         range = 100;
         explosivePower = 0;
         armorPiercing = 3;
-        maxcool = 60/ firerateRPM;
+        maxcool = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (cool > 0)
+        {
+            cool -= 1 * Time.deltaTime;
+            mundingsglimttemp.color = new Color(1, 1, 1, cool / maxcool);
+        }
     }
 }
