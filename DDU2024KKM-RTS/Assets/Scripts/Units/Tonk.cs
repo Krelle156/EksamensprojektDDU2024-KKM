@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Tonk : Mobile
 {
-    protected float enginePower, maxEnginePower = 200000;
+    public SmokeParticle smoke;
+    protected SmokeParticle[] smokeList;
+    protected int smokeCount;
+    protected float smokeCoolDown, smokeCoolMax = 2f;
+
+    protected float enginePower, maxEnginePower = 400000;
     protected float engineThrottle = 0, poweredTracks=0;
 
     protected Infantry hullGunner, driver, commander, loader;
@@ -16,11 +21,20 @@ public class Tonk : Mobile
     protected Vector3 rightTrack, leftTrack;
     protected Vector3 rightTrackForce=Vector2.zero, leftTrackForce= Vector2.zero;
 
+    AudioSource audi;
+
     protected override void Awake()
     {
         base.Awake();
         crewList = new Infantry[3]; //this vehicle can hold three people
-        
+        audi = GetComponent<AudioSource>();
+
+        smokeList = new SmokeParticle[30];
+        for (int i = 0; i < smokeList.Length; i++)
+        {
+            smokeList[i] = Instantiate(smoke, transform.position, Quaternion.identity);
+        }
+
     }
     void Start()
     {
@@ -30,6 +44,15 @@ public class Tonk : Mobile
     protected override void Update()
     {
         base.Update();
+        if (smokeCoolDown <= 0)
+        {
+            smokeList[smokeCount].spawn(transform.position - transform.up * 2.1f - transform.right*1.2f+new Vector3(0,0,1), 1+ (enginePower / maxEnginePower), 0.2f);
+            smokeCount++;
+            if (smokeCount >= smokeList.Length) smokeCount = 0;
+            smokeCoolDown = smokeCoolMax - (enginePower/maxEnginePower)*1.9f;
+        }
+        smokeCoolDown -= 1 * Time.deltaTime;
+
         rightTrackForce = Vector2.zero; leftTrackForce = Vector2.zero;
         engineThrottle = -1;
         poweredTracks = 0;
@@ -37,7 +60,7 @@ public class Tonk : Mobile
         if (Input.GetKey("a")) TurnLeft();//only for temporary playerControl
         if (Input.GetKey("d")) TurnRight();
 
-        
+        audi.pitch = (1.5f+(enginePower/maxEnginePower)*1.5f);
         if((desiredPosition - transform.position).magnitude > 2 && !isPlayerControlled) //if not controlled by player and not at position then do movement
         {
             //if close to desired rotation turn slowly
@@ -65,13 +88,13 @@ public class Tonk : Mobile
             rb.AddForceAtPosition((leftTrackForce) * Time.fixedDeltaTime, transform.position + leftTrack);
         
 
-        enginePower = Mathf.Min(Mathf.Max(0,enginePower+engineThrottle*10000), maxEnginePower);
+        enginePower = Mathf.Min(Mathf.Max(0,enginePower+engineThrottle*1000), maxEnginePower);
     }
 
     public override void TurnLeft()
     {
         poweredTracks += 1;
-        rightTrackForce = 200000*transform.up;
+        rightTrackForce = enginePower*transform.up;
         engineThrottle = 1;
 
     }
@@ -79,8 +102,17 @@ public class Tonk : Mobile
     public override void TurnRight()
     {
         poweredTracks += 1;
-        leftTrackForce = 200000 * transform.up;
+        leftTrackForce = enginePower * transform.up;
         engineThrottle = 1;
+    }
+
+    public void MoveForwards()
+    {
+
+    }
+    public void MoveBackWards()
+    {
+
     }
 
     public override float DesiredRotation() //the difference between where the unit is looking and where it "wants" to be looking
