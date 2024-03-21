@@ -16,6 +16,7 @@ public class WaypointScript : MonoBehaviour
         for (int i=0;i<units.Count;i++) {
             if (units[i].isStationary == true)
             {
+                
                 units.RemoveAt(i);
             }
         }
