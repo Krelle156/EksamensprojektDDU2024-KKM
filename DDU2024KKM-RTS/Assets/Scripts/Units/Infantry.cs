@@ -27,7 +27,7 @@ public class Infantry : Mobile
         //Debug.Log(desiredPosition);
         //Desired rotation is currently set all the way back in mobile
 
-        if (Mathf.Abs(DesiredRotation()) < 1)
+        if (Mathf.Abs(DesiredRotation()) < 1 && target != null)
         {
             if(target.TryGetComponent<Unit>(out Unit u)) //another messy getComponent action
             {
@@ -66,12 +66,21 @@ public class Infantry : Mobile
         
     }
 
-    public void EnterInterior()
+    public override float DesiredRotation() //the difference between where the unit is looking and where it "wants" to be looking
+    {
+        if (target == null) return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
+        if (isInRange()) return Vector2.SignedAngle(transform.up, target.position - transform.position);
+        return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
+    }
+
+    
+
+    public void EnterInterior(Tonk t)
     {
         rb.simulated = false;
     }
 
-    public void ExitInterior()
+    public void ExitInterior(Tonk t)
     {
         rb.simulated = true;
     }
