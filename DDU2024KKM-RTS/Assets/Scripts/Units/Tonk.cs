@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Tonk : Mobile
 {
+    protected float enginePower, maxEnginePower = 200000;
+    protected float engineThrottle = 0, poweredTracks=0;
+
     protected Infantry hullGunner, driver, commander, loader;
     protected Infantry[] crewList;
     protected int crewCount;
@@ -17,7 +20,6 @@ public class Tonk : Mobile
     {
         base.Awake();
         crewList = new Infantry[3]; //this vehicle can hold three people
-        Debug.Log(crewList.Length);
         
     }
     void Start()
@@ -27,27 +29,69 @@ public class Tonk : Mobile
 
     protected override void Update()
     {
-        //base.Update(); currently doesn't have a rigidbody or awake function as such this doesn't work as intended.
+        base.Update();
+        rightTrackForce = Vector2.zero; leftTrackForce = Vector2.zero;
+        engineThrottle = -1;
+        poweredTracks = 0;
 
+        if (Input.GetKey("a")) TurnLeft();//only for temporary playerControl
+        if (Input.GetKey("d")) TurnRight();
+
+        
+        if(Mathf.Abs(DesiredRotation())>2 && (desiredPosition - transform.position).magnitude > 2 && !isPlayerControlled)
+        {
+            //if close to desired rotation turn slowly
+            if (DesiredRotation() > 0) TurnLeft();
+            if (DesiredRotation() < 0) TurnRight();
+
+            //if far from desired rotation turn fast
+            if (DesiredRotation() > 2) TurnLeft();
+            if (DesiredRotation() < -2) TurnRight();
+
+            if ((desiredPosition - transform.position).magnitude > 2)
+            {
+                TurnLeft();
+                TurnRight();
+            }
+        }
     }
 
     protected void FixedUpdate()
     {
         rightTrack = transform.right * 2f;
         leftTrack = transform.right * -2f;
-        if (Input.GetKey("a")) TurnLeft();
-        if (Input.GetKey("d")) TurnRight();
+       if(poweredTracks>0)
+        {
+            rb.AddForceAtPosition((rightTrackForce / poweredTracks) * Time.fixedDeltaTime, transform.position + rightTrack);
+            rb.AddForceAtPosition((leftTrackForce / poweredTracks) * Time.fixedDeltaTime, transform.position + leftTrack);
+        }
+        
+
+        enginePower = Mathf.Min(Mathf.Max(0,enginePower+engineThrottle*10000), maxEnginePower);
     }
 
     public override void TurnLeft()
     {
-        rb.AddForceAtPosition(transform.up * 200000 * Time.fixedDeltaTime, transform.position + rightTrack);
+        poweredTracks += 1;
+        rightTrackForce = enginePower*transform.up;
+        engineThrottle = 1;
 
     }
 
     public override void TurnRight()
     {
-        rb.AddForceAtPosition(transform.up * 200000 * Time.fixedDeltaTime, transform.position + leftTrack);
+        poweredTracks += 1;
+        leftTrackForce = enginePower * transform.up;
+        engineThrottle = 1;
+    }
+
+    public override float DesiredRotation() //the difference between where the unit is looking and where it "wants" to be looking
+    {
+        if((desiredPosition - transform.position).magnitude > 2) return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
+
+        if (target == null) return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
+        if (isInRange()) return Vector2.SignedAngle(transform.up, target.position - transform.position);
+        return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
     }
     protected void addCrew(Infantry newGuy)
     {

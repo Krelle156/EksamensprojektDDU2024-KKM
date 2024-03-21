@@ -25,9 +25,9 @@ public class AIScript : MonoBehaviour
 
     public float DesiredRotation() //the difference between where the unit is looking and where it "wants" to be looking
     {
+        if (target == null) return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
         if (isInRange()) return Vector2.SignedAngle(transform.up, target.position - transform.position);
-        else if (target == null) return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
-        return 0;
+        return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
     }
 
     public void SetWaypoint(Vector3 v)

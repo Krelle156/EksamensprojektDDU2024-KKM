@@ -10,6 +10,8 @@ public abstract class Mobile : Unit
     
     protected Vector2 movementVector, inertiaTime;
 
+    protected bool isPlayerControlled = false;
+
 
     protected override void Awake()
     {
@@ -33,9 +35,14 @@ public abstract class Mobile : Unit
    
     }
 
-    public float DesiredRotation() //the difference between where the unit is looking and where it "wants" to be looking
+    public virtual float DesiredRotation() //the difference between where the unit is looking and where it "wants" to be looking
     {
         return Vector2.SignedAngle(transform.up,target.position - transform.position);
+    }
+
+    protected bool isInRange()
+    {
+        return true;
     }
 
     public Vector2 DesiredMovementVector() //Which direction the unit wants to go in
