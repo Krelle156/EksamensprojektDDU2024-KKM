@@ -23,6 +23,7 @@ public class SmokeParticle : MonoBehaviour
 
         startSize = new Vector3(s,s,s);
         transform.position = position;
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(0,360));
     }
 
     // Update is called once per frame
@@ -32,7 +33,6 @@ public class SmokeParticle : MonoBehaviour
         transform.position += velocity;
         sprite.color = new Color(1,1,1,timer/startTime);
 
-        Debug.Log(startSize);
         transform.localScale = startSize * (2 - (timer / startTime));
     }
 }

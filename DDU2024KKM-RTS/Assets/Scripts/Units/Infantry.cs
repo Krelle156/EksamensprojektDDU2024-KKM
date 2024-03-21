@@ -23,9 +23,19 @@ public class Infantry : Mobile
     {
        
         base.Update();
-        gun.Fire();
+
         //Debug.Log(desiredPosition);
         //Desired rotation is currently set all the way back in mobile
+
+        if (Mathf.Abs(DesiredRotation()) < 1)
+        {
+            if(target.TryGetComponent<Unit>(out Unit u)) //another messy getComponent action
+            {
+                if (u.allegiance != 0 && u.allegiance != allegiance) StandardAttack(); //If the unit isn't a "neutral" and isn't of the same faction, shoot.
+            }
+        }
+
+            
 
         //if close to desired rotation turn slowly
         if (DesiredRotation() > 0) rb.angularVelocity = 1f;
@@ -37,15 +47,6 @@ public class Infantry : Mobile
 
         if ((desiredPosition-transform.position).magnitude > 2)
         {
-            
-            /*
-            if (Mathf.Abs(DesiredRotation()) < 30f)
-            {
-                rb.velocity = transform.up * speed;
-            }
-            else rb.velocity = Vector2.zero;
-            */
-
             rb.velocity = movementVector * speed * (Mathf.Max(0.5f, 1 - (Vector2.Angle(transform.up, movementVector))/180)); //infantry moves slower if they aren't looking where they are going
             
         }
@@ -57,7 +58,21 @@ public class Infantry : Mobile
 
     }
 
+    public void StandardAttack() //where the unit should try to call it's gun or other Object in order to attack;
+    {
+        gun.Fire();
+    }
     void PickUpGun() {
         
+    }
+
+    public void EnterInterior()
+    {
+        rb.simulated = false;
+    }
+
+    public void ExitInterior()
+    {
+        rb.simulated = true;
     }
 }

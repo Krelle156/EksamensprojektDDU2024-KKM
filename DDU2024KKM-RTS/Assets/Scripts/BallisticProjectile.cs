@@ -17,7 +17,7 @@ public class BallisticProjectile : MonoBehaviour
 
     private void Awake()
     {
-        smokeList = new SmokeParticle[20];
+        smokeList = new SmokeParticle[30];
         for (int i = 0; i < smokeList.Length; i++)
         {
             smokeList[i] = Instantiate(smoke,transform.position,Quaternion.identity);
@@ -46,7 +46,7 @@ public class BallisticProjectile : MonoBehaviour
         }
         else if (flightDistance <= 0) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-        if(smokeCoolDown<=0)
+        if(smokeCoolDown<=0 && flightDistance >0)
         {
             smokeList[smokeCount].spawn(transform.position-transform.up*1f + new Vector3(0,0,1), 1, (2f - (Mathf.Abs(flightDistance) / maxFlightDistance)) * 0.1f);
             smokeCount++;

@@ -4,6 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - smoke: {fileID: 5094253752487152237, guid: da175120a22963f44bd278674a8d131f, type: 3}
   - up: {fileID: 21300000, guid: b0760d029c9670143af066a4cb2afd6d, type: 3}
   - down: {fileID: 21300000, guid: a7fcabe7ca4d52843b834569875f12ad, type: 3}
   executionOrder: 0

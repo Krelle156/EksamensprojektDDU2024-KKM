@@ -5,11 +5,12 @@ using static UnityEngine.GraphicsBuffer;
 
 public class AIScript : MonoBehaviour
 {
-    protected Mobile agent;
+    protected Infantry agent;
     protected Tonk vehicle;
 
     protected Transform target;
     protected Vector3 desiredPosition;
+
 
     void Start()
     {
