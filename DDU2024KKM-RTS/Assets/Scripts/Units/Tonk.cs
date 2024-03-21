@@ -61,8 +61,8 @@ public class Tonk : Mobile
         rightTrack = transform.right * 2f;
         leftTrack = transform.right * -2f;
 
-            rb.AddForceAtPosition((rightTrackForce), transform.position + rightTrack);
-            rb.AddForceAtPosition((leftTrackForce), transform.position + leftTrack);
+            rb.AddForceAtPosition((rightTrackForce) * Time.fixedDeltaTime, transform.position + rightTrack);
+            rb.AddForceAtPosition((leftTrackForce) * Time.fixedDeltaTime, transform.position + leftTrack);
         
 
         enginePower = Mathf.Min(Mathf.Max(0,enginePower+engineThrottle*10000), maxEnginePower);
@@ -71,7 +71,7 @@ public class Tonk : Mobile
     public override void TurnLeft()
     {
         poweredTracks += 1;
-        rightTrackForce = 5000*transform.up;
+        rightTrackForce = 200000*transform.up;
         engineThrottle = 1;
 
     }
@@ -79,7 +79,7 @@ public class Tonk : Mobile
     public override void TurnRight()
     {
         poweredTracks += 1;
-        leftTrackForce = 5000 * transform.up;
+        leftTrackForce = 200000 * transform.up;
         engineThrottle = 1;
     }
 
