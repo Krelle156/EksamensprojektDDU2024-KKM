@@ -48,7 +48,6 @@ public class Player : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         if (Input.GetMouseButtonDown(0))
         {   
-
             for (int i = 0; i < units.Count; i++)
             {
                 units[i].marked = false;

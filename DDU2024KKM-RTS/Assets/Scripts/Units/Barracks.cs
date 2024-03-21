@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class Barracks : Stationary
@@ -24,21 +23,8 @@ public class Barracks : Stationary
     // Update is called once per frame
     protected override void Update()
     {
-        if (marked == true && wayPoint != null){
-            wayPoint.GetComponent<SpriteRenderer>().enabled = true;
-            if (Input.GetMouseButtonDown(1)) {
-                wayPoint.GetComponent<WaypointScript>().destory(); ;
-            }
-        }
-
-        else {
-            if (wayPoint != null)
-            {
-                wayPoint.GetComponent<WaypointScript>().marked();
-            }
-        }
-
-        
+        Debug.Log(marked);
+       
         if (Input.GetKey("k")) {
 
             temp = Instantiate(artroop, new Vector3(1, 1), Quaternion.identity);
@@ -54,6 +40,4 @@ public class Barracks : Stationary
         return true;
     }
     */
-
-
 }
