@@ -8,6 +8,7 @@ public class WaypointScript : MonoBehaviour
     public List<Unit> units;
     
     private int UnitsAtPosition = 0;
+    bool isState = false;
 
 
     // Start is called before the first frame update
@@ -16,7 +17,7 @@ public class WaypointScript : MonoBehaviour
         for (int i=0;i<units.Count;i++) {
             if (units[i].isStationary == true)
             {
-                
+                isState = true;
                 units.RemoveAt(i);
             }
         }
@@ -28,7 +29,8 @@ public class WaypointScript : MonoBehaviour
     {
         UnitsAtPos();
         //Deleting the waypoint if all the units have reached it
-        if (UnitsAtPosition == units.Count) Destroy(gameObject); 
+        if (UnitsAtPosition == units.Count && isState==false) Destroy(gameObject);
+        
         
 
     }
@@ -38,6 +40,13 @@ public class WaypointScript : MonoBehaviour
             if ((transform.position - units[i].transform.position).magnitude<2)UnitsAtPosition++;
             //Debug.Log(UnitsAtPosition);
         }
+    }
+    public void marked() { 
+        transform.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void destory() { 
+        Destroy(gameObject);
     }
 
    
