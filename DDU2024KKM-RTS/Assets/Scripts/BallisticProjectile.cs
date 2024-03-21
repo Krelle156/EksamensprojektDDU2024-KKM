@@ -10,8 +10,8 @@ public class BallisticProjectile : MonoBehaviour
     protected float smokeCoolDown, smokeCoolMax = 0.05f;
 
 
-    float maxFlightDistance = 10;
-    float flightDistance = 5;
+    float maxFlightDistance = 20;
+    float flightDistance = 10;
 
     public Sprite up, down;
 
