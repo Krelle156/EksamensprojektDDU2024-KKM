@@ -16,8 +16,8 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         cameraMoveSpeed = cameraBaseSpeed;
-        testGuyReference = Instantiate(testGuy, transform.position-new Vector3(0,0,-9), Quaternion.identity);
-        playerUnit = testGuyReference;
+        //testGuyReference = Instantiate(testGuy, transform.position-new Vector3(0,0,-9), Quaternion.identity);
+        //playerUnit = testGuyReference;
     }
 
     // Update is called once per frame
