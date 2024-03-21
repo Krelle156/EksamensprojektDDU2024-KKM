@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class Mobile : Unit
 {
     protected float speed = 2;
-    protected Vector3 desiredPosition;
+    
     protected Vector2 movementVector, inertiaTime;
 
 
@@ -43,12 +43,7 @@ public abstract class Mobile : Unit
         return (desiredPosition - transform.position).normalized;
     }
 
-    public void SetWaypoint(Vector3 v) 
-    {
-        //The coordinate the unit will try to reach through a straight line
-        //(in case of pathfinding this would be a node on the way to the actual target)
-        desiredPosition = v;
-    }
+    
 
     public void TemoveWaypoint() //In case the unit doesn't need to change it's position
     {

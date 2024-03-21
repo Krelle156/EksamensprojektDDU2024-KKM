@@ -12,8 +12,13 @@ public class WaypointScript : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        
+    { 
+        for (int i=0;i<units.Count;i++) {
+            if (units[i].isStationary == true)
+            {
+                units.RemoveAt(i);
+            }
+        }
 
     }
 
