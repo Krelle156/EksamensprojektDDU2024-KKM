@@ -1376,6 +1376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testGuy: {fileID: 6873756863560486890, guid: 23b4f5e42b9aaf54a93f8076ec6ae462, type: 3}
   playerUnit: {fileID: 0}
+  testExplosion: {fileID: 3238213000594818327, guid: b8623844010f34f4ca779b46838fa9c0, type: 3}
 --- !u!1 &1981107831
 GameObject:
   m_ObjectHideFlags: 0
