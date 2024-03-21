@@ -38,7 +38,7 @@ public class Tonk : Mobile
         if (Input.GetKey("d")) TurnRight();
 
         
-        if(Mathf.Abs(DesiredRotation())>2 && (desiredPosition - transform.position).magnitude > 2 && !isPlayerControlled)
+        if((desiredPosition - transform.position).magnitude > 2 && !isPlayerControlled) //if not controlled by player and not at position then do movement
         {
             //if close to desired rotation turn slowly
             if (DesiredRotation() > 0) TurnLeft();
@@ -48,7 +48,7 @@ public class Tonk : Mobile
             if (DesiredRotation() > 2) TurnLeft();
             if (DesiredRotation() < -2) TurnRight();
 
-            if ((desiredPosition - transform.position).magnitude > 2)
+            if (Mathf.Abs(DesiredRotation()) < 2) //if pointing towards the target position, move.
             {
                 TurnLeft();
                 TurnRight();
@@ -60,11 +60,9 @@ public class Tonk : Mobile
     {
         rightTrack = transform.right * 2f;
         leftTrack = transform.right * -2f;
-       if(poweredTracks>0)
-        {
-            rb.AddForceAtPosition((rightTrackForce / poweredTracks) * Time.fixedDeltaTime, transform.position + rightTrack);
-            rb.AddForceAtPosition((leftTrackForce / poweredTracks) * Time.fixedDeltaTime, transform.position + leftTrack);
-        }
+
+            rb.AddForceAtPosition((rightTrackForce), transform.position + rightTrack);
+            rb.AddForceAtPosition((leftTrackForce), transform.position + leftTrack);
         
 
         enginePower = Mathf.Min(Mathf.Max(0,enginePower+engineThrottle*10000), maxEnginePower);
@@ -73,7 +71,7 @@ public class Tonk : Mobile
     public override void TurnLeft()
     {
         poweredTracks += 1;
-        rightTrackForce = enginePower*transform.up;
+        rightTrackForce = 5000*transform.up;
         engineThrottle = 1;
 
     }
@@ -81,7 +79,7 @@ public class Tonk : Mobile
     public override void TurnRight()
     {
         poweredTracks += 1;
-        leftTrackForce = enginePower * transform.up;
+        leftTrackForce = 5000 * transform.up;
         engineThrottle = 1;
     }
 
