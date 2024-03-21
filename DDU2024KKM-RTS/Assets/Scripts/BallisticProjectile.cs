@@ -17,7 +17,7 @@ public class BallisticProjectile : MonoBehaviour
 
     private void Awake()
     {
-        smokeList = new SmokeParticle[30];
+        smokeList = new SmokeParticle[20];
         for (int i = 0; i < smokeList.Length; i++)
         {
             smokeList[i] = Instantiate(smoke,transform.position,Quaternion.identity);
@@ -28,7 +28,7 @@ public class BallisticProjectile : MonoBehaviour
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = up;
-        GetComponent<Rigidbody2D>().velocity = transform.up * 5;
+        GetComponent<Rigidbody2D>().velocity = transform.up * 15;
     }
 
     // Update is called once per frame

@@ -28,6 +28,7 @@ public class Tonk : Mobile
         base.Awake();
         crewList = new Infantry[3]; //this vehicle can hold three people
         audi = GetComponent<AudioSource>();
+        target = Player.targetTest;
 
         smokeList = new SmokeParticle[30];
         for (int i = 0; i < smokeList.Length; i++)
@@ -60,23 +61,23 @@ public class Tonk : Mobile
         if (Input.GetKey("a")) TurnLeft();//only for temporary playerControl
         if (Input.GetKey("d")) TurnRight();
 
-        audi.pitch = (1.5f+(enginePower/maxEnginePower)*1.5f);
-        if((desiredPosition - transform.position).magnitude > 2 && !isPlayerControlled) //if not controlled by player and not at position then do movement
+        if(!isPlayerControlled)
         {
-            //if close to desired rotation turn slowly
-            if (DesiredRotation() > 0) TurnLeft();
-            if (DesiredRotation() < 0) TurnRight();
-
             //if far from desired rotation turn fast
             if (DesiredRotation() > 2) TurnLeft();
             if (DesiredRotation() < -2) TurnRight();
 
-            if (Mathf.Abs(DesiredRotation()) < 2) //if pointing towards the target position, move.
+            audi.pitch = (1.5f + (enginePower / maxEnginePower) * 1.5f);
+            if ((desiredPosition - transform.position).magnitude > 5) //if not at position then move
             {
-                TurnLeft();
-                TurnRight();
+                if (Mathf.Abs(DesiredRotation()) < 2) //if pointing towards the target position, move.
+                {
+                    TurnLeft();
+                    TurnRight();
+                }
             }
         }
+        
     }
 
     protected void FixedUpdate()
@@ -117,7 +118,7 @@ public class Tonk : Mobile
 
     public override float DesiredRotation() //the difference between where the unit is looking and where it "wants" to be looking
     {
-        if((desiredPosition - transform.position).magnitude > 2) return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
+        if((desiredPosition - transform.position).magnitude > 3) return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
 
         if (target == null) return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
         if (isInRange()) return Vector2.SignedAngle(transform.up, target.position - transform.position);
