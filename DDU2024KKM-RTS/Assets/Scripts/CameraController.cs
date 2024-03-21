@@ -12,9 +12,17 @@ public class CameraController : MonoBehaviour
 
     public Mobile playerUnit;
     bool isControllingUnit = false;
-    // Start is called before the first frame update
+
+    [SerializeField] protected ExplosionEffect testExplosion;
+    public static ExplosionEffect boomTempTest; //must be moved to particle controller later
+
+    private void Awake()
+    {
+        boomTempTest = Instantiate(testExplosion, transform.position, Quaternion.identity);
+    }
     void Start()
     {
+        
         cameraMoveSpeed = cameraBaseSpeed;
         //testGuyReference = Instantiate(testGuy, transform.position-new Vector3(0,0,-9), Quaternion.identity);
         //playerUnit = testGuyReference;

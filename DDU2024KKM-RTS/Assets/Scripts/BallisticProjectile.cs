@@ -36,15 +36,16 @@ public class BallisticProjectile : MonoBehaviour
     {
         if (flightDistance > -maxFlightDistance / 2)
         {
-            transform.localScale = new Vector3(2f - (Mathf.Abs(flightDistance) / maxFlightDistance) * 1.2f,((2f-(Mathf.Abs(flightDistance)/maxFlightDistance)*1.2f)*(1-(Mathf.Abs(flightDistance) / maxFlightDistance)*0.9f)), 1);
+            transform.localScale = new Vector3(2f - (Mathf.Abs(flightDistance) / maxFlightDistance) * 1.2f, ((2f - (Mathf.Abs(flightDistance) / maxFlightDistance) * 1.2f) * (1 - (Mathf.Abs(flightDistance) / maxFlightDistance) * 0.9f)), 1);
             if (flightDistance < 0)
             {
                 GetComponent<SpriteRenderer>().sprite = down;
-            
+
             }
             flightDistance -= GetComponent<Rigidbody2D>().velocity.magnitude * Time.deltaTime;
         }
-        else if (flightDistance <= 0) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        //else if (flightDistance <= 0) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        else if (flightDistance <= 0) explode();
 
         if(smokeCoolDown<=0 && flightDistance >0)
         {
@@ -60,5 +61,11 @@ public class BallisticProjectile : MonoBehaviour
     void FixedUpdate()
     {
 
+    }
+
+    void explode()
+    {
+        CameraController.boomTempTest.spawn(transform.position,0.25f,2f);
+        Destroy(gameObject);
     }
 }
