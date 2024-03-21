@@ -1813,6 +1813,7 @@ MonoBehaviour:
   wayPoint: {fileID: 0}
   marked: 0
   allegiance: 0
+  smoke: {fileID: 5094253752487152237, guid: da175120a22963f44bd278674a8d131f, type: 3}
 --- !u!61 &1407282954
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1895,7 +1896,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 51121273632c4a7469941ac3035183b9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4cf11918311f4904db4c1bf8b8c950a9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 2
