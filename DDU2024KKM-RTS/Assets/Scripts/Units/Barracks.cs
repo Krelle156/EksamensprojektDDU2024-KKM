@@ -32,10 +32,12 @@ public class Barracks : Stationary
         }
     }
 
+    /*
     bool resources(){
         if (3==3) {
             return false;
         }
         return true;
     }
+    */
 }

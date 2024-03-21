@@ -50,21 +50,21 @@ public abstract class Mobile : Unit
         desiredPosition = transform.position;
     }
 
-    public void TurnRight() //(for the AI-script or player controlled units) turns the unit to the "right"
+    public virtual void TurnRight() //(for the AI-script or player controlled units) turns the unit to the "right"
     {
         //TO-DO - Make work!
     }
-    public void TurnLeft() //(for the AI-script or player controlled units) turns the unit to the "Left"
-    {
-        //TO-DO - Make work!
-    }
-
-    public void CorrectRight() //(Only for AI) makes very small changes to the "angle"
+    public virtual void TurnLeft() //(for the AI-script or player controlled units) turns the unit to the "Left"
     {
         //TO-DO - Make work!
     }
 
-    public void CorrectLeft() //(Only for AI) makes very small changes to the "angle"
+    public virtual void CorrectRight() //(Only for AI) makes very small changes to the "angle"
+    {
+        //TO-DO - Make work!
+    }
+
+    public virtual void CorrectLeft() //(Only for AI) makes very small changes to the "angle"
     {
         //TO-DO - Make work!
     }
