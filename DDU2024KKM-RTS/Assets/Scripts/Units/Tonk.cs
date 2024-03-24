@@ -58,9 +58,6 @@ public class Tonk : Mobile
         engineThrottle = -1;
         poweredTracks = 0;
 
-        if (Input.GetKey("a")) TurnLeft();//only for temporary playerControl
-        if (Input.GetKey("d")) TurnRight();
-
         if(!isPlayerControlled)
         {
             //if far from desired rotation turn fast
@@ -72,8 +69,7 @@ public class Tonk : Mobile
             {
                 if (Mathf.Abs(DesiredRotation()) < 2) //if pointing towards the target position, move.
                 {
-                    TurnLeft();
-                    TurnRight();
+                    MoveForwards();
                 }
             }
         }
@@ -109,7 +105,9 @@ public class Tonk : Mobile
 
     public void MoveForwards()
     {
-
+        leftTrackForce = enginePower * transform.up;
+        rightTrackForce = enginePower * transform.up;
+        engineThrottle = 1;
     }
     public void MoveBackWards()
     {

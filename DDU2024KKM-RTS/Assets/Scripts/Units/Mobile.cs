@@ -59,19 +59,19 @@ public abstract class Mobile : Unit
 
     public virtual void TurnRight() //(for the AI-script or player controlled units) turns the unit to the "right"
     {
-        //TO-DO - Make work!
+        //Currently only implemented for the tank, probably should stay that way
     }
     public virtual void TurnLeft() //(for the AI-script or player controlled units) turns the unit to the "Left"
     {
-        //TO-DO - Make work!
+        //Currently only implemented for the tank, probably should stay that way
     }
 
-    public virtual void CorrectRight() //(Only for AI) makes very small changes to the "angle"
+    public virtual void MoveForwards()
     {
         //TO-DO - Make work!
     }
 
-    public virtual void CorrectLeft() //(Only for AI) makes very small changes to the "angle"
+    public virtual void MoveBackwards()
     {
         //TO-DO - Make work!
     }
