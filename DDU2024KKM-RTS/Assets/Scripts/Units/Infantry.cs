@@ -84,4 +84,12 @@ public class Infantry : Mobile
     {
         rb.simulated = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.TryGetComponent(out Unit bob))
+        {
+            if (bob.allegiance != allegiance) target = bob.transform;
+        }
+    }
 }

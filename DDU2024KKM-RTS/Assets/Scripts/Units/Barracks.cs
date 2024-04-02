@@ -10,13 +10,12 @@ public class Barracks : Stationary
     private Transform troopInstance;
     int priceAR, priceSMG, priceAT;
     int i;
-    
 
     protected override void Awake()
     {
         base.Awake();
-        troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
-        //troopInstance = Instantiate(artroop, new Vector3(1, 1), Quaternion.identity);
+        //troopInstance = Instantiate(artroop, new Vector3(0, 0), Quaternion.identity);
+        //troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
         //Instantiate(smgtroop, new Vector3(0, 1), Quaternion.identity);
         //Instantiate(attroop, new Vector3(-1, 1), Quaternion.identity);
         
@@ -27,12 +26,23 @@ public class Barracks : Stationary
     {
         //Debug.Log(marked);
        
-        if (Input.GetKey("k")) {
+        if (Input.GetKeyDown(KeyCode.K)) {
 
             troopInstance = Instantiate(artroop, transform.position, Quaternion.identity);
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
+            troopInstance.GetComponent<Infantry>().allegiance = 1;
+            Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            troopInstance = Instantiate(artroop, transform.position, Quaternion.identity);
+            troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
+            troopInstance.GetComponent<Infantry>().allegiance = 2;
+            Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
         }
     }
+
 
     /*
     bool resources(){
