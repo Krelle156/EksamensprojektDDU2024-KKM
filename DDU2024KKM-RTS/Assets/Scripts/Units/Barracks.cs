@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Barracks : Stationary
 {
     // Start is called before the first frame update
     public Transform artroop, smgtroop, attroop;
-    private Transform temp;
+    private Transform troopInstance;
     int priceAR, priceSMG, priceAT;
     int i;
     
@@ -14,10 +15,10 @@ public class Barracks : Stationary
     protected override void Awake()
     {
         base.Awake();
-        temp=Instantiate(artroop, new Vector3(1, 1), Quaternion.identity);
-        temp.GetComponent<Infantry>().SetWaypoint(desiredPosition);
-        Instantiate(smgtroop, new Vector3(0, 1), Quaternion.identity);
-        Instantiate(attroop, new Vector3(-1, 1), Quaternion.identity);
+        troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
+        //troopInstance = Instantiate(artroop, new Vector3(1, 1), Quaternion.identity);
+        //Instantiate(smgtroop, new Vector3(0, 1), Quaternion.identity);
+        //Instantiate(attroop, new Vector3(-1, 1), Quaternion.identity);
         
     }
 
@@ -28,8 +29,8 @@ public class Barracks : Stationary
        
         if (Input.GetKey("k")) {
 
-            temp = Instantiate(artroop, new Vector3(1, 1), Quaternion.identity);
-            temp.GetComponent<Infantry>().SetWaypoint(desiredPosition);
+            troopInstance = Instantiate(artroop, transform.position, Quaternion.identity);
+            troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
         }
     }
 
