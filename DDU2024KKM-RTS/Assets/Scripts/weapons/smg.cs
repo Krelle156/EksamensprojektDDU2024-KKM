@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class smg : Gun
+public class smg : Weapon
 {
     public SpriteRenderer mundingsglimttemp;
     // Start is called before the first frame update

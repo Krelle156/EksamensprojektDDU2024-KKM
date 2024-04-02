@@ -5,12 +5,12 @@ using UnityEngine;
 public class Infantry : Mobile
 {
 
-    Gun gun;
+    Weapon weapon;
     protected override void Awake()
     {
         base.Awake();
 
-        gun = transform.GetChild(0).GetComponent<Gun>();
+        weapon = transform.GetChild(0).GetComponent<Weapon>();
     }
 
     private void Start()
@@ -60,7 +60,7 @@ public class Infantry : Mobile
 
     public void StandardAttack() //where the unit should try to call it's gun or other Object in order to attack;
     {
-        gun.Fire();
+        weapon.Fire();
     }
     void PickUpGun() {
         

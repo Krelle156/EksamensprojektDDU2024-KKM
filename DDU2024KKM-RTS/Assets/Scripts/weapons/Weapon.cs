@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
+    public Transform bullet;
     protected int firerateRPM, ammunition;
     protected float range;
     protected float explosivePower, kinecticDamage, armorPiercing;
@@ -47,6 +48,16 @@ public class Gun : MonoBehaviour
         if (cool <= 0)
         {
             cool = maxcool;
+            Instantiate(bullet, transform.position, transform.rotation);
+        }
+    }
+
+    protected virtual void Update()
+    {
+        if (Input.GetKey(KeyCode.F))
+        {
+            Fire();
+            Debug.Log("Fire");
         }
     }
 

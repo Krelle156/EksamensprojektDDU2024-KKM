@@ -5,7 +5,8 @@ using UnityEngine;
 public class Barracks : Stationary
 {
     // Start is called before the first frame update
-    public Transform artroop, smgtroop, attroop,temp;
+    public Transform artroop, smgtroop, attroop;
+    private Transform temp;
     int priceAR, priceSMG, priceAT;
     int i;
     
@@ -23,7 +24,7 @@ public class Barracks : Stationary
     // Update is called once per frame
     protected override void Update()
     {
-        Debug.Log(marked);
+        //Debug.Log(marked);
        
         if (Input.GetKey("k")) {
 

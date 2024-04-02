@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AssaultRifle : Gun
+public class AssaultRifle : Weapon
 {
     public SpriteRenderer mundingsglimttemp;
     // Start is called before the first frame update
@@ -23,8 +23,9 @@ public class AssaultRifle : Gun
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (cool>0) 
         {
             cool -= 1 * Time.deltaTime;
