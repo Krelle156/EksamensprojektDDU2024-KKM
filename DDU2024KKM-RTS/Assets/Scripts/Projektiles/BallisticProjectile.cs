@@ -65,7 +65,7 @@ public class BallisticProjectile : MonoBehaviour
 
     void explode()
     {
-        CameraController.boomTempTest.spawn(transform.position,0.25f,2f);
+        CameraController.boomTempTest.spawn(transform.position,0.25f,3f);
         Destroy(gameObject);
     }
 }
