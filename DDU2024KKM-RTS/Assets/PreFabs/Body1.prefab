@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6116332659241866297}
   - component: {fileID: 5444669581585263431}
+  - component: {fileID: 4830095406092702299}
   m_Layer: 0
   m_Name: AssaultRifle1
   m_TagString: Untagged
@@ -168,6 +169,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4830095406092702299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586852263902891715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2710c1307c8449640889d4f8a3a2f92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 9027258315040483349, guid: 393a7b6236cbe8941ba39e04e87981f9, type: 3}
+  mundingsglimttemp: {fileID: 6628327662224606440}
 --- !u!1 &7753707464880613160
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +196,7 @@ GameObject:
   - component: {fileID: 4856631400695667846}
   - component: {fileID: 3319169453281145833}
   - component: {fileID: 5077483030149365390}
+  - component: {fileID: -1711975727325439248}
   m_Layer: 0
   m_Name: Body1
   m_TagString: Untagged
@@ -297,6 +313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f36ee2d77b69b48a65970be3fd849c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStationary: 0
+  wayPoint: {fileID: 0}
+  marked: 0
+  allegiance: 0
 --- !u!58 &5077483030149365390
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -332,6 +352,41 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5822755
+--- !u!58 &-1711975727325439248
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7753707464880613160}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &8168213501018458728
 GameObject:
   m_ObjectHideFlags: 0

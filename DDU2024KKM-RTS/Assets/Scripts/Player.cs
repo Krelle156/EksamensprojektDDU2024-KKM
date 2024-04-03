@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
+        allegiance = 1;
     }
 
     void Awake()
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collisionInfo)
     {
-        if (collisionInfo.GetComponent<Unit>().marked == false && allegiance== collisionInfo.GetComponent<Unit>().allegiance)
+        if (collisionInfo.GetComponent<Unit>().marked == false && allegiance == collisionInfo.GetComponent<Unit>().allegiance)
         {
             
             units.Add(collisionInfo.GetComponent<Unit>());

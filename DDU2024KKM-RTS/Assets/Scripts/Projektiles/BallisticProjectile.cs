@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallisticProjectile : MonoBehaviour
+public class BallisticProjectile : Projectile
 {
-    public SmokeParticle smoke;
+    [SerializeField] protected SmokeParticle smoke;
     protected SmokeParticle[] smokeList;
     protected int smokeCount;
     protected float smokeCoolDown, smokeCoolMax = 0.05f;
 
+    [SerializeField] protected Rigidbody2D rb;
 
-    float maxFlightDistance = 20;
-    float flightDistance = 10;
 
-    public Sprite up, down;
+    [SerializeField] protected Sprite up, down;
 
     private void Awake()
     {
@@ -22,16 +21,15 @@ public class BallisticProjectile : MonoBehaviour
         {
             smokeList[i] = Instantiate(smoke,transform.position,Quaternion.identity);
         }
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         GetComponent<SpriteRenderer>().sprite = up;
         GetComponent<Rigidbody2D>().velocity = transform.up * 15;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (flightDistance > -maxFlightDistance / 2)
@@ -42,7 +40,7 @@ public class BallisticProjectile : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = down;
 
             }
-            flightDistance -= GetComponent<Rigidbody2D>().velocity.magnitude * Time.deltaTime;
+            flightDistance -= rb.velocity.magnitude * Time.deltaTime;
         }
         //else if (flightDistance <= 0) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         else if (flightDistance <= 0) explode();
@@ -63,9 +61,19 @@ public class BallisticProjectile : MonoBehaviour
 
     }
 
+    public override void Launch(float dist)
+    {
+        base.Launch(dist);
+        flightDistance = dist / 2;
+    }
+
     void explode()
     {
-        CameraController.boomTempTest.spawn(transform.position,0.25f,2f);
+        for(int i=0; i<smokeList.Length;i++)
+        {
+            Destroy(smokeList[i].gameObject);
+        }
+        CameraController.boomTempTest.spawn(transform.position,0.25f,3f);
         Destroy(gameObject);
     }
 }

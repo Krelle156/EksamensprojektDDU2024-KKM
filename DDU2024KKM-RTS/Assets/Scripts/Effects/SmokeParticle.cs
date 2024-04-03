@@ -14,6 +14,7 @@ public class SmokeParticle : MonoBehaviour
     {
         startSize = Vector3.one;
         sprite = GetComponent<SpriteRenderer>();
+        sprite.color = new Color(1, 1, 1, 0);
     }
 
     public void spawn(Vector3 position, float t, float s)
@@ -27,12 +28,16 @@ public class SmokeParticle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(timer>=0)timer -= 1f * Time.deltaTime;
-        transform.position += velocity;
-        sprite.color = new Color(1,1,1,timer/startTime);
+        if(timer>=0)
+        {
+            timer -= 1f * Time.fixedDeltaTime;
+            transform.position += velocity;
+            sprite.color = new Color(1, 1, 1, timer / startTime);
 
-        transform.localScale = startSize * (2 - (timer / startTime));
+            transform.localScale = startSize * (2 - (timer / startTime));
+        }
+            
     }
 }
