@@ -21,27 +21,42 @@ public class Barracks : Stationary
         
     }
 
+    private void Start()
+    {
+        desiredPosition = transform.position;
+
+        if (this.allegiance == 2)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                float ranNum = Random.Range(-0.1f, 0.1f);
+                troopInstance = Instantiate(artroop, new Vector2(transform.position.x + ranNum, transform.position.y + ranNum), Quaternion.identity);
+                troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
+                troopInstance.GetComponent<Infantry>().allegiance = 2;
+                Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
+            }
+        }
+    }
+
     // Update is called once per frame
     protected override void Update()
     {
         //Debug.Log(marked);
        
-        if (Input.GetKeyDown(KeyCode.K)) {
+        if (Input.GetKeyDown(KeyCode.K) && this.allegiance == 1) {
 
             troopInstance = Instantiate(artroop, transform.position, Quaternion.identity);
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 1;
             Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
-            desiredPosition = transform.position;
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L) && this.allegiance == 2)
         {
             troopInstance = Instantiate(artroop, transform.position, Quaternion.identity);
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 2;
             Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
-            desiredPosition = transform.position;
         }
     }
 
