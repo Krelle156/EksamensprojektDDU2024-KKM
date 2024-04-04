@@ -66,10 +66,7 @@ public class BallisticProjectile : Projectile
 
     protected override void GroundImpact()
     {
-        for(int i=0; i<smokeList.Length;i++)
-        {
-            Destroy(smokeList[i].gameObject);
-        }
+
         CameraController.boomTempTest.spawn(transform.position,0.25f,3f);
         Destroy(gameObject);
     }
