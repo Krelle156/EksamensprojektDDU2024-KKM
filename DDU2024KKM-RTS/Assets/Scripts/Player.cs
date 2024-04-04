@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static System.Net.Mime.MediaTypeNames;
 
 public class Player : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        Cursor.visible = false;
         targetTest = transform;
     }
 
@@ -146,6 +148,9 @@ public class Player : MonoBehaviour
             }
 
         }
+
+        //Remove cursor if the game is in fokus
+        if (UnityEngine.Application.isFocused == true) Cursor.visible = false;
 
     }
 }

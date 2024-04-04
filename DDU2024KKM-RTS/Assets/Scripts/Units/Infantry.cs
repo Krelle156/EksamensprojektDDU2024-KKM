@@ -89,7 +89,7 @@ public class Infantry : Mobile
     {
         if(collision.TryGetComponent(out Unit bob))
         {
-            if (bob.allegiance != allegiance) target = bob.transform;
+            if (bob.allegiance != allegiance && allegiance != 0) target = bob.transform;
         }
     }
 }

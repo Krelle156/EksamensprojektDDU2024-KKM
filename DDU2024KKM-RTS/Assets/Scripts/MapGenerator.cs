@@ -72,7 +72,7 @@ public class MapGenerator : MonoBehaviour
                 tileMap.SetTile(new Vector3Int(i, j, -1), tile);
             }
         }
-        Debug.Log(tempX + "; " + tempY);
+        //Debug.Log(tempX + "; " + tempY);
 
         for (int i = 0; i < width; i++)
         {
@@ -114,7 +114,7 @@ public class MapGenerator : MonoBehaviour
                 if (i + tempMouseX - 6 >= 0 && j + tempMouseY - 6 >= 0 && i + tempMouseX - 6 < width && j + tempMouseY - 6 < height)
                 {
                     terrainDebuggingText[i, j].GetComponent<TextMeshProUGUI>().text = terraindata[i + tempMouseX - 6, j + tempMouseY - 6].GetTerrainModifier().ToString();
-                    Debug.Log(terraindata[i + tempMouseX - 6, j + tempMouseY - 6].GetTerrainModifier());
+                    //Debug.Log(terraindata[i + tempMouseX - 6, j + tempMouseY - 6].GetTerrainModifier());
                 }
                 else terrainDebuggingText[i, j].GetComponent<TextMeshProUGUI>().text = "bob";
 
