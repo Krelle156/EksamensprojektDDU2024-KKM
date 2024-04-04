@@ -750,6 +750,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mouse
       objectReference: {fileID: 0}
+    - target: {fileID: 7717432838032351096, guid: 6bd8e06a4a89f3a48b5bd4e2b9b6f009, type: 3}
+      propertyPath: barracksObject
+      value: 
+      objectReference: {fileID: 1097345978}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

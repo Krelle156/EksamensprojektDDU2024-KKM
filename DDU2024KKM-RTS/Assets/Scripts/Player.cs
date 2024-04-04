@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected int cursorMode = 0;
 
+    public Transform barracksObject;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -29,7 +31,6 @@ public class Player : MonoBehaviour
     void Awake()
     {
         Cursor.visible = false;
-        targetTest = transform;
     }
 
     private void OnTriggerEnter2D(Collider2D collisionInfo)
@@ -136,8 +137,8 @@ public class Player : MonoBehaviour
                 for (int i = 0; i < units.Count; i++)
                 {
 
-                    units[i].SetWaypoint(new Vector2(mousePosX, mousePosY)); //should be done by the waypoint itself
-                    tempwaypoint=Instantiate(waypoint, new Vector2(mousePosX, mousePosY), Quaternion.identity); //Places a waypoint at the position of the mouse click
+                    units[i].SetWaypoint(new Vector3(mousePosX, mousePosY, -2f)); //should be done by the waypoint itself
+                    tempwaypoint=Instantiate(waypoint, new Vector3(mousePosX, mousePosY, -2f), Quaternion.identity); //Places a waypoint at the position of the mouse click
                     tempwaypoint.GetComponent<WaypointScript>().units.Add(units[i]);
                     if (units[i].wayPoint != null) units[i].wayPoint.GetComponent<WaypointScript>().units.Remove(units[i]);
                     units[i].wayPoint = tempwaypoint;

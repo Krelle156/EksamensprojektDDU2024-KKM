@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
 {
-    static int width = 100, height = 50;
+    private static int width = 100, height;
 
     //References to enable the debugging text for terrain values
     public Transform debuggingCanvas; //Reference to the canvas
@@ -30,7 +30,8 @@ public class MapGenerator : MonoBehaviour
 
     private void Awake()
     {
-        
+        int temp = (int) (width * 9f / 16f);
+        height = temp;
     }
 
     void Start()
@@ -124,11 +125,11 @@ public class MapGenerator : MonoBehaviour
     }
 
     //As the dimensions of the map should'nt be changed from the outside there are only getter-functions
-    public static float getMapWidth() 
+    public static int getMapWidth() 
     {
         return width;
     }
-    public static float getMapHeight()
+    public static int getMapHeight()
     {
         return height;
     }
