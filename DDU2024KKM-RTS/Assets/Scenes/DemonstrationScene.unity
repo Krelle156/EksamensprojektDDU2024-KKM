@@ -939,6 +939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: The mouse or something
       objectReference: {fileID: 0}
+    - target: {fileID: 5869617863323102311, guid: fe6accebcac54e64eb46ad83aecdb904, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1032,7 +1036,7 @@ Transform:
   m_GameObject: {fileID: 1407282950}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.13, y: 6.89, z: -1}
+  m_LocalPosition: {x: -22.03, y: 6.76, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1787,6 +1791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce2007d0f0007448b3f9b6c3e991e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 1981107832}
   smoke: {fileID: 5094253752487152237, guid: da175120a22963f44bd278674a8d131f, type: 3}
   up: {fileID: 21300000, guid: b0760d029c9670143af066a4cb2afd6d, type: 3}
   down: {fileID: 21300000, guid: a7fcabe7ca4d52843b834569875f12ad, type: 3}

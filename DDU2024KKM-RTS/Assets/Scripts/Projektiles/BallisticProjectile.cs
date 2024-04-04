@@ -9,9 +9,6 @@ public class BallisticProjectile : Projectile
     protected int smokeCount;
     protected float smokeCoolDown, smokeCoolMax = 0.05f;
 
-    [SerializeField] protected Rigidbody2D rb;
-
-
     [SerializeField] protected Sprite up, down;
 
     private void Awake()
@@ -21,7 +18,7 @@ public class BallisticProjectile : Projectile
         {
             smokeList[i] = Instantiate(smoke,transform.position,Quaternion.identity);
         }
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
     }
 
     void Start()
@@ -43,7 +40,7 @@ public class BallisticProjectile : Projectile
             flightDistance -= rb.velocity.magnitude * Time.deltaTime;
         }
         //else if (flightDistance <= 0) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        else if (flightDistance <= 0) explode();
+        else if (flightDistance <= 0) GroundImpact();
 
         if(smokeCoolDown<=0 && flightDistance >0)
         {
@@ -61,13 +58,13 @@ public class BallisticProjectile : Projectile
 
     }
 
-    public override void Launch(float dist)
+    public override void Launch(float dist, Vector2 direction)
     {
-        base.Launch(dist);
+        base.Launch(dist, direction);
         flightDistance = dist / 2;
     }
 
-    void explode()
+    protected override void GroundImpact()
     {
         for(int i=0; i<smokeList.Length;i++)
         {
