@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
 
         }
 
-        //Remove cursor if the game is in fokus
+        //Remove cursor if the game is in focus
         if (UnityEngine.Application.isFocused == true) Cursor.visible = false;
 
     }
