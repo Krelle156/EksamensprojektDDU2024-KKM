@@ -16,8 +16,11 @@ public class CameraController : MonoBehaviour
     [SerializeField] protected ExplosionEffect testExplosion;
     public static ExplosionEffect boomTempTest; //must be moved to particle controller later
 
+    public Transform barrack;
+
     private void Awake()
     {
+        transform.position = new Vector3(barrack.position.x, barrack.position.y, -10);
         boomTempTest = Instantiate(testExplosion, transform.position, Quaternion.identity);
     }
     void Start()

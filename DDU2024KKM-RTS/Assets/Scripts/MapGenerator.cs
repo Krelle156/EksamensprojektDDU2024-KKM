@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
 {
-    static int width = 400, height = 200;
+    static int width = 100, height = 50;
 
     //References to enable the debugging text for terrain values
     public Transform debuggingCanvas; //Reference to the canvas
