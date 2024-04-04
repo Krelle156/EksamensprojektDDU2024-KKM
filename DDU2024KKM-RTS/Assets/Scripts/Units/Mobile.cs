@@ -66,7 +66,7 @@ public abstract class Mobile : Unit
         //Currently only implemented for the tank, probably should stay that way
     }
 
-    public virtual void MoveForwards()
+    protected virtual void MoveForwards()
     {
         //TO-DO - Make work!
     }

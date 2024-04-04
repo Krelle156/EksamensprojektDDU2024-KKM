@@ -18,8 +18,9 @@ public class smg : Weapon
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (cool > 0)
         {
             cool -= 1 * Time.deltaTime;

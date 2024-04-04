@@ -6,8 +6,9 @@ using UnityEngine.UIElements;
 public class TreeScript : Stationary
 {
     int tree=5; //base tree value (at least for this "type" of tree)
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         spreadTreeValue();//When the tree is created, inform surrounding tiles with decreasing strength
         MapGenerator.terraindata[(int)transform.position.x, (int)transform.position.y].GetTerrainModifier();
     }
@@ -16,9 +17,9 @@ public class TreeScript : Stationary
         
     }
 
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
 
     public void spreadTreeValue() //for spreading the tree's value from the center

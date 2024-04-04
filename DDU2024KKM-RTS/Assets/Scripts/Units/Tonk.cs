@@ -105,8 +105,9 @@ public class Tonk : Mobile
         engineThrottle = 1;
     }
 
-    public void MoveForwards()
+    protected override void MoveForwards()
     {
+        base.MoveForwards();
         leftTrackForce = enginePower * transform.up;
         rightTrackForce = enginePower * transform.up;
         engineThrottle = 1;
