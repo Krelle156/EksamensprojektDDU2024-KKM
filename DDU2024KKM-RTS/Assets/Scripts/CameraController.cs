@@ -16,16 +16,15 @@ public class CameraController : MonoBehaviour
     [SerializeField] protected ExplosionEffect testExplosion;
     public static ExplosionEffect boomTempTest; //must be moved to particle controller later
 
-    public Transform barrack;
+    public Transform spawnerOfThings;
+    private Barracks barracks;
 
     private void Awake()
     {
-        transform.position = new Vector3(barrack.position.x, barrack.position.y, -10);
         boomTempTest = Instantiate(testExplosion, transform.position, Quaternion.identity);
     }
     void Start()
     {
-        
         cameraMoveSpeed = cameraBaseSpeed;
         //testGuyReference = Instantiate(testGuy, transform.position-new Vector3(0,0,-9), Quaternion.identity);
         //playerUnit = testGuyReference;
@@ -56,5 +55,9 @@ public class CameraController : MonoBehaviour
             isControllingUnit = false;
             Debug.Log("starts controlling the camera");
         }
+    }
+
+    public void SetCam(Vector2 start, float bob) { 
+        transform.position = new Vector3(start.x, start.y, bob);
     }
 }

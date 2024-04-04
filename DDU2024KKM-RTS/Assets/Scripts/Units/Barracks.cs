@@ -32,6 +32,7 @@ public class Barracks : Stationary
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 1;
             Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
+            desiredPosition = transform.position;
         }
 
         if (Input.GetKeyDown(KeyCode.L))
@@ -40,7 +41,13 @@ public class Barracks : Stationary
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 2;
             Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
+            desiredPosition = transform.position;
         }
+    }
+
+    private void barrackColor()
+    {
+
     }
 
 

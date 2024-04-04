@@ -18,7 +18,6 @@ public class Infantry : Mobile
 
     private void Start()
     {
-        desiredPosition = bob.barracksObject.position;
         target = Player.targetTest;
     }
 
