@@ -7,14 +7,22 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Transform waypoint, tempwaypoint;
-    public List<Unit> units; //testvalue - should be a list whose elements should be able to be chosen by the player
+
+    public List<Unit> units;
+    protected Unit currentUnit;
+
     int allegiance;
     public static Transform targetTest;
+    [SerializeField] protected Sprite genericMouse, target, selector;
+    protected SpriteRenderer spriteRenderer;
+    protected int cursorMode = 0;
 
     // Start is called before the first frame update
     private void Start()
     {
         allegiance = 1;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        selector = spriteRenderer.sprite;
     }
 
     void Awake()
@@ -29,13 +37,16 @@ public class Player : MonoBehaviour
             
             units.Add(collisionInfo.GetComponent<Unit>());
             collisionInfo.GetComponent<Unit>().marked = true;
+            currentUnit = collisionInfo.GetComponent<Unit>();
             
         }
+        currentUnit = collisionInfo.GetComponent<Unit>();
     }
 
     private void OnTriggerExit2D(Collider2D collisionInfo)
     {
         //units.Remove(collisionInfo.GetComponent<Transform>());
+        if (collisionInfo.GetComponent<Unit>() == currentUnit) currentUnit = null;
     }
 
     // Update is called once per frame
@@ -45,7 +56,32 @@ public class Player : MonoBehaviour
         float mousePosX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float mousePosY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
 
-        GetComponent<Collider2D>().enabled = false;
+        if(currentUnit != null)
+        {
+            if (currentUnit.allegiance != allegiance && currentUnit.allegiance > 0)
+            {
+                if(cursorMode == 0) //only switch from the generic cursor (reconsider if we want more cursors)
+                {
+                    cursorMode = 2;
+                    spriteRenderer.sprite = target;
+                    spriteRenderer.color = new Color(1, 1, 1, 1);
+                }
+
+            }   else if (cursorMode == 2) //only if we have just been in marked mode should we switch back to the generic cursor
+            {
+                cursorMode = 0;
+                spriteRenderer.sprite = genericMouse;
+                spriteRenderer.color = new Color(1, 1, 1, 1);
+            }
+        }
+        else if (cursorMode == 2) //only if we have just been in marked mode should we switch back to the generic cursor
+        {
+            cursorMode = 0;
+            spriteRenderer.sprite = genericMouse;
+            spriteRenderer.color = new Color(1, 1, 1, 1);
+        }
+
+        //GetComponent<Collider2D>().enabled = false;
         if (Input.GetMouseButtonDown(0))
         {   
             for (int i = 0; i < units.Count; i++)
@@ -57,18 +93,30 @@ public class Player : MonoBehaviour
         };
         if (Input.GetMouseButton(0))
         {
-            GetComponent<Collider2D>().enabled = true;
+            //GetComponent<Collider2D>().enabled = true;
             transform.localScale = new Vector2(mousePosX - transform.position.x, transform.position.y - mousePosY);
+
+            if(cursorMode != 1) //if we aren't showint the selector box, switch the sprite, otherwise do nothing
+            {
+                cursorMode = 1;
+                spriteRenderer.sprite = selector;
+                spriteRenderer.color = new Color(1, 1, 1, 0.2f);
+            }
         }
         else
         {
-            transform.position = new Vector2(mousePosX, mousePosY);
+            transform.position = new Vector3(mousePosX, mousePosY,-9);
             
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0)) // If we stop trying to select Units we should go back to "normal"
         {
-            
-            transform.localScale = new Vector2(1, 1);
+            if (cursorMode != 0) // change the cursor back to the generic variant if it is not already
+            {
+                cursorMode = 0;
+                spriteRenderer.sprite = genericMouse;
+                spriteRenderer.color = new Color(1, 1, 1, 1);
+            }
+            transform.localScale = new Vector2(1, 1); //standard size
         }
 
         if (!(units.Count == 0))

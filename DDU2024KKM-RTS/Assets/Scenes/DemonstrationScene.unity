@@ -905,7 +905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 905468960979226363, guid: fe6accebcac54e64eb46ad83aecdb904, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 905468960979226363, guid: fe6accebcac54e64eb46ad83aecdb904, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1882,6 +1882,9 @@ MonoBehaviour:
   waypoint: {fileID: 7842087784959616863, guid: 8128f19b7b5f7304babffee3c1a4339d, type: 3}
   tempwaypoint: {fileID: 0}
   units: []
+  genericMouse: {fileID: 21300000, guid: c6fa186706bbada4bb5795997a663a09, type: 3}
+  target: {fileID: 21300000, guid: bf578344a832c6f4983dcc59aae71ddf, type: 3}
+  selector: {fileID: 0}
 --- !u!61 &2074106770
 BoxCollider2D:
   m_ObjectHideFlags: 0
