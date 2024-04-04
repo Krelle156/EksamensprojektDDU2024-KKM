@@ -67,6 +67,14 @@ public class Player : MonoBehaviour
                     spriteRenderer.color = new Color(1, 1, 1, 1);
                 }
 
+                if(Input.GetMouseButtonDown(1))
+                {
+                    for (int i = 0; i < units.Count; i++)
+                    {
+                        units[i].setTarget(currentUnit.transform);
+                    }
+                }
+
             }   else if (cursorMode == 2) //only if we have just been in marked mode should we switch back to the generic cursor
             {
                 cursorMode = 0;

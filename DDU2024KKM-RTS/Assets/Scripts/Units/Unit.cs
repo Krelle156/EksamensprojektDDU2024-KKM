@@ -43,6 +43,11 @@ public abstract class Unit : MonoBehaviour
         desiredPosition = v;
     }
 
+    public void setTarget(Transform t)
+    {
+        target = t;
+    }
+
 
 
 
