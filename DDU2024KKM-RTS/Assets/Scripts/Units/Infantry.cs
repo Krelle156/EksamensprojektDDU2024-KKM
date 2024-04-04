@@ -69,7 +69,7 @@ public class Infantry : Mobile
     public override float DesiredRotation() //the difference between where the unit is looking and where it "wants" to be looking
     {
         if (target == null) return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
-        if (isInRange()) return Vector2.SignedAngle(transform.up, target.position - transform.position);
+        if (isInRange() && allegiance != target.GetComponent<Unit>().allegiance && target.GetComponent<Unit>().allegiance != 0) return Vector2.SignedAngle(transform.up, target.position - transform.position);
         return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
     }
 
