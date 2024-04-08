@@ -7,10 +7,19 @@ public abstract class Projectile : MonoBehaviour
     protected float maxFlightDistance = 20;
     protected float flightDistance = 10;
 
+    protected float speed = 10;
+
+    protected Rigidbody2D r;
+
     [SerializeField] protected Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     void Start()
     {
-        
+        rb.velocity = transform.up * speed;
     }
 
     
@@ -38,6 +47,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void Impact()
     {
-
+        CameraController.boomTempTest.spawn(transform.position, 0.25f, 1f);
+        Destroy(gameObject);
     }
 }
