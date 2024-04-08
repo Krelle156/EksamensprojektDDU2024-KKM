@@ -7,7 +7,8 @@ public abstract class Projectile : MonoBehaviour
     protected float maxFlightDistance = 20;
     protected float flightDistance = 10;
 
-    protected float speed = 10;
+    protected float speed = 100;
+    protected float allegiance;
 
     protected Rigidbody2D r;
 
@@ -17,7 +18,7 @@ public abstract class Projectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    void Start()
+    protected virtual void Start()
     {
         rb.velocity = transform.up * speed;
     }
@@ -50,4 +51,10 @@ public abstract class Projectile : MonoBehaviour
         CameraController.boomTempTest.spawn(transform.position, 0.25f, 1f);
         Destroy(gameObject);
     }
+
+    public void SetAllegiance(int i)
+    {
+        allegiance = i;
+    }
+
 }

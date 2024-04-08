@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Transform bullet;
+    public Projectile bullet, tempBullet;
     protected int firerateRPM, ammunition;
     protected float range;
     protected float explosivePower, kinecticDamage, armorPiercing;
@@ -48,7 +48,8 @@ public class Weapon : MonoBehaviour
         if (cool <= 0)
         {
             cool = maxcool;
-            Instantiate(bullet, transform.position, transform.rotation);
+            tempBullet = Instantiate(bullet, transform.position, transform.rotation);
+            tempBullet.SetAllegiance(GetComponentInParent<Unit>().allegiance);
         }
     }
 

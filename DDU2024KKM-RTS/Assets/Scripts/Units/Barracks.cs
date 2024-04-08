@@ -18,6 +18,7 @@ public class Barracks : Stationary
         //troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
         //Instantiate(smgtroop, new Vector3(0, 1), Quaternion.identity);
         //Instantiate(attroop, new Vector3(-1, 1), Quaternion.identity);
+        health = 1000000;
         
     }
 
