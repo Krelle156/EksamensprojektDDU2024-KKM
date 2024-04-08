@@ -36,7 +36,7 @@ public class Tonk : Mobile
             smokeList[i] = Instantiate(smoke, transform.position, Quaternion.identity);
         }
 
-        allegiance = 2; //for testing
+        allegiance = 1; //for testing
 
     }
     void Start()

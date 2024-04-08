@@ -7,11 +7,13 @@ public class Infantry : Mobile
 
     Weapon weapon;
     Player bob;
+    public SpriteRenderer markerCircle;
     protected override void Awake()
     {
         base.Awake();
         weapon = transform.GetChild(0).GetComponent<Weapon>();
         bob = Player.FindObjectOfType<Player>();
+        markerCircle.color = new Color(0, 1, 0, 0);
 
 
     }
@@ -37,8 +39,9 @@ public class Infantry : Mobile
                 if (u.allegiance != 0 && u.allegiance != allegiance) StandardAttack(); //If the unit isn't a "neutral" and isn't of the same faction, shoot.
             }
         }
+        if (marked) markerCircle.color = new Color(0, 1, 0, 0.8f);
+        else if (!marked) markerCircle.color = new Color(0, 1, 0, 0);
 
-            
 
         //if close to desired rotation turn slowly
         if (DesiredRotation() > 0) rb.angularVelocity = 1f;
@@ -94,7 +97,7 @@ public class Infantry : Mobile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        
         if (collision.TryGetComponent(out Unit bob) && !collision.isTrigger)
         {
             if (bob.allegiance != allegiance && allegiance != 0) target = bob.transform;
