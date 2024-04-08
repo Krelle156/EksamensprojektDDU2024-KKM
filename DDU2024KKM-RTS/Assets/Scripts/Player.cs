@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     protected Unit currentUnit;
 
     int allegiance;
-    public static Transform targetTest;
+    //public static Transform targetTest;
     [SerializeField] protected Sprite genericMouse, target, selector;
     protected SpriteRenderer spriteRenderer;
     protected int cursorMode = 0;

@@ -28,7 +28,7 @@ public class Tonk : Mobile
         base.Awake();
         crewList = new Infantry[3]; //this vehicle can hold three people
         audi = GetComponent<AudioSource>();
-        target = Player.targetTest;
+        //target = Player.targetTest;
 
         smokeList = new SmokeParticle[30];
         for (int i = 0; i < smokeList.Length; i++)

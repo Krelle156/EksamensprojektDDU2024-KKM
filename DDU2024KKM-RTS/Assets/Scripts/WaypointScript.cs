@@ -32,11 +32,16 @@ public class WaypointScript : MonoBehaviour
         
 
     }
-
-    void UnitsAtPos() {
-        for (int i=0;i<units.Count;i++) {
-            if ((transform.position - units[i].transform.position).magnitude<2)UnitsAtPosition++;
-            //Debug.Log(UnitsAtPosition);
+    
+    void UnitsAtPos() 
+    {
+        for (int i=0;i<units.Count;i++) 
+        {
+            if (units[i] != null)
+            {
+                if ((transform.position - units[i].transform.position).magnitude<2)UnitsAtPosition++;
+                //Debug.Log(UnitsAtPosition);
+            }
         }
     }
 

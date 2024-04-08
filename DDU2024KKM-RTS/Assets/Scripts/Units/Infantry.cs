@@ -18,7 +18,7 @@ public class Infantry : Mobile
 
     private void Start()
     {
-        target = Player.targetTest;
+        //target = Player.targetTest;
     }
 
     // Update is called once per frame

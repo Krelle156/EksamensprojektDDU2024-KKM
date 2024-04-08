@@ -37,6 +37,7 @@ public class Barracks : Stationary
                 Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
             }
         }
+
     }
 
     // Update is called once per frame
