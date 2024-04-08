@@ -9,6 +9,7 @@ public abstract class Weapon : MonoBehaviour
     protected float range;
     protected float explosivePower, kinecticDamage, armorPiercing;
     protected float maxcool = 1, cool = 0;
+    protected float muzzleFlashTimer = 0;
     protected virtual void Awake()
     {
 
@@ -48,6 +49,7 @@ public abstract class Weapon : MonoBehaviour
         if (cool <= 0)
         {
             cool = maxcool;
+            muzzleFlashTimer = maxcool;
             tempBullet = Instantiate(bullet, transform.position, transform.rotation);
             tempBullet.SetAllegiance(GetComponentInParent<Unit>().allegiance);
         }

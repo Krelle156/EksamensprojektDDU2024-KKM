@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AssaultRifle : Weapon
 {
-    public SpriteRenderer mundingsglimttemp;
+    public SpriteRenderer muzzleFlashSprite;
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -16,6 +16,7 @@ public class AssaultRifle : Weapon
         explosivePower = 0;
         armorPiercing = 0;
         maxcool = 1;
+        muzzleFlashSprite.color = new Color(1, 1, 1, 0);
         
 
 
@@ -29,7 +30,8 @@ public class AssaultRifle : Weapon
         if (cool>0) 
         {
             cool -= 1 * Time.deltaTime;
-            mundingsglimttemp.color = new Color(1,1,1,cool/maxcool);
+            muzzleFlashTimer -= 10 * Time.deltaTime;
+            muzzleFlashSprite.color = new Color(1, 1, 1, muzzleFlashTimer / maxcool);
         }
         
 

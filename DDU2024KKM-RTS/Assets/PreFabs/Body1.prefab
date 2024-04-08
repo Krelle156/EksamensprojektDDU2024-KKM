@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4412855490484524443, guid: 17f0a6c4be0cd4848955f7641fa3b0ea, type: 3}
   tempBullet: {fileID: 0}
-  mundingsglimttemp: {fileID: 6628327662224606440}
+  muzzleFlashSprite: {fileID: 6628327662224606440}
 --- !u!1 &7753707464880613160
 GameObject:
   m_ObjectHideFlags: 0

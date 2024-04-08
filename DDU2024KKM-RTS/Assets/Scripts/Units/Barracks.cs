@@ -24,14 +24,15 @@ public class Barracks : Stationary
 
     private void Start()
     {
-        desiredPosition = transform.position;
 
         if (this.allegiance == 2)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 100; i++)
             {
-                float ranNum = Random.Range(-0.1f, 0.1f);
-                troopInstance = Instantiate(artroop, new Vector2(transform.position.x + ranNum, transform.position.y + ranNum), Quaternion.identity);
+                float ranX = Random.Range(-10f, 10f);
+                float ranY = Random.Range(-10f, 10f);
+                troopInstance = Instantiate(artroop, new Vector2(transform.position.x + ranX, transform.position.y + ranX), Quaternion.identity);
+                desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
                 troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
                 troopInstance.GetComponent<Infantry>().allegiance = 2;
                 Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
@@ -44,10 +45,13 @@ public class Barracks : Stationary
     protected override void Update()
     {
         //Debug.Log(marked);
-       
-        if (Input.GetKeyDown(KeyCode.K) && this.allegiance == 1) {
+        float ranX = Random.Range(-10f, 10f);
+        float ranY = Random.Range(-10f, 10f);
 
+        if (Input.GetKeyDown(KeyCode.K) && this.allegiance == 1) 
+        {
             troopInstance = Instantiate(artroop, transform.position, Quaternion.identity);
+            desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 1;
             Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
@@ -56,6 +60,7 @@ public class Barracks : Stationary
         if (Input.GetKeyDown(KeyCode.L) && this.allegiance == 2)
         {
             troopInstance = Instantiate(artroop, transform.position, Quaternion.identity);
+            desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 2;
             Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
