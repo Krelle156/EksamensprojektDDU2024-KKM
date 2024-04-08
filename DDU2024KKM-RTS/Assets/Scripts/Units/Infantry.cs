@@ -99,4 +99,10 @@ public class Infantry : Mobile
             if (bob.allegiance != allegiance && allegiance != 0) target = bob.transform;
         }
     }
+
+    public override void checkHealth()
+    {
+        if (health <= 0) ParticleManager.spawnCorpse(transform.position, 1, 1);
+        base.checkHealth();
+    }
 }
