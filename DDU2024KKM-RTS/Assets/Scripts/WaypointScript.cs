@@ -42,6 +42,10 @@ public class WaypointScript : MonoBehaviour
                 if ((transform.position - units[i].transform.position).magnitude<2)UnitsAtPosition++;
                 //Debug.Log(UnitsAtPosition);
             }
+            else
+            {
+                UnitsAtPosition++;
+            }
         }
     }
 
