@@ -94,7 +94,8 @@ public class Infantry : Mobile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out Unit bob))
+
+        if (collision.TryGetComponent(out Unit bob) && !collision.isTrigger)
         {
             if (bob.allegiance != allegiance && allegiance != 0) target = bob.transform;
         }
