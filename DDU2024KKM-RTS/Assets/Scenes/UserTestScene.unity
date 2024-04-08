@@ -452,7 +452,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barrack: {fileID: 6334630377813116394, guid: 281f61561da128841ba4503e75fbca9b, type: 3}
-  enemyBarrack: {fileID: 0}
   mainCamera: {fileID: 1801566149}
 --- !u!1 &1801566144
 GameObject:
@@ -467,6 +466,7 @@ GameObject:
   - component: {fileID: 1801566147}
   - component: {fileID: 1801566146}
   - component: {fileID: 1801566145}
+  - component: {fileID: 1801566150}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -608,6 +608,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1801566150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801566144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8edb67c096e635a4c8399314aaa0ba49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoke: {fileID: 0}
+  explosion: {fileID: 0}
+  corpse: {fileID: 4230669867426397152, guid: 645d9840cd332c449ae0ffeb3d73d0bd, type: 3}
 --- !u!1 &2107490860
 GameObject:
   m_ObjectHideFlags: 0
