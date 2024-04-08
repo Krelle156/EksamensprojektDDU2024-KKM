@@ -33,7 +33,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift)) cameraMoveSpeed = cameraBaseSpeed * 3;
+        if(Input.GetKeyDown(KeyCode.LeftShift)) cameraMoveSpeed = cameraBaseSpeed * 2;
         if (Input.GetKeyUp(KeyCode.LeftShift)) cameraMoveSpeed = cameraBaseSpeed;
 
 
@@ -41,10 +41,10 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position,Camera.main.ScreenToWorldPoint(Input.mousePosition), Input.mouseScrollDelta.y*0.1f);
 
 
-        if (Input.GetKey("w") && isControllingUnit == false) transform.position += new Vector3(0, cameraMoveSpeed*Time.deltaTime, 0);
-        if (Input.GetKey("s") && isControllingUnit == false) transform.position += new Vector3(0, -cameraMoveSpeed * Time.deltaTime, 0);
-        if (Input.GetKey("a") && isControllingUnit == false) transform.position += new Vector3(-cameraMoveSpeed * Time.deltaTime, 0, 0);
-        if (Input.GetKey("d") && isControllingUnit == false) transform.position += new Vector3(cameraMoveSpeed * Time.deltaTime, 0, 0);
+        if (Input.GetKey(KeyCode.W) && isControllingUnit == false) transform.position += new Vector3(0, cameraMoveSpeed*Time.deltaTime, 0);
+        if (Input.GetKey(KeyCode.S) && isControllingUnit == false) transform.position += new Vector3(0, -cameraMoveSpeed * Time.deltaTime, 0);
+        if (Input.GetKey(KeyCode.A) && isControllingUnit == false) transform.position += new Vector3(-cameraMoveSpeed * Time.deltaTime, 0, 0);
+        if (Input.GetKey(KeyCode.D) && isControllingUnit == false) transform.position += new Vector3(cameraMoveSpeed * Time.deltaTime, 0, 0);
 
         if(isControllingUnit == false && Input.GetKey("u"))
         {

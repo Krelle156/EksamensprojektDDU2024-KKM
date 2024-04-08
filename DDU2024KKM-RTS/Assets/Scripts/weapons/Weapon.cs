@@ -59,8 +59,8 @@ public abstract class Weapon : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.F))
         {
-            Fire();
-            Debug.Log("Fire");
+            //Fire();
+            //Debug.Log("Fire");
         }
     }
 

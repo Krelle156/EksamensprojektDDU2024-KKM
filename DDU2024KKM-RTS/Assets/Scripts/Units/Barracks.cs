@@ -35,7 +35,7 @@ public class Barracks : Stationary
                 desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
                 troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
                 troopInstance.GetComponent<Infantry>().allegiance = 2;
-                Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
+                //Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
             }
         }
 
@@ -48,15 +48,15 @@ public class Barracks : Stationary
         float ranX = Random.Range(-10f, 10f);
         float ranY = Random.Range(-10f, 10f);
 
-        if (Input.GetKeyDown(KeyCode.K) && this.allegiance == 1) 
+        if (Input.GetKeyDown(KeyCode.Space) && this.allegiance == 1) 
         {
             troopInstance = Instantiate(artroop, transform.position, Quaternion.identity);
             desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 1;
-            Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
+            //Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
         }
-
+        /*
         if (Input.GetKeyDown(KeyCode.L) && this.allegiance == 2)
         {
             troopInstance = Instantiate(artroop, transform.position, Quaternion.identity);
@@ -65,6 +65,7 @@ public class Barracks : Stationary
             troopInstance.GetComponent<Infantry>().allegiance = 2;
             Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
         }
+        */
     }
 
     private void barrackColor()
