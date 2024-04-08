@@ -32,7 +32,6 @@ public abstract class Unit : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        
 
     }
 
@@ -48,7 +47,10 @@ public abstract class Unit : MonoBehaviour
         target = t;
     }
 
-
+    protected void checkHealth()
+    {
+        if (health <= 0) Destroy(gameObject);
+    }
 
 
 }

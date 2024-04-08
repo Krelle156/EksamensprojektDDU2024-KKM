@@ -61,8 +61,9 @@ public class Player : MonoBehaviour
 
         float mousePosX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float mousePosY = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
+        spriteRenderer.transform.localScale = new Vector3(Camera.main.orthographicSize / 10, Camera.main.orthographicSize / 10, 1);
 
-        if(currentUnit != null)
+        if (currentUnit != null)
         {
             if (currentUnit.allegiance != allegiance && currentUnit.allegiance > 0)
             {
@@ -70,7 +71,8 @@ public class Player : MonoBehaviour
                 {
                     cursorMode = 2;
                     spriteRenderer.sprite = target;
-                    spriteRenderer.color = new Color(1, 1, 1, 1);
+                    spriteRenderer.color = new Color(1, 0, 0, 1);
+                    
                 }
 
                 if(Input.GetMouseButtonDown(1))
