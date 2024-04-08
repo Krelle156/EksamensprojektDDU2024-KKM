@@ -64,10 +64,4 @@ public class BallisticProjectile : Projectile
         flightDistance = dist / 2;
     }
 
-    protected override void GroundImpact()
-    {
-
-        CameraController.boomTempTest.spawn(transform.position,0.25f,3f);
-        Destroy(gameObject);
-    }
 }

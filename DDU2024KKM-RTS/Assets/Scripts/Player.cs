@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
             transform.localScale = new Vector2(1, 1); //standard size
         }
 
-        if (!(units.Count == 0))
+        if (units.Count > 0 && cursorMode != 2) //Don't place a waypoint if there are no selected units or if you are trying to tell them to attack
         {
             if (Input.GetMouseButtonDown(1))
             {

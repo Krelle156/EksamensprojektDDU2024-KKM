@@ -1561,6 +1561,7 @@ MonoBehaviour:
   testGuy: {fileID: 6873756863560486890, guid: 23b4f5e42b9aaf54a93f8076ec6ae462, type: 3}
   playerUnit: {fileID: 0}
   testExplosion: {fileID: 3238213000594818327, guid: b8623844010f34f4ca779b46838fa9c0, type: 3}
+  spawnerOfThings: {fileID: 0}
 --- !u!1 &1629090333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +1886,7 @@ MonoBehaviour:
   genericMouse: {fileID: 21300000, guid: c6fa186706bbada4bb5795997a663a09, type: 3}
   target: {fileID: 21300000, guid: bf578344a832c6f4983dcc59aae71ddf, type: 3}
   selector: {fileID: 0}
+  barracksObject: {fileID: 0}
 --- !u!61 &2074106770
 BoxCollider2D:
   m_ObjectHideFlags: 0

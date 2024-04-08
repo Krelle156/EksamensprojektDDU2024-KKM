@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour
 {
     protected float maxFlightDistance = 20;
     protected float flightDistance = 10;
@@ -16,9 +16,9 @@ public class Projectile : MonoBehaviour
     
     void Update()
     {
-        if (flightDistance > -maxFlightDistance / 2)
+        if (flightDistance > 0)
         {
-            
+            flightDistance -= rb.velocity.magnitude * Time.deltaTime;
         }
         //else if (flightDistance <= 0) GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         else if (flightDistance <= 0) GroundImpact();
@@ -32,7 +32,8 @@ public class Projectile : MonoBehaviour
 
     protected virtual void GroundImpact()
     {
-
+        CameraController.boomTempTest.spawn(transform.position, 0.25f, 3f);
+        Destroy(gameObject);
     }
 
     protected virtual void Impact()
