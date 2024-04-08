@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnScript : MonoBehaviour
 {
-    public Transform barrack, enemyBarrack;
+    public Transform barrack;
     private CameraController controller;
     public Transform mainCamera;
     // Start is called before the first frame update

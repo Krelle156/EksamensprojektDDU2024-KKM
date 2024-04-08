@@ -35,15 +35,18 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collisionInfo)
     {
-        if (collisionInfo.GetComponent<Unit>().marked == false && allegiance == collisionInfo.GetComponent<Unit>().allegiance)
+        if (collisionInfo.TryGetComponent<Unit>(out Unit bob))
         {
+            if (collisionInfo.GetComponent<Unit>().marked == false && allegiance == collisionInfo.GetComponent<Unit>().allegiance)
+            {
             
-            units.Add(collisionInfo.GetComponent<Unit>());
-            collisionInfo.GetComponent<Unit>().marked = true;
+                units.Add(collisionInfo.GetComponent<Unit>());
+                collisionInfo.GetComponent<Unit>().marked = true;
+                currentUnit = collisionInfo.GetComponent<Unit>();
+            
+            }
             currentUnit = collisionInfo.GetComponent<Unit>();
-            
         }
-        currentUnit = collisionInfo.GetComponent<Unit>();
     }
 
     private void OnTriggerExit2D(Collider2D collisionInfo)
