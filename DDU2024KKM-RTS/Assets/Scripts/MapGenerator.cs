@@ -81,7 +81,7 @@ public class MapGenerator : MonoBehaviour
             {
                 float temp = Mathf.PerlinNoise(tempX + i * 0.02f, tempY + j * 0.02f);
 
-                if(Random.Range(0.3f, 10f)<temp) tempTree = Instantiate(tree, new Vector3(i+0.5f, j+0.5f, -1), Quaternion.identity);
+                if(Random.Range(0.3f, 10f)<temp) tempTree = Instantiate(tree, new Vector3(i+0.5f, j+0.5f, 0.9f), Quaternion.identity);
             }
         }
 

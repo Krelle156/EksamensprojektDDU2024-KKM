@@ -18,7 +18,7 @@ public class StandardProjectile : Projectile
         {
             if(bob.allegiance != allegiance && bob.allegiance != 0)
             {
-                Destroy(gameObject);
+                Impact();
                 bob.checkHealth();
             }
         }
