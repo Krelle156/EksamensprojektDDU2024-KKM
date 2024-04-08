@@ -47,7 +47,7 @@ public abstract class Unit : MonoBehaviour
         target = t;
     }
 
-    public void checkHealth()
+    public virtual void checkHealth()
     {
         if (health <= 0) Destroy(gameObject);
     }
