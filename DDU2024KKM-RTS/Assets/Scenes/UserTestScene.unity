@@ -622,7 +622,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoke: {fileID: 0}
   explosion: {fileID: 0}
-  corpse: {fileID: 4230669867426397152, guid: 645d9840cd332c449ae0ffeb3d73d0bd, type: 3}
+  corpse1: {fileID: 4230669867426397152, guid: 645d9840cd332c449ae0ffeb3d73d0bd, type: 3}
+  corpse2: {fileID: 1181769219466807036, guid: 237929c3a2c100a4598820747e21a1be, type: 3}
 --- !u!1 &2107490860
 GameObject:
   m_ObjectHideFlags: 0
