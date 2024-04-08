@@ -25,8 +25,11 @@ public abstract class Unit : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         marked = false;
+<<<<<<< Updated upstream
         target = Player.targetTest;
         gameObject.layer = LayerMask.NameToLayer("Units");
+=======
+>>>>>>> Stashed changes
         //TODO - make work!
     }
 
