@@ -42,13 +42,13 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void GroundImpact()
     {
-        CameraController.boomTempTest.spawn(transform.position, 0.25f, 3f);
+        ParticleManager.SpawnExplosion(transform.position, 0.25f, 3f);
         Destroy(gameObject);
     }
 
     protected virtual void Impact()
     {
-        CameraController.boomTempTest.spawn(transform.position, 0.25f, 1f);
+        ParticleManager.SpawnExplosion(transform.position, 0.25f, 1f);
         Destroy(gameObject);
     }
 
