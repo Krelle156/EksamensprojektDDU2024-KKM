@@ -52,8 +52,8 @@ public class Player : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collisionInfo)
     {
         if (collisionInfo.TryGetComponent<Unit>(out Unit bob))
-            if (collisionInfo.GetComponent<Unit>() == currentUnit) currentUnit = null;
         {
+            if (collisionInfo.GetComponent<Unit>() == currentUnit) currentUnit = null;
             if (collisionInfo.GetComponent<Unit>().marked == true && allegiance == collisionInfo.GetComponent<Unit>().allegiance && cursorMode == 1)
             {
 

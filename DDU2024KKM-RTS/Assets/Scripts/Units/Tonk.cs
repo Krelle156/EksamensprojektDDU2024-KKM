@@ -6,7 +6,7 @@ public class Tonk : Mobile
 {
     protected float smokeCoolDown, smokeCoolMax = 2f;
 
-    protected float enginePower, maxEnginePower = 400000;
+    protected float enginePower, maxEnginePower = 800000;
     protected float engineThrottle = 0, poweredTracks=0;
 
     protected Infantry hullGunner, driver, commander, loader;
@@ -30,6 +30,7 @@ public class Tonk : Mobile
         //target = Player.targetTest;
 
         allegiance = 1; //for testing
+        health = 100;
 
     }
     void Start()
@@ -162,5 +163,11 @@ public class Tonk : Mobile
                 
             }
         }
+    }
+
+    public override void CheckHealth()
+    {
+        if (health <= 0) ParticleManager.SpawnExplosion(transform.position, 2, 30);
+        base.CheckHealth();
     }
 }

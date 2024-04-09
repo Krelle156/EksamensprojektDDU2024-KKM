@@ -104,9 +104,9 @@ public class Infantry : Mobile
         }
     }
 
-    public override void checkHealth()
+    public override void CheckHealth()
     {
         if (health <= 0) ParticleManager.SpawnCorpse(transform.position, 1, 1);
-        base.checkHealth();
+        base.CheckHealth();
     }
 }
