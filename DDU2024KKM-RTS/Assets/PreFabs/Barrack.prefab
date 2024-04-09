@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285d2f5936c2a5645abcc0d5ffa000b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   isStationary: 0
   wayPoint: {fileID: 0}
   marked: 0
@@ -106,6 +107,7 @@ MonoBehaviour:
   artroop: {fileID: 6897023203902985102, guid: 0aa67297d30653c459e2fb342871d7c8, type: 3}
   smgtroop: {fileID: 6897023203902985102, guid: 0aa67297d30653c459e2fb342871d7c8, type: 3}
   attroop: {fileID: 6897023203902985102, guid: 0aa67297d30653c459e2fb342871d7c8, type: 3}
+  tonk: {fileID: 6750102782727600749, guid: e8a50baf4edb49e448202b50d575ab1e, type: 3}
 --- !u!50 &6299722336302660666
 Rigidbody2D:
   serializedVersion: 4

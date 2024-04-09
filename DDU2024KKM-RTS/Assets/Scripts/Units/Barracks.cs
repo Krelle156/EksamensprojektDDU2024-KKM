@@ -8,16 +8,15 @@ public class Barracks : Stationary
     // Start is called before the first frame update
     public Transform artroop, smgtroop, attroop;
     private Transform troopInstance;
+    public Transform tonk;
+    private Transform tonkInstance;
     int priceAR, priceSMG, priceAT;
     int i;
 
     protected override void Awake()
     {
         base.Awake();
-        //troopInstance = Instantiate(artroop, new Vector3(0, 0), Quaternion.identity);
-        //troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
-        //Instantiate(smgtroop, new Vector3(0, 1), Quaternion.identity);
-        //Instantiate(attroop, new Vector3(-1, 1), Quaternion.identity);
+        
         health = 1000000;
         
     }
@@ -35,8 +34,25 @@ public class Barracks : Stationary
                 desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
                 troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
                 troopInstance.GetComponent<Infantry>().allegiance = 2;
+
+                
                 //Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
             }
+
+            tonkInstance = Instantiate(tonk, new Vector2(transform.position.x, transform.position.y + 10f), Quaternion.identity);
+            desiredPosition = new Vector2(transform.position.x, transform.position.y + 10f);
+            tonkInstance.GetComponent<Tonk>().transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90f);
+            tonkInstance.GetComponent<Tonk>().SetWaypoint(desiredPosition);
+            tonkInstance.GetComponent<Tonk>().allegiance = 2;
+        }
+
+        if (this.allegiance == 1)
+        {
+            tonkInstance = Instantiate(tonk, new Vector2(transform.position.x, transform.position.y + 10f), Quaternion.identity);
+            desiredPosition = new Vector2(transform.position.x, transform.position.y + 10f);
+            tonkInstance.GetComponent<Tonk>().transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90f);
+            tonkInstance.GetComponent<Tonk>().SetWaypoint(desiredPosition);
+            tonkInstance.GetComponent<Tonk>().allegiance = 1;
         }
 
     }
@@ -54,8 +70,10 @@ public class Barracks : Stationary
             desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 1;
+
             //Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
         }
+        
         /*
         if (Input.GetKeyDown(KeyCode.L) && this.allegiance == 2)
         {
