@@ -17,7 +17,7 @@ public class ParticleManager : MonoBehaviour
     protected static ExplosionEffect[] explodeList = new ExplosionEffect[10];
     protected static int explodeCount;
 
-    protected static SmokeParticle[] smokeList = new SmokeParticle[40];
+    protected static SmokeParticle[] smokeList = new SmokeParticle[450];
     protected static int smokeCount;
 
     private void Awake()
