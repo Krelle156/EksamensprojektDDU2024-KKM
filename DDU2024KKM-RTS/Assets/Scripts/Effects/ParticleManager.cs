@@ -42,30 +42,30 @@ public class ParticleManager : MonoBehaviour
     {
         if(Random.value<0.5f)
         {
+            if (corpseCount1 >= corpseList1.Length) corpseCount1 = 0;
             corpseList1[corpseCount1].spawn(position, t, s);
             corpseCount1++;
-            if (corpseCount1 >= corpseList1.Length) corpseCount1 = 0;
         } else
         {
+            if (corpseCount2 >= corpseList2.Length) corpseCount2 = 0;
             corpseList2[corpseCount2].spawn(position, t, s);
             corpseCount2++;
-            if (corpseCount2 >= corpseList2.Length) corpseCount2 = 0;
         }
         
     }
 
     public static void SpawnExplosion(Vector3 position, float t, float s)
     {
+        if (explodeCount >= explodeList.Length) explodeCount = 0;
         explodeList[explodeCount].spawn(position, t, s);
         explodeCount++;
-        if (explodeCount >= explodeList.Length) explodeCount = 0;
     }
 
     public static void SpawnSmoke(Vector3 position, float t, float s)
     {
+        if (smokeCount >= smokeList.Length) smokeCount = 0;
         smokeList[smokeCount].spawn(position, t, s);
         smokeCount++;
-        if (smokeCount >= smokeList.Length) smokeCount = 0;
     }
 
     public void InstantiateCorpses()

@@ -18,6 +18,7 @@ public class ExplosionEffect : MonoBehaviour
 
     public void spawn(Vector3 position, float t, float s)
     {
+        gameObject.SetActive(true);
         startTime = t;
         timer = t;
 
@@ -30,6 +31,7 @@ public class ExplosionEffect : MonoBehaviour
     void Update()
     {
         if (timer >= 0) timer -= 1f * Time.deltaTime;
+        else gameObject.SetActive(false);
         transform.position += velocity;
         sprite.color = new Color(1, 1, 1, timer / startTime);
 

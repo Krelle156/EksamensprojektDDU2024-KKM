@@ -19,6 +19,7 @@ public class SmokeParticle : MonoBehaviour
 
     public void spawn(Vector3 position, float t, float s)
     {
+        gameObject.SetActive(true);
         startTime = t;
         timer = t;
 
@@ -37,7 +38,7 @@ public class SmokeParticle : MonoBehaviour
             sprite.color = new Color(1, 1, 1, timer / startTime);
 
             transform.localScale = startSize * (2 - (timer / startTime));
-        }
-            
+        } else gameObject.SetActive(false);
+
     }
 }
