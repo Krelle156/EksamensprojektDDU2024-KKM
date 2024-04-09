@@ -14,10 +14,10 @@ public class ParticleManager : MonoBehaviour
     protected static CorpseScript[] corpseList2 = new CorpseScript[20];
     protected static int corpseCount1, corpseCount2;
 
-    protected static ExplosionEffect[] explodeList = new ExplosionEffect[20];
+    protected static ExplosionEffect[] explodeList = new ExplosionEffect[10];
     protected static int explodeCount;
 
-    protected static SmokeParticle[] smokeList = new SmokeParticle[20];
+    protected static SmokeParticle[] smokeList = new SmokeParticle[40];
     protected static int smokeCount;
 
     private void Awake()
@@ -56,7 +56,7 @@ public class ParticleManager : MonoBehaviour
 
     public static void SpawnExplosion(Vector3 position, float t, float s)
     {
-        explodeList[smokeCount].spawn(position, t, s);
+        explodeList[explodeCount].spawn(position, t, s);
         explodeCount++;
         if (explodeCount >= explodeList.Length) explodeCount = 0;
     }
