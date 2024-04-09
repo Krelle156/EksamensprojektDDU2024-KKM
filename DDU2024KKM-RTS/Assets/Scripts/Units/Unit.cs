@@ -7,7 +7,7 @@ using UnityEngine.Experimental.Rendering;
 public abstract class Unit : MonoBehaviour
 {
     protected int type;
-    protected float health, maxHealth, armor;
+    protected float health, maxHealth, armor = 1;
     public Transform target;
     protected Rigidbody2D rb;
     
@@ -55,7 +55,7 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void damage(float d)
     {
-        health -=d;
+        health -= d / armor;
         CheckHealth();
     }
 
