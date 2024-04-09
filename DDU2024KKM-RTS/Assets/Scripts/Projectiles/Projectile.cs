@@ -37,13 +37,12 @@ public abstract class Projectile : MonoBehaviour
     public virtual void Launch(float dist, Vector2 direction)
     {
         maxFlightDistance = dist;
-        flightDistance = dist;
         transform.up = direction;
     }
 
     protected virtual void GroundImpact()
     {
-        ParticleManager.SpawnExplosion(transform.position, 0.25f, 6f);
+        ParticleManager.SpawnExplosion(transform.position, 0.25f, 1f);
         Destroy(gameObject);
     }
 

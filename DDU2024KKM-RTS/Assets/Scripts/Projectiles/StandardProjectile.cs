@@ -9,7 +9,11 @@ public class StandardProjectile : Projectile
 
     // Update is called once per frame
 
-
+    public override void Launch(float dist, Vector2 direction)
+    {
+        base.Launch(dist, direction);
+        flightDistance = dist + 10f;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.TryGetComponent<Unit>(out Unit bob))
@@ -22,4 +26,5 @@ public class StandardProjectile : Projectile
             }
         }
     }
+
 }
