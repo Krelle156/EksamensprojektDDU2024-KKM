@@ -42,9 +42,11 @@ public class Tonk : Mobile
 
     protected override void Update()
     {
-        //reallyShouldn't be here, another band-aid fix
+        //this really shouldn't be here, it is another band-aid fix
         if (Mathf.Abs(DesiredRotation()) < 1 && target != null)
         {
+            if (DesiredRotation() > 1) TurnLeft();
+            if (DesiredRotation() < -1) TurnRight();
             if (target.TryGetComponent<Unit>(out Unit u))
             {
                 if (u.allegiance != 0 && u.allegiance != allegiance) StandardAttack();
@@ -65,7 +67,7 @@ public class Tonk : Mobile
 
         if(!isPlayerControlled)
         {
-            //if far from desired rotation turn fast
+            //activate tracks individually depending on where tonk wants to turn
             if (DesiredRotation() > 2) TurnLeft();
             if (DesiredRotation() < -2) TurnRight();
 
@@ -95,17 +97,38 @@ public class Tonk : Mobile
 
     public override void TurnLeft()
     {
-        poweredTracks += 1;
-        rightTrackForce = enginePower*transform.up;
-        engineThrottle = 1;
+        if(rb.velocity.magnitude > 10)
+        {
+            poweredTracks += 1;
+            rightTrackForce = enginePower * transform.up;
+            engineThrottle = 1;
+        }
+        else
+        {
+            poweredTracks += 2;
+            leftTrackForce = (-enginePower / 2) * transform.up;
+            rightTrackForce = (enginePower / 2) * transform.up;
+            engineThrottle = 1;
+        }
+
 
     }
 
     public override void TurnRight()
     {
-        poweredTracks += 1;
-        leftTrackForce = enginePower * transform.up;
-        engineThrottle = 1;
+        if (rb.velocity.magnitude > 10)
+        {
+            poweredTracks += 1;
+            leftTrackForce = enginePower * transform.up;
+            engineThrottle = 1;
+        } else
+        {
+            poweredTracks += 2;
+            leftTrackForce = (enginePower/2) * transform.up;
+            rightTrackForce = (-enginePower/2) * transform.up;
+            engineThrottle = 1;
+        }
+        
     }
 
     protected override void MoveForwards()
