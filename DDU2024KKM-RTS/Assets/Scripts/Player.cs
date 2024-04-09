@@ -51,8 +51,19 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collisionInfo)
     {
-        //units.Remove(collisionInfo.GetComponent<Transform>());
-        if (collisionInfo.GetComponent<Unit>() == currentUnit) currentUnit = null;
+        if (collisionInfo.TryGetComponent<Unit>(out Unit bob))
+            if (collisionInfo.GetComponent<Unit>() == currentUnit) currentUnit = null;
+        {
+            if (collisionInfo.GetComponent<Unit>().marked == true && allegiance == collisionInfo.GetComponent<Unit>().allegiance && cursorMode == 1)
+            {
+
+                units.Add(collisionInfo.GetComponent<Unit>());
+                collisionInfo.GetComponent<Unit>().marked = false;
+                currentUnit = collisionInfo.GetComponent<Unit>();
+
+            }
+            currentUnit = collisionInfo.GetComponent<Unit>();
+        }
     }
 
     // Update is called once per frame
