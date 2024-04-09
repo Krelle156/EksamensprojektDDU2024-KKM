@@ -8,6 +8,8 @@ public class ExplosionEffect : MonoBehaviour
     Vector3 startSize;
     SpriteRenderer sprite;
 
+    [SerializeField] protected AudioSource audioSource;
+
     public Vector3 velocity = Vector3.zero;
     // Start is called before the first frame update
     void Start()
@@ -36,5 +38,10 @@ public class ExplosionEffect : MonoBehaviour
         sprite.color = new Color(1, 1, 1, timer / startTime);
 
         transform.localScale = startSize * ((timer / startTime));
+    }
+
+    public void TankExplosion()
+    {
+        audioSource.Play();
     }
 }

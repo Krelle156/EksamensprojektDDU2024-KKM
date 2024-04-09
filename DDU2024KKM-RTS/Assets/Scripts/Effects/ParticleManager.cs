@@ -20,6 +20,8 @@ public class ParticleManager : MonoBehaviour
     protected static SmokeParticle[] smokeList = new SmokeParticle[450];
     protected static int smokeCount;
 
+    
+
     private void Awake()
     {
         InstantiateCorpses();
@@ -58,6 +60,14 @@ public class ParticleManager : MonoBehaviour
     {
         if (explodeCount >= explodeList.Length) explodeCount = 0;
         explodeList[explodeCount].spawn(position, t, s);
+        explodeCount++;
+    }
+
+    public static void SpawnExplosion(Vector3 position, float t, float s, float volume)
+    {
+        if (explodeCount >= explodeList.Length) explodeCount = 0;
+        explodeList[explodeCount].spawn(position, t, s);
+        explodeList[explodeCount].TankExplosion();
         explodeCount++;
     }
 

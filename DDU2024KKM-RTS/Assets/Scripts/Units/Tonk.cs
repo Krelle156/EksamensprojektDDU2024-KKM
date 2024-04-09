@@ -17,6 +17,7 @@ public class Tonk : Mobile
     protected Infantry turretGunner;
     protected Vector3 rightTrack, leftTrack;
     protected Vector3 rightTrackForce=Vector2.zero, leftTrackForce= Vector2.zero;
+    
 
     [SerializeField]Weapon weapon; //Tanks should also have hulls with no hull mounted weapons, this is not a desired field
 
@@ -31,6 +32,7 @@ public class Tonk : Mobile
 
         allegiance = 1; //for testing
         health = 100;
+        armor = 10;
 
     }
     void Start()
@@ -167,7 +169,10 @@ public class Tonk : Mobile
 
     public override void CheckHealth()
     {
-        if (health <= 0) ParticleManager.SpawnExplosion(transform.position, 2, 30);
+        if (health <= 0)
+        {
+            ParticleManager.SpawnExplosion(transform.position, 2, 30, 1);
+        }
         base.CheckHealth();
     }
 }
