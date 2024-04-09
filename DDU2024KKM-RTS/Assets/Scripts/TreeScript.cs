@@ -22,6 +22,14 @@ public class TreeScript : Stationary
         base.Update();
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.TryGetComponent(out Tonk tonk))
+        {
+            destroyTree();
+        }
+    }
+
     public void spreadTreeValue() //for spreading the tree's value from the center
     {
         for (int i = (int)transform.position.x - tree; i < ((int)transform.position.x + tree);i++)
