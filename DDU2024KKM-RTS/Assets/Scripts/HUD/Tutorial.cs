@@ -99,9 +99,9 @@ public class Turtorial : MonoBehaviour
         if (isMarked() == true)
         {
             //textMeshProUGUIArray[0].GetComponent<TextMeshProUGUI>().text = "WASD to move camera";
-            Debug.Log("print");
+            //Debug.Log("print");
         }
-        Debug.Log(isMarked());
+        //Debug.Log(isMarked());
     }
 
     bool isMarked()

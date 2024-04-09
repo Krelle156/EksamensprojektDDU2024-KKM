@@ -21,7 +21,7 @@ public class StandardProjectile : Projectile
             {
                 Impact();
                 bob.damage(strength);
-                bob.checkHealth();
+                bob.CheckHealth();
             }
         }
     }
