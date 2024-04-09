@@ -18,6 +18,8 @@ public class Tonk : Mobile
     protected Vector3 rightTrack, leftTrack;
     protected Vector3 rightTrackForce=Vector2.zero, leftTrackForce= Vector2.zero;
 
+    [SerializeField]Weapon weapon; //Tanks should also have hulls with no hull mounted weapons, this is not a desired field
+
     AudioSource audi;
 
     protected override void Awake()
@@ -37,6 +39,15 @@ public class Tonk : Mobile
 
     protected override void Update()
     {
+        //reallyShouldn't be here, another band-aid fix
+        if (Mathf.Abs(DesiredRotation()) < 1 && target != null)
+        {
+            if (target.TryGetComponent<Unit>(out Unit u))
+            {
+                if (u.allegiance != 0 && u.allegiance != allegiance) StandardAttack();
+            }
+        }
+
         base.Update();
         if (smokeCoolDown <= 0)
         {
@@ -113,6 +124,11 @@ public class Tonk : Mobile
         if (target == null) return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
         if (isInRange()) return Vector2.SignedAngle(transform.up, target.position - transform.position);
         return Vector2.SignedAngle(transform.up, desiredPosition - transform.position);
+    }
+
+    public void StandardAttack() //a function a bit like this is desired, but this is just copied from infantry, and it does not exist in the super-class
+    {
+        weapon.Fire();
     }
     protected void addCrew(Infantry newGuy)
     {

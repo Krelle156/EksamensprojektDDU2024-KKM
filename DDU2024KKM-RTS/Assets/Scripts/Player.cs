@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
                 spriteRenderer.color = new Color(1, 1, 1, 1);
             }
         }
-        else if (cursorMode == 2) //only if we have just been in marked mode should we switch back to the generic cursor
+        else if (cursorMode == 2 && cursorMode!= 1) //only if we have just been in marked mode should we switch back to the generic cursor
         {
             cursorMode = 0;
             spriteRenderer.sprite = genericMouse;
