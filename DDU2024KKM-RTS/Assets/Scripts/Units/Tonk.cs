@@ -54,7 +54,7 @@ public class Tonk : Mobile
         base.Update();
         if (smokeCoolDown <= 0)
         {
-            ParticleManager.SpawnSmoke(transform.position - transform.up * 2.1f - transform.right*1.2f+new Vector3(0,0,1), 1+ (enginePower / maxEnginePower), 0.2f);
+            ParticleManager.SpawnSmoke(transform.position - transform.up * 2.1f - transform.right*1.2f+new Vector3(0,0,0.1f), 1+ (enginePower / maxEnginePower), 0.2f);
             smokeCoolDown = smokeCoolMax - (enginePower/maxEnginePower)*1.9f;
         }
         smokeCoolDown -= 1 * Time.deltaTime;

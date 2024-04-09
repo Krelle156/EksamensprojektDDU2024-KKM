@@ -38,7 +38,7 @@ public class BallisticProjectile : Projectile
 
         if(smokeCoolDown<=0 && flightDistance >0)
         {
-            ParticleManager.SpawnSmoke(transform.position-transform.up*1f + new Vector3(0,0,1), 1, (2f - (Mathf.Abs(flightDistance) / maxFlightDistance)) * 0.1f);
+            ParticleManager.SpawnSmoke(transform.position-transform.up*1f + new Vector3(0,0,0.1f), 1, (2f - (Mathf.Abs(flightDistance) / maxFlightDistance)) * 0.1f);
             smokeCoolDown = smokeCoolMax;
         }
         smokeCoolDown -= 1*Time.deltaTime;
