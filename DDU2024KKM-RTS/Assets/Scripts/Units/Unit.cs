@@ -55,7 +55,8 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void damage(float d)
     {
-        health -= d;
+        health -=d;
+        checkHealth();
     }
 
 

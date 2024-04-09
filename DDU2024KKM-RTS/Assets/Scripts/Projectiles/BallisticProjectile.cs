@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallisticProjectile : Projectile
 {
+    List<Collider2D> tempList;
     protected float smokeCoolDown, smokeCoolMax = 0.05f;
 
     [SerializeField] protected Sprite up, down;
@@ -53,6 +54,19 @@ public class BallisticProjectile : Projectile
     {
         base.Launch(dist, direction);
         flightDistance = dist / 2;
+    }
+
+    protected override void GroundImpact()
+    {
+        Collider2D[] tempList = Physics2D.OverlapCircleAll((Vector2)transform.position, 10);
+        for(int i = 0; i<tempList.Length ; i++)
+        {
+            if(tempList[i].TryGetComponent(out Unit unit))
+            {
+                unit.damage(10);
+            }
+        }
+        base.GroundImpact();
     }
 
 }
