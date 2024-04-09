@@ -10,12 +10,14 @@ public class Turtorial : MonoBehaviour
     public RectTransform textMeshProUGUI;
     private Transform[] textMeshProUGUIArray = new Transform[4];
     public Transform panel;
+
+    private int tutorialStage = 0;
     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < textMeshProUGUIArray.Length; i++)
         {
-            textMeshProUGUIArray[i] = Instantiate(textMeshProUGUI, panel.position + new Vector3(200f , -50f * (i + 1)), Quaternion.identity);
+            textMeshProUGUIArray[i] = Instantiate(textMeshProUGUI, panel.position + new Vector3(275f , -35f * (i * 2 + 1)), Quaternion.identity);
             //textMeshProUGUIArray[i].GetComponent<TextMeshProUGUI>().text = "bob";
             textMeshProUGUIArray[i].SetParent(panel, true);
         }
@@ -25,9 +27,17 @@ public class Turtorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        switch(tutorialStage)
+        {
+            case 0:
+                textMeshProUGUIArray[0].GetComponent<TextMeshProUGUI>().text = "WASD to move camera";
+                break;
+
+        }
+
         if (isMarked() == true)
         {
-            textMeshProUGUIArray[0].GetComponent<TextMeshProUGUI>().text = "WASD to move camera";
+            //textMeshProUGUIArray[0].GetComponent<TextMeshProUGUI>().text = "WASD to move camera";
             Debug.Log("print");
         }
         Debug.Log(isMarked());
