@@ -53,16 +53,20 @@ public class Player : MonoBehaviour
     {
         if (collisionInfo.TryGetComponent<Unit>(out Unit bob))
         {
-            if (collisionInfo.GetComponent<Unit>() == currentUnit) currentUnit = null;
+            if (bob == currentUnit)
+            {
+                currentUnit = null;
+                
+            }
+                
+
             if (collisionInfo.GetComponent<Unit>().marked == true && allegiance == collisionInfo.GetComponent<Unit>().allegiance && cursorMode == 1)
             {
 
                 units.Add(collisionInfo.GetComponent<Unit>());
                 collisionInfo.GetComponent<Unit>().marked = false;
-                currentUnit = collisionInfo.GetComponent<Unit>();
 
             }
-            currentUnit = collisionInfo.GetComponent<Unit>();
         }
     }
 
@@ -100,8 +104,7 @@ public class Player : MonoBehaviour
                 spriteRenderer.sprite = genericMouse;
                 spriteRenderer.color = new Color(1, 1, 1, 1);
             }
-        }
-        else if (cursorMode == 2 && cursorMode!= 1) //only if we have just been in marked mode should we switch back to the generic cursor
+        } else if (cursorMode == 2) //only if we have just been in marked mode should we switch back to the generic cursor
         {
             cursorMode = 0;
             spriteRenderer.sprite = genericMouse;
@@ -117,18 +120,20 @@ public class Player : MonoBehaviour
             }
             units.Clear();
 
+            if (cursorMode != 1) //if we aren't showint the selector box, switch the sprite, otherwise do nothing
+            {
+                cursorMode = 1;
+                spriteRenderer.sprite = selector;
+                spriteRenderer.color = new Color(1, 1, 1, 0.2f);
+            }
+
         };
         if (Input.GetMouseButton(0))
         {
             //GetComponent<Collider2D>().enabled = true;
             transform.localScale = new Vector2(mousePosX - transform.position.x, transform.position.y - mousePosY);
 
-            if(cursorMode != 1) //if we aren't showint the selector box, switch the sprite, otherwise do nothing
-            {
-                cursorMode = 1;
-                spriteRenderer.sprite = selector;
-                spriteRenderer.color = new Color(1, 1, 1, 0.2f);
-            }
+            
         }
         else
         {
