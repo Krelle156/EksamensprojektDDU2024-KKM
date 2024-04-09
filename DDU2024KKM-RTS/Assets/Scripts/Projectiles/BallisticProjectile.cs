@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class BallisticProjectile : Projectile
 {
-    [SerializeField] protected SmokeParticle smoke;
-    protected SmokeParticle[] smokeList;
-    protected int smokeCount;
     protected float smokeCoolDown, smokeCoolMax = 0.05f;
 
     [SerializeField] protected Sprite up, down;
 
     private void Awake()
     {
-        smokeList = new SmokeParticle[20];
-        for (int i = 0; i < smokeList.Length; i++)
-        {
-            smokeList[i] = Instantiate(smoke,transform.position,Quaternion.identity);
-        }
+
         //rb = GetComponent<Rigidbody2D>();
     }
 
@@ -44,9 +37,7 @@ public class BallisticProjectile : Projectile
 
         if(smokeCoolDown<=0 && flightDistance >0)
         {
-            smokeList[smokeCount].spawn(transform.position-transform.up*1f + new Vector3(0,0,1), 1, (2f - (Mathf.Abs(flightDistance) / maxFlightDistance)) * 0.1f);
-            smokeCount++;
-            if (smokeCount >= smokeList.Length) smokeCount = 0;
+            ParticleManager.SpawnSmoke(transform.position-transform.up*1f + new Vector3(0,0,1), 1, (2f - (Mathf.Abs(flightDistance) / maxFlightDistance)) * 0.1f);
             smokeCoolDown = smokeCoolMax;
         }
         smokeCoolDown -= 1*Time.deltaTime;

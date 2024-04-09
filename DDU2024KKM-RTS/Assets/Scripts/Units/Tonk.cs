@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Tonk : Mobile
 {
-    public SmokeParticle smoke;
-    protected SmokeParticle[] smokeList;
-    protected int smokeCount;
     protected float smokeCoolDown, smokeCoolMax = 2f;
 
     protected float enginePower, maxEnginePower = 400000;
@@ -30,12 +27,6 @@ public class Tonk : Mobile
         audi = GetComponent<AudioSource>();
         //target = Player.targetTest;
 
-        smokeList = new SmokeParticle[30];
-        for (int i = 0; i < smokeList.Length; i++)
-        {
-            smokeList[i] = Instantiate(smoke, transform.position, Quaternion.identity);
-        }
-
         allegiance = 1; //for testing
 
     }
@@ -49,9 +40,7 @@ public class Tonk : Mobile
         base.Update();
         if (smokeCoolDown <= 0)
         {
-            smokeList[smokeCount].spawn(transform.position - transform.up * 2.1f - transform.right*1.2f+new Vector3(0,0,1), 1+ (enginePower / maxEnginePower), 0.2f);
-            smokeCount++;
-            if (smokeCount >= smokeList.Length) smokeCount = 0;
+            ParticleManager.SpawnSmoke(transform.position - transform.up * 2.1f - transform.right*1.2f+new Vector3(0,0,1), 1+ (enginePower / maxEnginePower), 0.2f);
             smokeCoolDown = smokeCoolMax - (enginePower/maxEnginePower)*1.9f;
         }
         smokeCoolDown -= 1 * Time.deltaTime;

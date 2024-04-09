@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -594,7 +595,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testGuy: {fileID: 6873756863560486890, guid: 23b4f5e42b9aaf54a93f8076ec6ae462, type: 3}
   playerUnit: {fileID: 0}
-  testExplosion: {fileID: 0}
+  testExplosion: {fileID: 3238213000594818327, guid: b8623844010f34f4ca779b46838fa9c0, type: 3}
+  spawnerOfThings: {fileID: 0}
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8edb67c096e635a4c8399314aaa0ba49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoke: {fileID: 5094253752487152237, guid: da175120a22963f44bd278674a8d131f, type: 3}
+  explosion: {fileID: 3238213000594818327, guid: b8623844010f34f4ca779b46838fa9c0, type: 3}
+  corpse1: {fileID: 4230669867426397152, guid: 645d9840cd332c449ae0ffeb3d73d0bd, type: 3}
+  corpse2: {fileID: 1181769219466807036, guid: 237929c3a2c100a4598820747e21a1be, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,8 +873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce2007d0f0007448b3f9b6c3e991e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoke: {fileID: 5094253752487152237, guid: da175120a22963f44bd278674a8d131f, type: 3}
   rb: {fileID: 0}
+  smoke: {fileID: 5094253752487152237, guid: da175120a22963f44bd278674a8d131f, type: 3}
   up: {fileID: 21300000, guid: b0760d029c9670143af066a4cb2afd6d, type: 3}
   down: {fileID: 21300000, guid: a7fcabe7ca4d52843b834569875f12ad, type: 3}
 --- !u!212 &1036204317
