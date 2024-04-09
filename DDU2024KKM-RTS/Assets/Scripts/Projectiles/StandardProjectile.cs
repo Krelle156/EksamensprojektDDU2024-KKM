@@ -8,10 +8,7 @@ public class StandardProjectile : Projectile
     // Start is called before the first frame update
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

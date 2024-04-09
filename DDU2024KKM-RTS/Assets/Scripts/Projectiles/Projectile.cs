@@ -37,6 +37,7 @@ public abstract class Projectile : MonoBehaviour
     public virtual void Launch(float dist, Vector2 direction)
     {
         maxFlightDistance = dist;
+        flightDistance = dist;
         transform.up = direction;
     }
 
