@@ -53,5 +53,10 @@ public abstract class Unit : MonoBehaviour
         if (health <= 0) Destroy(gameObject);
     }
 
+    public virtual void damage(float d)
+    {
+        health -= d;
+    }
+
 
 }
