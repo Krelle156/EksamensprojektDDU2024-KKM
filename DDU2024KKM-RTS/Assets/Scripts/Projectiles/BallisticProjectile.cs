@@ -69,7 +69,8 @@ public class BallisticProjectile : Projectile
                 }
             }
         }
-        base.GroundImpact();
+        ParticleManager.SpawnExplosion(transform.position, 0.25f, 6f);
+        Destroy(gameObject);
     }
 
 }
