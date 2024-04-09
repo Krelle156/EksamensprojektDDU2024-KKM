@@ -131,7 +131,7 @@ public class Tonk : Mobile
 
     public void StandardAttack() //a function a bit like this is desired, but this is just copied from infantry, and it does not exist in the super-class
     {
-        weapon.Fire();
+        weapon.Fire(((Vector2)(transform.position-target.position)).magnitude);
     }
     protected void addCrew(Infantry newGuy)
     {

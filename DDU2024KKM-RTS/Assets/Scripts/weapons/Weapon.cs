@@ -46,13 +46,14 @@ public abstract class Weapon : MonoBehaviour
         return armorPiercing;
     }
 
-    public void Fire()
+    public void Fire(float range)
     {
         if (cool <= 0)
         {
             cool = maxcool;
             muzzleFlashTimer = maxcool;
             tempBullet = Instantiate(bullet, transform.position, transform.rotation);
+            tempBullet.Launch(range, transform.up);
             tempBullet.transform.Rotate(new Vector3(0, 0, 1), Random.Range(-spread, spread));
             tempBullet.SetAllegiance(GetComponentInParent<Unit>().allegiance);
         }
