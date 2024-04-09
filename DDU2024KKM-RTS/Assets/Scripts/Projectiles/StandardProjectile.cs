@@ -20,7 +20,7 @@ public class StandardProjectile : Projectile
             if(bob.allegiance != allegiance && bob.allegiance != 0)
             {
                 Impact();
-                bob.damage(strength);
+                bob.damage(strength, 0.1f);
                 bob.CheckHealth();
             }
         }

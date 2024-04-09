@@ -42,7 +42,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void GroundImpact()
     {
-        ParticleManager.SpawnExplosion(transform.position, 0.25f, 3f);
+        ParticleManager.SpawnExplosion(transform.position, 0.25f, 6f);
         Destroy(gameObject);
     }
 

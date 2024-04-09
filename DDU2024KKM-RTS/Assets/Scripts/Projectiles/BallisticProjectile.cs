@@ -58,14 +58,14 @@ public class BallisticProjectile : Projectile
 
     protected override void GroundImpact()
     {
-        Collider2D[] tempList = Physics2D.OverlapCircleAll((Vector2)transform.position, 10);
+        Collider2D[] tempList = Physics2D.OverlapCircleAll((Vector2)transform.position, 4);
         for(int i = 0; i<tempList.Length ; i++)
         {
             if (!tempList[i].isTrigger)
             {
                 if (tempList[i].TryGetComponent(out Unit unit))
                 {
-                    unit.damage(10);
+                    unit.damage(10, 10);
                 }
             }
         }

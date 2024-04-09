@@ -53,9 +53,9 @@ public abstract class Unit : MonoBehaviour
         if (health <= 0) Destroy(gameObject);
     }
 
-    public virtual void damage(float d)
+    public virtual void damage(float d, float armorpiercing)
     {
-        health -= d / armor;
+        health -= (d / armor) * armorpiercing;
         CheckHealth();
     }
 
