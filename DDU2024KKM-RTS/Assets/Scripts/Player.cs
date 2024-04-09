@@ -62,8 +62,7 @@ public class Player : MonoBehaviour
 
             if (collisionInfo.GetComponent<Unit>().marked == true && allegiance == collisionInfo.GetComponent<Unit>().allegiance && cursorMode == 1)
             {
-
-                units.Add(collisionInfo.GetComponent<Unit>());
+                units.Remove(collisionInfo.GetComponent<Unit>());
                 collisionInfo.GetComponent<Unit>().marked = false;
 
             }
