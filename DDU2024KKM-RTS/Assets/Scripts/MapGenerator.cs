@@ -79,12 +79,18 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = 0; j < height; j++)
             {
-                float temp = Mathf.PerlinNoise(tempX + i * 0.02f, tempY + j * 0.02f);
+                float temp = Mathf.PerlinNoise(tempX + i * 0.1f, tempY + j * 0.1f);
 
-                if(Random.Range(0.3f, 10f)<temp) tempTree = Instantiate(tree, new Vector3(i+0.5f, j+0.5f, 0.9f), Quaternion.identity);
+                if(Random.Range(0.5f, 10f) < temp) tempTree = Instantiate(tree, new Vector3(i+0.5f, j+0.5f, 0.9f), Quaternion.identity);
             }
         }
 
+        //Tutorial trees
+        int amountOfTutorialTrees = 5;
+        for (float i = 0; i < amountOfTutorialTrees; i++)
+        {
+            tempTree = Instantiate(tree, new Vector3(width / 2 + 0.5f, height / 2 + 0.5f + (i * 5) - (amountOfTutorialTrees * 5 / 2), 0.9f), Quaternion.identity);
+        }
     }
 
     void UpdateTerrainText()
@@ -132,6 +138,11 @@ public class MapGenerator : MonoBehaviour
     public static int getMapHeight()
     {
         return height;
+    }
+
+    public static float GetTerrainModifier(float x, float y)
+    {
+            return (terraindata[(int)Mathf.Min(Mathf.Max(x,0),width-1), (int)Mathf.Min(Mathf.Max(y, 0), height-1)].GetTerrainModifier());
     }
 
 }

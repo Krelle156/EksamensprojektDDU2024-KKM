@@ -58,7 +58,7 @@ public class TreeScript : Stationary
                 }
             }
         }
-        MapGenerator.terraindata[(int)transform.position.x, (int)transform.position.y].UpdateTreeValue(10000);//Removes absurdly high treevalue
+        MapGenerator.terraindata[(int)transform.position.x, (int)transform.position.y].UpdateTreeValue(-10000);//Removes absurdly high treevalue
         Destroy(gameObject);
     }
 }

@@ -66,7 +66,7 @@ public class Infantry : Mobile
 
     public void StandardAttack() //where the unit should try to call it's gun or other Object in order to attack;
     {
-        weapon.Fire(((Vector2)(transform.position - target.position)).magnitude, 5f + MapGenerator.terraindata[(int)target.position.x, (int)target.position.y].GetTerrainModifier());
+        weapon.Fire(((Vector2)(transform.position - target.position)).magnitude, 5f + MapGenerator.GetTerrainModifier(target.position.x,target.position.y));
     }
     void PickUpGun() {
         

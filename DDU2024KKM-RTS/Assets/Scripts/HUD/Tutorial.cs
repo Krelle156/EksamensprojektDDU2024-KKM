@@ -10,6 +10,9 @@ public class Turtorial : MonoBehaviour
     public RectTransform textMeshProUGUI;
     public Transform panel;
 
+    public List<Unit> enemyList;
+    public Barracks enemyBarracks, allyBarracks;
+
     private int tutorialStage = 0;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +21,7 @@ public class Turtorial : MonoBehaviour
         textMeshProUGUI = Instantiate(textMeshProUGUI, panel.position + new Vector3(275f , -150f), Quaternion.identity);
         //textMeshProUGUIArray[i].GetComponent<TextMeshProUGUI>().text = "bob";
         textMeshProUGUI.SetParent(panel, true);
+        enemyBarracks.spawnEnemies(40, enemyList);
         
 
     }
@@ -73,15 +77,36 @@ public class Turtorial : MonoBehaviour
                 textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "If a unit is marked, press the RMB to shoot at enemies, when hovering over them!";
                 for (int i = 0; i < player.units.Count; i++)
                 {
-                    if (player.units[i].target.TryGetComponent(out Unit bob))
+                    if (player.units[i].target != null)
                     {
-                        if (bob.allegiance != player.units[i].allegiance && bob.allegiance != 0)
+                        if (player.units[i].target.TryGetComponent(out Unit bob))
                         {
-                            tutorialStage = 7;
-                            panel.gameObject.SetActive(false);
-                            break;
+                            if (bob.allegiance != player.units[i].allegiance && bob.allegiance != 0)
+                            {
+                                tutorialStage = 7;
+                                break;
+                            }
                         }
                     }
+                }
+                break;
+            case 7:
+                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Eleminate the enemies (Hint: hiding in trees reduce enemy accuracy) Enemise left:" + enemyList.Count;
+                if (enemyList.Count == 0)
+                {
+                    tutorialStage = 8;
+                    enemyBarracks.spawnEnemies(100, enemyList, allyBarracks.transform.position);
+                    break;
+                }
+                else enemyList.RemoveAll(y => y == null);
+                break;
+            case 8:
+                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Oh no! They are responding in force!!! luckily high command has sent you a tonk, blow them all to smithereens!!!!!";
+                
+                if (enemyList.Count == 0)
+                {
+                    tutorialStage = 9;
+                    break;
                 }
                 break;
             default:

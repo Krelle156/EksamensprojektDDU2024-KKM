@@ -24,27 +24,7 @@ public class Barracks : Stationary
     private void Start()
     {
 
-        if (this.allegiance == 2)
-        {
-            for (int i = 0; i < 100; i++)
-            {
-                float ranX = Random.Range(-10f, 10f);
-                float ranY = Random.Range(-10f, 10f);
-                troopInstance = Instantiate(artroop, new Vector2(transform.position.x + ranX, transform.position.y + ranX), Quaternion.identity);
-                desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
-                troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
-                troopInstance.GetComponent<Infantry>().allegiance = 2;
 
-                
-                //Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
-            }
-
-            tonkInstance = Instantiate(tonk, new Vector2(transform.position.x, transform.position.y + 10f), Quaternion.identity);
-            desiredPosition = new Vector2(transform.position.x, transform.position.y + 10f);
-            tonkInstance.GetComponent<Tonk>().transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90f);
-            tonkInstance.GetComponent<Tonk>().SetWaypoint(desiredPosition);
-            tonkInstance.GetComponent<Tonk>().allegiance = 2;
-        }
 
         if (this.allegiance == 1)
         {
@@ -91,7 +71,47 @@ public class Barracks : Stationary
 
     }
 
+    public void spawnEnemies(float number, List<Unit> enemyList)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            float ranX = Random.Range(-10f, 10f);
+            float ranY = Random.Range(-10f, 10f);
+            troopInstance = Instantiate(artroop, new Vector2(transform.position.x + ranX, transform.position.y + ranX), Quaternion.identity);
+            desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
+            troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
+            troopInstance.GetComponent<Infantry>().allegiance = 2;
+            enemyList.Add(troopInstance.GetComponent<Infantry>());
 
+
+            //Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
+        }
+    }
+
+    public void spawnEnemies(float number, List<Unit> enemyList, Vector2 targetPos)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            float ranX = Random.Range(-10f, 5f);
+            float ranY = Random.Range(-10f, 10f);
+            troopInstance = Instantiate(artroop, new Vector2(transform.position.x + ranX, transform.position.y + ranX), Quaternion.identity);
+            desiredPosition = new Vector2(targetPos.x + ranX, targetPos.y + ranY);
+            troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
+            troopInstance.GetComponent<Infantry>().allegiance = 2;
+            enemyList.Add(troopInstance.GetComponent<Infantry>());
+
+            //Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
+        }
+    }
+
+    public void spawnTonk()
+    {
+        tonkInstance = Instantiate(tonk, new Vector2(transform.position.x, transform.position.y + 10f), Quaternion.identity);
+        desiredPosition = new Vector2(transform.position.x, transform.position.y + 10f);
+        tonkInstance.GetComponent<Tonk>().transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90f);
+        tonkInstance.GetComponent<Tonk>().SetWaypoint(desiredPosition);
+        tonkInstance.GetComponent<Tonk>().allegiance = 2;
+    }
     /*
     bool resources(){
         if (3==3) {

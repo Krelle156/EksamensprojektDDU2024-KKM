@@ -69,7 +69,7 @@ public class BallisticProjectile : Projectile
                 }
             }
         }
-        ParticleManager.SpawnExplosion(transform.position, 0.25f, 6f);
+        ParticleManager.SpawnExplosion(transform.position, 0.25f, 8f);
         Destroy(gameObject);
     }
 
