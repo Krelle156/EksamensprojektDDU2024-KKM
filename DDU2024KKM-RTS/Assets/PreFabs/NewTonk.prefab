@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 4773826591363363880}
   - component: {fileID: 1447426533488934740}
   - component: {fileID: 3303632951245101709}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NewTonk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

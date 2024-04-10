@@ -9,6 +9,7 @@ public class Turtorial : MonoBehaviour
     [SerializeField] private Player player;
     public RectTransform textMeshProUGUI, unitCounter;
     public Transform panel;
+    public Transform canvas;
 
     public List<Unit> enemyList;
     public Barracks enemyBarracks, allyBarracks;
@@ -19,8 +20,11 @@ public class Turtorial : MonoBehaviour
     void Start()
     {
         
-        textMeshProUGUI = Instantiate(textMeshProUGUI, panel.position + new Vector3(275f , -150f), Quaternion.identity);
-        unitCounter = Instantiate(textMeshProUGUI, panel.position + new Vector3(275f, -300f), Quaternion.identity);
+        textMeshProUGUI = Instantiate(textMeshProUGUI, panel.position + new Vector3(15f , -10f), Quaternion.identity);
+        unitCounter = Instantiate(textMeshProUGUI, panel.position + new Vector3(15f, -300f * canvas.GetComponent<RectTransform>().localScale.y), Quaternion.identity);
+        textMeshProUGUI.localScale = canvas.GetComponent<RectTransform>().localScale;
+        unitCounter.localScale = canvas.GetComponent<RectTransform>().localScale;
+
         textMeshProUGUI.SetParent(panel, true);
         unitCounter.SetParent(panel, true);
         enemyBarracks.spawnEnemies(40, enemyList);

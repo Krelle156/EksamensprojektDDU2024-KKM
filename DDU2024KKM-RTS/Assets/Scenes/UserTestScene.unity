@@ -651,7 +651,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2000, y: 1020}
+  m_SizeDelta: {x: 8000, y: 4000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &884263529
 MonoBehaviour:
@@ -956,7 +956,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2083691317}
   textMeshProUGUI: {fileID: 6715527221803523820, guid: 7ea20f4bb892a8344a88086220370904, type: 3}
+  unitCounter: {fileID: 0}
   panel: {fileID: 884263528}
+  canvas: {fileID: 2107490861}
   enemyList: []
   enemyBarracks: {fileID: 0}
   allyBarracks: {fileID: 0}
@@ -1213,8 +1215,8 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 1
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 3840, y: 2160}
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
