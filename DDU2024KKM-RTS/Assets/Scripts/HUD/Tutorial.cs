@@ -12,6 +12,7 @@ public class Turtorial : MonoBehaviour
 
     public List<Unit> enemyList;
     public Barracks enemyBarracks, allyBarracks;
+    //Kommentar!
 
     private int tutorialStage = 0;
     // Start is called before the first frame update

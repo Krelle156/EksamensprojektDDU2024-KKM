@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BallisticProjectile : Projectile
 {
-    List<Collider2D> tempList;
     protected float smokeCoolDown, smokeCoolMax = 0.05f;
 
     [SerializeField] protected Sprite up, down;
@@ -17,6 +16,7 @@ public class BallisticProjectile : Projectile
 
     protected override void Start()
     {
+
         GetComponent<SpriteRenderer>().sprite = up;
         GetComponent<Rigidbody2D>().velocity = transform.up * 15;
     }
