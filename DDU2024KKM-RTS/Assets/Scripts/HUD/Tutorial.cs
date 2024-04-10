@@ -74,14 +74,14 @@ public class Turtorial : MonoBehaviour
                 }
                 break;
             case 5:
-                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Press the RMB to place waypoints! There enemies are to the right! ->";
+                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Press the RMB to place waypoints! The enemies are to the right! ->";
                 if (Input.GetKey(KeyCode.Mouse1))
                 {
                     tutorialStage = 6;
                 }
                 break;
             case 6:
-                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "If a unit is marked, press the RMB to shoot at enemies, when hovering over them! There enemies are to the right! ->";
+                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "If a unit is marked, press the RMB to shoot at enemies, when hovering over them! The enemies are to the right! ->";
                 for (int i = 0; i < player.units.Count; i++)
                 {
                     if (player.units[i].target != null)
@@ -98,7 +98,7 @@ public class Turtorial : MonoBehaviour
                 }
                 break;
             case 7:
-                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Eleminate the enemies (Hint: hiding in trees reduce enemy accuracy) Enemise left:" + enemyList.Count;
+                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Eleminate the enemies (Hint: hiding in trees reduce enemy accuracy) Enemies left:" + enemyList.Count;
                 if (enemyList.Count == 0)
                 {
                     tutorialStage = 8;
