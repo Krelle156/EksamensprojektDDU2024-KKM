@@ -11,12 +11,15 @@ public abstract class Weapon : MonoBehaviour
     protected float maxcool = 1, cool = 0;
     protected float muzzleFlashTimer = 0;
 
+    Vector2 startDirection;
+    protected float maxRotation = 180;
+
     [SerializeField] protected AudioSource audioSource;
 
     protected float spread = 5f;
     protected virtual void Awake()
     {
-
+        startDirection = transform.up;
     }
 
     public int getfr (){
@@ -57,6 +60,27 @@ public abstract class Weapon : MonoBehaviour
             tempBullet = Instantiate(bullet, transform.position, transform.rotation);
             tempBullet.Launch(range, transform.up, 5f+accuracy);
             tempBullet.SetAllegiance(GetComponentInParent<Unit>().allegiance);
+
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
+        }
+    }
+
+    public void Fire(Vector2 target, float accuracy, int allegiance)
+    {
+        float tempAngle = Vector2.SignedAngle(transform.up, target - (Vector2)transform.position);
+        if (tempAngle < 0 && tempAngle > -maxRotation) transform.Rotate(new Vector3(0, 0, -1));
+        if (tempAngle > 0 && tempAngle < maxRotation) transform.Rotate(new Vector3(0, 0, 1));
+
+        if (cool <= 0)
+        {
+            cool = maxcool;
+            muzzleFlashTimer = maxcool;
+            tempBullet = Instantiate(bullet, transform.position, transform.rotation);
+            tempBullet.Launch(((Vector2)transform.position-target).magnitude, transform.up, 5f + accuracy);
+            tempBullet.SetAllegiance(allegiance);
 
             if (audioSource != null)
             {
