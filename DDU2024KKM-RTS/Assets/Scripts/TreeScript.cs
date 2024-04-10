@@ -8,6 +8,7 @@ public class TreeScript : Stationary
     int tree=5; //base tree value (at least for this "type" of tree)
     protected override void Awake()
     {
+        allegiance = 0;
         base.Awake();
         spreadTreeValue();//When the tree is created, inform surrounding tiles with decreasing strength
         MapGenerator.terraindata[(int)transform.position.x, (int)transform.position.y].GetTerrainModifier();

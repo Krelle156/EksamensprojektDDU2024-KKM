@@ -44,7 +44,7 @@ public abstract class Mobile : Unit
 
         if (collision.TryGetComponent(out Unit bob) && !collision.isTrigger)
         {
-            if (bob.allegiance != allegiance && allegiance != 0) target = bob.transform;
+            if (bob.allegiance != allegiance && bob.allegiance != 0) setTarget(bob.transform);
         }
     }
 
@@ -77,7 +77,7 @@ public abstract class Mobile : Unit
                 {
                     if (tempList[i].TryGetComponent(out Unit unit))
                     {
-                        setTarget(unit.transform);
+                        if(unit.allegiance != allegiance && unit.allegiance != 0)setTarget(unit.transform);
                     }
                 }
             }
