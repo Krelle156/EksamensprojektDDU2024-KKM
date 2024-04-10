@@ -50,9 +50,9 @@ public class BallisticProjectile : Projectile
 
     }
 
-    public override void Launch(float dist, Vector2 direction)
+    public override void Launch(float dist, Vector2 direction, float spread)
     {
-        base.Launch(dist, direction);
+        base.Launch(dist, direction, spread);
         flightDistance = dist / 2;
     }
 

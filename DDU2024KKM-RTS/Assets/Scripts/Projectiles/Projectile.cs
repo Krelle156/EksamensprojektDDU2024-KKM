@@ -34,10 +34,11 @@ public abstract class Projectile : MonoBehaviour
         else if (flightDistance <= 0) GroundImpact();
     }
 
-    public virtual void Launch(float dist, Vector2 direction)
+    public virtual void Launch(float dist, Vector2 direction, float spread)
     {
         maxFlightDistance = dist;
         transform.up = direction;
+        transform.Rotate(new Vector3(0, 0, 1), Random.Range(-spread, spread));
     }
 
     protected virtual void GroundImpact()

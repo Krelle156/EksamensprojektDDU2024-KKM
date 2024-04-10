@@ -55,7 +55,8 @@ public abstract class Unit : MonoBehaviour
 
     public virtual void damage(float d, float armorpiercing)
     {
-        health -= (d / armor) * armorpiercing;
+        if (armorpiercing > armor) health -= d;
+        else health -= d * Mathf.Max(Mathf.Min(armorpiercing / armor,1),0.01f);
         CheckHealth();
     }
 
