@@ -95,18 +95,17 @@ public class Infantry : Mobile
         rb.simulated = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-        if (collision.TryGetComponent(out Unit bob) && !collision.isTrigger)
-        {
-            if (bob.allegiance != allegiance && allegiance != 0) target = bob.transform;
-        }
-    }
-
     public override void CheckHealth()
     {
-        if (health <= 0) ParticleManager.SpawnCorpse(transform.position, 1, 1);
+        if (health <= 0)
+        {
+            ParticleManager.SpawnCorpse(transform.position, 1, 1);
+
+            if (allegiance == 1)
+            {
+                Barracks.SetNumberOfAllies(Barracks.GetNumberOfAllies() - 1);
+            }
+        }
         base.CheckHealth();
     }
 }

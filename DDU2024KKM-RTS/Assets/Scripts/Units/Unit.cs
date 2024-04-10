@@ -17,6 +17,8 @@ public abstract class Unit : MonoBehaviour
     public int allegiance;
     protected Vector3 desiredPosition;
 
+    protected bool aggro = false;
+
 
 
 
@@ -54,6 +56,7 @@ public abstract class Unit : MonoBehaviour
     public void setTarget(Transform t)
     {
         target = t;
+        aggro = true;
     }
 
     public virtual void CheckHealth()

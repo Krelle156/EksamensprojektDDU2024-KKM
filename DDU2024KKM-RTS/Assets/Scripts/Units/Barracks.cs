@@ -25,32 +25,36 @@ public class Barracks : Stationary
     {
 
 
-
+        /*
         if (this.allegiance == 1)
         {
-            tonkInstance = Instantiate(tonk, new Vector2(transform.position.x, transform.position.y + 10f), Quaternion.identity);
+            tonkInstance = Instantiate(tonk, new Vector3(transform.position.x, transform.position.y + 10f,-1.5f), Quaternion.identity);
             desiredPosition = new Vector2(transform.position.x, transform.position.y + 10f);
             tonkInstance.GetComponent<Tonk>().transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90f);
             tonkInstance.GetComponent<Tonk>().SetWaypoint(desiredPosition);
             tonkInstance.GetComponent<Tonk>().allegiance = 1;
         }
-
+        */
     }
 
     // Update is called once per frame
+    static int numberOfAllies = 0;
+    public static int GetNumberOfAllies() { return numberOfAllies; }
+    public static void SetNumberOfAllies(int num) { numberOfAllies = num; }
     protected override void Update()
     {
         //Debug.Log(marked);
         float ranX = Random.Range(-10f, 10f);
         float ranY = Random.Range(-10f, 10f);
-
-        if (Input.GetKeyDown(KeyCode.Space) && this.allegiance == 1) 
+        if (Input.GetKeyDown(KeyCode.Space) && this.allegiance == 1 && numberOfAllies < 20)
         {
+
             troopInstance = Instantiate(artroop, transform.position, Quaternion.identity);
             desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 1;
 
+            numberOfAllies++;
             //Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);
         }
         
@@ -106,11 +110,11 @@ public class Barracks : Stationary
 
     public void spawnTonk()
     {
-        tonkInstance = Instantiate(tonk, new Vector2(transform.position.x, transform.position.y + 10f), Quaternion.identity);
+        tonkInstance = Instantiate(tonk, new Vector3(transform.position.x, transform.position.y + 10f, -1.5f), Quaternion.identity);
         desiredPosition = new Vector2(transform.position.x, transform.position.y + 10f);
-        tonkInstance.GetComponent<Tonk>().transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, 90f);
+        tonkInstance.GetComponent<Tonk>().transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90f);
         tonkInstance.GetComponent<Tonk>().SetWaypoint(desiredPosition);
-        tonkInstance.GetComponent<Tonk>().allegiance = 2;
+        tonkInstance.GetComponent<Tonk>().allegiance = allegiance;
     }
     /*
     bool resources(){

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Turtorial : MonoBehaviour
 {
     [SerializeField] private Player player;
-    public RectTransform textMeshProUGUI;
+    public RectTransform textMeshProUGUI, unitCounter;
     public Transform panel;
 
     public List<Unit> enemyList;
@@ -19,8 +19,9 @@ public class Turtorial : MonoBehaviour
     {
         
         textMeshProUGUI = Instantiate(textMeshProUGUI, panel.position + new Vector3(275f , -150f), Quaternion.identity);
-        //textMeshProUGUIArray[i].GetComponent<TextMeshProUGUI>().text = "bob";
+        unitCounter = Instantiate(textMeshProUGUI, panel.position + new Vector3(275f, -300f), Quaternion.identity);
         textMeshProUGUI.SetParent(panel, true);
+        unitCounter.SetParent(panel, true);
         enemyBarracks.spawnEnemies(40, enemyList);
         
 
@@ -29,7 +30,8 @@ public class Turtorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch(tutorialStage)
+        if (tutorialStage >= 3) unitCounter.GetComponent<TextMeshProUGUI>().text = "Active footsoldiers: " + Barracks.GetNumberOfAllies() + "/20";
+        switch (tutorialStage)
         {
             case 0:
                 textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Press W, A, S, or D to move the camera!";
@@ -53,7 +55,7 @@ public class Turtorial : MonoBehaviour
                 }
                 break;
             case 3:
-                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Press Space to spawn units!";
+                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Press Space to spawn units! High command will only allow 20 units on the battlefield at once!";
                 if (Input.GetKey(KeyCode.Space))
                 {
                     tutorialStage = 4;
@@ -96,6 +98,7 @@ public class Turtorial : MonoBehaviour
                 {
                     tutorialStage = 8;
                     enemyBarracks.spawnEnemies(100, enemyList, allyBarracks.transform.position);
+                    allyBarracks.spawnTonk();
                     break;
                 }
                 else enemyList.RemoveAll(y => y == null);

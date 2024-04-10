@@ -29,10 +29,23 @@ public abstract class Mobile : Unit
 
         //Must be moved to infantry once tanks are being implemented (perhaps before)
 
+        if(aggro == true)
+        {
+            if (target == null) EvaluateTarget();
+        }
         float tempSpeed = Mathf.Min(rb.velocity.magnitude*0.1f,1);
         movementVector = Vector2.SmoothDamp(movementVector, DesiredMovementVector(), ref inertiaTime, tempSpeed);
 
    
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.TryGetComponent(out Unit bob) && !collision.isTrigger)
+        {
+            if (bob.allegiance != allegiance && allegiance != 0) target = bob.transform;
+        }
     }
 
     public virtual float DesiredRotation() //the difference between where the unit is looking and where it "wants" to be looking
@@ -48,6 +61,26 @@ public abstract class Mobile : Unit
     public Vector2 DesiredMovementVector() //Which direction the unit wants to go in
     {
         return (desiredPosition - transform.position).normalized;
+    }
+
+    public void EvaluateTarget()
+    {
+        Collider2D[] tempList = Physics2D.OverlapCircleAll((Vector2)transform.position, 50);
+        if (tempList.Length <= 0) aggro = false;
+        else
+        {
+            aggro = false;
+            for (int i = 0; i < tempList.Length; i++)
+            {
+                if (!tempList[i].isTrigger)
+                {
+                    if (tempList[i].TryGetComponent(out Unit unit))
+                    {
+                        unit.setTarget(unit.transform);
+                    }
+                }
+            }
+        }
     }
 
     
