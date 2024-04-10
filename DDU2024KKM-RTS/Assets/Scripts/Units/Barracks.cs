@@ -85,6 +85,7 @@ public class Barracks : Stationary
             desiredPosition = new Vector2(transform.position.x + ranX, transform.position.y + ranY);
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 2;
+            troopInstance.GetComponent<SpriteRenderer>().color = new Color(0.6f, 0.3f, 0);
             enemyList.Add(troopInstance.GetComponent<Infantry>());
 
 
@@ -102,6 +103,7 @@ public class Barracks : Stationary
             desiredPosition = new Vector2(targetPos.x + ranX, targetPos.y + ranY);
             troopInstance.GetComponent<Infantry>().SetWaypoint(desiredPosition);
             troopInstance.GetComponent<Infantry>().allegiance = 2;
+            troopInstance.GetComponent<SpriteRenderer>().color = new Color(0.6f, 0.3f, 0);
             enemyList.Add(troopInstance.GetComponent<Infantry>());
 
             //Debug.Log("im on team " + troopInstance.GetComponent<Infantry>().allegiance);

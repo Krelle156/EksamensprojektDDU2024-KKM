@@ -18,7 +18,7 @@ public class BallisticProjectile : Projectile
     {
 
         GetComponent<SpriteRenderer>().sprite = up;
-        GetComponent<Rigidbody2D>().velocity = transform.up * 15;
+        GetComponent<Rigidbody2D>().velocity = transform.up * 30;
     }
 
     void Update()

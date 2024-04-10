@@ -57,7 +57,11 @@ public abstract class Weapon : MonoBehaviour
             tempBullet = Instantiate(bullet, transform.position, transform.rotation);
             tempBullet.Launch(range, transform.up, 5f+accuracy);
             tempBullet.SetAllegiance(GetComponentInParent<Unit>().allegiance);
-            audioSource.Play();
+
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
         }
     }
 

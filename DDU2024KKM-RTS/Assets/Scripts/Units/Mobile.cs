@@ -12,6 +12,8 @@ public abstract class Mobile : Unit
 
     protected bool isPlayerControlled = false;
 
+    public static int casualties = 0;
+
 
     protected override void Awake()
     {

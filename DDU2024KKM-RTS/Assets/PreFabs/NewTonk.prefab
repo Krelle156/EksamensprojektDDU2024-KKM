@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3091886471146188373, guid: 393a7b6236cbe8941ba39e04e87981f9, type: 3}
   tempBullet: {fileID: 0}
+  audioSource: {fileID: 0}
   muzzleFlashSprite: {fileID: 8264033469678736909}
 --- !u!1 &4264259683598440115
 GameObject:
@@ -211,6 +212,7 @@ GameObject:
   - component: {fileID: 4773826591363363880}
   - component: {fileID: 1447426533488934740}
   - component: {fileID: 3303632951245101709}
+  - component: {fileID: -2094410333672443652}
   m_Layer: 6
   m_Name: NewTonk
   m_TagString: Untagged
@@ -475,6 +477,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &-2094410333672443652
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4264259683598440115}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 40
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 50
 --- !u!1 &5285895534395145243
 GameObject:
   m_ObjectHideFlags: 0

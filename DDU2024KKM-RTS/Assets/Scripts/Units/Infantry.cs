@@ -104,6 +104,7 @@ public class Infantry : Mobile
             if (allegiance == 1)
             {
                 Barracks.SetNumberOfAllies(Barracks.GetNumberOfAllies() - 1);
+                casualties++;
             }
         }
         base.CheckHealth();

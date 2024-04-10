@@ -46,7 +46,7 @@ public class Turtorial : MonoBehaviour
                 }
                 break;
             case 1:
-                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Hold Shift to move faster!";
+                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Hold Shift to move the camera faster!";
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     tutorialStage = 2;
@@ -81,7 +81,7 @@ public class Turtorial : MonoBehaviour
                 }
                 break;
             case 6:
-                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "If a unit is marked, press the RMB to shoot at enemies, when hovering over them!";
+                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "If a unit is marked, press the RMB to shoot at enemies, when hovering over them! There enemies are to the right! ->";
                 for (int i = 0; i < player.units.Count; i++)
                 {
                     if (player.units[i].target != null)
@@ -116,9 +116,17 @@ public class Turtorial : MonoBehaviour
                     tutorialStage = 9;
                     break;
                 }
+                else enemyList.RemoveAll(y => y == null);
+                break;
+            case 9:
+                int scaleX = 3; int scaleY = 3;
+                panel.transform.localScale = new Vector2(panel.transform.localScale.x * scaleX, panel.transform.localScale.y * scaleY);
+                panel.transform.position = new Vector2((Screen.width / 2) - (800f * canvas.GetComponent<RectTransform>().localScale.x * scaleX / 2), (Screen.height / 2) + (400f * canvas.GetComponent<RectTransform>().localScale.y * scaleY / 2));
+                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "You won the battle! High command is pleased! Unfortunately you have been dishonorably discharged, by the infallible supreme leader of our glorious Democratic Peoples Republic of People (Democratic), fearing a military coup!";
+                tutorialStage = 10;
                 break;
             default:
-                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "";
+                unitCounter.GetComponent<TextMeshProUGUI>().text = "Casualties: " + Mobile.casualties;
                 break;
 
         }

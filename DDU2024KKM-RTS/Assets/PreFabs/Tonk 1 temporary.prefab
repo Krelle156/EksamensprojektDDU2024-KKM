@@ -107,6 +107,7 @@ MonoBehaviour:
   wayPoint: {fileID: 0}
   marked: 0
   allegiance: 0
+  markerCircle: {fileID: 0}
   weapon: {fileID: 1257524967780555978}
 --- !u!50 &984324931323955436
 Rigidbody2D:
@@ -198,7 +199,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -472,6 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3091886471146188373, guid: 393a7b6236cbe8941ba39e04e87981f9, type: 3}
   tempBullet: {fileID: 0}
+  audioSource: {fileID: 0}
   muzzleFlashSprite: {fileID: 327905124967912685}
 --- !u!1 &1683902769089172505
 GameObject:
