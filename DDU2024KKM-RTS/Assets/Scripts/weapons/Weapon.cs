@@ -11,6 +11,8 @@ public abstract class Weapon : MonoBehaviour
     protected float maxcool = 1, cool = 0;
     protected float muzzleFlashTimer = 0;
 
+    [SerializeField] protected AudioSource audioSource;
+
     protected float spread = 5f;
     protected virtual void Awake()
     {
@@ -55,16 +57,13 @@ public abstract class Weapon : MonoBehaviour
             tempBullet = Instantiate(bullet, transform.position, transform.rotation);
             tempBullet.Launch(range, transform.up, 5f+accuracy);
             tempBullet.SetAllegiance(GetComponentInParent<Unit>().allegiance);
+            audioSource.Play();
         }
     }
 
     protected virtual void Update()
     {
-        if (Input.GetKey(KeyCode.F))
-        {
-            //Fire();
-            //Debug.Log("Fire");
-        }
+        
     }
 
 

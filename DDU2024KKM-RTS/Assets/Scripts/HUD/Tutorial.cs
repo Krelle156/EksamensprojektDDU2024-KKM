@@ -74,7 +74,7 @@ public class Turtorial : MonoBehaviour
                 }
                 break;
             case 5:
-                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Press the RMB to place waypoints!";
+                textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "Press the RMB to place waypoints! There enemies are to the right! ->";
                 if (Input.GetKey(KeyCode.Mouse1))
                 {
                     tutorialStage = 6;
