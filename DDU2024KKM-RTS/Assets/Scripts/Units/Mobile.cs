@@ -65,9 +65,10 @@ public abstract class Mobile : Unit
 
     public void EvaluateTarget()
     {
-        Collider2D[] tempList = Physics2D.OverlapCircleAll((Vector2)transform.position, 50);
-        if (tempList.Length <= 0) aggro = false;
-        else
+        Collider2D[] tempList = Physics2D.OverlapCircleAll(transform.position, 50);
+        if (tempList.Length <= 0) {
+            aggro = false;
+        } else
         {
             aggro = false;
             for (int i = 0; i < tempList.Length; i++)
@@ -76,7 +77,7 @@ public abstract class Mobile : Unit
                 {
                     if (tempList[i].TryGetComponent(out Unit unit))
                     {
-                        unit.setTarget(unit.transform);
+                        setTarget(unit.transform);
                     }
                 }
             }
