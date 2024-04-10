@@ -17,7 +17,9 @@ public class Tonk : Mobile
     protected Infantry turretGunner;
     protected Vector3 rightTrack, leftTrack;
     protected Vector3 rightTrackForce=Vector2.zero, leftTrackForce= Vector2.zero;
-    
+
+    public SpriteRenderer markerCircle;
+
 
     [SerializeField]Weapon weapon; //Tanks should also have hulls with no hull mounted weapons, this is not a desired field
 
@@ -42,6 +44,7 @@ public class Tonk : Mobile
 
     protected override void Update()
     {
+
         //this really shouldn't be here, it is another band-aid fix
         if (Mathf.Abs(DesiredRotation()) < 1 && target != null)
         {
@@ -52,6 +55,10 @@ public class Tonk : Mobile
                 if (u.allegiance != 0 && u.allegiance != allegiance) StandardAttack();
             }
         }
+
+        if (marked) markerCircle.color = new Color(0, 1, 0, 0.8f);
+        else if (!marked) markerCircle.color = new Color(0, 1, 0, 0);
+        //end of bandaid
 
         base.Update();
         if (smokeCoolDown <= 0)
