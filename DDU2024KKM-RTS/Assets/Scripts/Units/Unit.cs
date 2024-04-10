@@ -36,6 +36,14 @@ public abstract class Unit : MonoBehaviour
 
     }
 
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.TryGetComponent(out Tonk tonk))
+        {
+            damage(tonk.rb.velocity.magnitude*0.1f,1);
+        }
+    }
+
     public void SetWaypoint(Vector3 v)
     {
         //The coordinate the unit will try to reach through a straight line

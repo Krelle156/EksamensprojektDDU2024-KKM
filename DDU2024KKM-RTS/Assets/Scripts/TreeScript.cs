@@ -22,12 +22,9 @@ public class TreeScript : Stationary
         base.Update();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public override void CheckHealth()
     {
-        if(collision.transform.TryGetComponent(out Tonk tonk))
-        {
-            destroyTree();
-        }
+        if (health <= 0) DestroyTree();
     }
 
     public void spreadTreeValue() //for spreading the tree's value from the center
@@ -46,7 +43,7 @@ public class TreeScript : Stationary
 
     }
 
-    public void destroyTree() //remove the tree and retract its value
+    public void DestroyTree() //remove the tree and retract its value
     {
         for (int i = (int)transform.position.x - tree; i < ((int)transform.position.x + tree); i++)
         {
