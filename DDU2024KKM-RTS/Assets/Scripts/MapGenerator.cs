@@ -111,7 +111,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int j = 0; j < 11; j++)
             {
-                terrainDebuggingText[i, j].position = new Vector2(i-5f+tempMouseX, j - 6f + tempMouseY);
+                terrainDebuggingText[i, j].position = new Vector2(i-5f+tempMouseX-0.5f, j - 5f + tempMouseY - 0.5f);
                 if (i + tempMouseX - 6 >= 0 && j + tempMouseY - 6 >= 0 && i + tempMouseX - 6 < width && j + tempMouseY - 6 < height)
                 {
                     terrainDebuggingText[i, j].GetComponent<TextMeshProUGUI>().text = terraindata[i + tempMouseX - 6, j + tempMouseY - 6].GetTerrainModifier().ToString();
