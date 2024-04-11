@@ -12,7 +12,7 @@ public abstract class Weapon : MonoBehaviour
     protected float muzzleFlashTimer = 0;
 
     float startDirection;
-    protected float maxRotation = 2.5f;
+    protected float maxRotation = 5f;
 
     [SerializeField] protected AudioSource audioSource;
 
@@ -71,10 +71,8 @@ public abstract class Weapon : MonoBehaviour
     public void Fire(Vector2 target, Vector2 up, float accuracy, int allegiance)
     {
         float tempAngle = Vector2.SignedAngle(transform.up, target - (Vector2)transform.position);
-        float tempAngle2 = Vector2.SignedAngle(transform.up, up);
-        Debug.Log(transform.up);
-        Debug.Log(GetComponentInParent<Transform>().up);
-        ;
+        float tempAngle2 = Vector2.SignedAngle(up, transform.up);
+
         
         if (tempAngle < 0 && tempAngle2 > -maxRotation) transform.Rotate(new Vector3(0, 0, -1));
         if (tempAngle > 0 && tempAngle2 < maxRotation) transform.Rotate(new Vector3(0, 0, 1));
