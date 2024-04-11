@@ -11,15 +11,15 @@ public abstract class Weapon : MonoBehaviour
     protected float maxcool = 1, cool = 0;
     protected float muzzleFlashTimer = 0;
 
-    Vector2 startDirection;
-    protected float maxRotation = 180;
+    float startDirection;
+    protected float maxRotation = 2.5f;
 
     [SerializeField] protected AudioSource audioSource;
 
     protected float spread = 5f;
     protected virtual void Awake()
     {
-        startDirection = transform.up;
+        startDirection = transform.localEulerAngles.z;
     }
 
     public int getfr (){
@@ -68,11 +68,16 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public void Fire(Vector2 target, float accuracy, int allegiance)
+    public void Fire(Vector2 target, Vector2 up, float accuracy, int allegiance)
     {
         float tempAngle = Vector2.SignedAngle(transform.up, target - (Vector2)transform.position);
-        if (tempAngle < 0 && tempAngle > -maxRotation) transform.Rotate(new Vector3(0, 0, -1));
-        if (tempAngle > 0 && tempAngle < maxRotation) transform.Rotate(new Vector3(0, 0, 1));
+        float tempAngle2 = Vector2.SignedAngle(transform.up, up);
+        Debug.Log(transform.up);
+        Debug.Log(GetComponentInParent<Transform>().up);
+        ;
+        
+        if (tempAngle < 0 && tempAngle2 > -maxRotation) transform.Rotate(new Vector3(0, 0, -1));
+        if (tempAngle > 0 && tempAngle2 < maxRotation) transform.Rotate(new Vector3(0, 0, 1));
 
         if (cool <= 0)
         {

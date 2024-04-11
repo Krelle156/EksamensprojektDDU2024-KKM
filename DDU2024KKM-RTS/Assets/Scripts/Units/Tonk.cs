@@ -48,7 +48,7 @@ public class Tonk : Mobile
         //this really shouldn't be here, it is another band-aid fix
         if (target != null)
         {
-            weapon.Fire(target.position, 1, allegiance);
+            weapon.Fire(target.position, transform.up, 1, allegiance);
             if (DesiredRotation() > 1) TurnLeft();
             if (DesiredRotation() < -1) TurnRight();
             if (target.TryGetComponent<Unit>(out Unit u))
