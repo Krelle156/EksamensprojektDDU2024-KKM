@@ -127,6 +127,12 @@ public class Turtorial : MonoBehaviour
                 break;
             default:
                 unitCounter.GetComponent<TextMeshProUGUI>().text = "Casualties: " + Mobile.casualties;
+                //Exit to desktop if escape is pressed
+                if (Input.GetKey(KeyCode.Escape))
+                {
+                    Application.Quit();
+                }
+                
                 break;
 
         }
