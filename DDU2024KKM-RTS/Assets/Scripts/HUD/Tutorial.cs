@@ -119,14 +119,15 @@ public class Turtorial : MonoBehaviour
                 else enemyList.RemoveAll(y => y == null);
                 break;
             case 9:
-                int scaleX = 3; int scaleY = 3;
+                int scaleX = 4; int scaleY = 4;
                 panel.transform.localScale = new Vector2(panel.transform.localScale.x * scaleX, panel.transform.localScale.y * scaleY);
+                unitCounter.sizeDelta = new Vector2(unitCounter.sizeDelta.x, unitCounter.sizeDelta.y / 3f);
                 panel.transform.position = new Vector2((Screen.width / 2) - (800f * canvas.GetComponent<RectTransform>().localScale.x * scaleX / 2), (Screen.height / 2) + (400f * canvas.GetComponent<RectTransform>().localScale.y * scaleY / 2));
                 textMeshProUGUI.GetComponent<TextMeshProUGUI>().text = "You won the battle! High command is pleased! Unfortunately you have been dishonorably discharged, by the infallible supreme leader of our glorious Democratic Peoples Republic of People (Democratic), fearing a military coup!";
                 tutorialStage = 10;
                 break;
             default:
-                unitCounter.GetComponent<TextMeshProUGUI>().text = "Casualties: " + Mobile.casualties;
+                unitCounter.GetComponent<TextMeshProUGUI>().text = "Casualties: " + Mobile.casualties + "\nPress Esc to exit to desktop";
                 //Exit to desktop if escape is pressed
                 if (Input.GetKey(KeyCode.Escape))
                 {
