@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
     {
         allegiance = 1;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        selector = spriteRenderer.sprite;
     }
 
     void Awake()

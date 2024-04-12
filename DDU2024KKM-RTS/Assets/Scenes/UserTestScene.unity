@@ -1298,6 +1298,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mouse
       objectReference: {fileID: 0}
+    - target: {fileID: 7013413244286850502, guid: 6bd8e06a4a89f3a48b5bd4e2b9b6f009, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c6fa186706bbada4bb5795997a663a09, type: 3}
+    - target: {fileID: 7013413244286850502, guid: 6bd8e06a4a89f3a48b5bd4e2b9b6f009, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013413244286850502, guid: 6bd8e06a4a89f3a48b5bd4e2b9b6f009, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013413244286850502, guid: 6bd8e06a4a89f3a48b5bd4e2b9b6f009, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013413244286850502, guid: 6bd8e06a4a89f3a48b5bd4e2b9b6f009, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7717432838032351096, guid: 6bd8e06a4a89f3a48b5bd4e2b9b6f009, type: 3}
+      propertyPath: selector
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: d011555d36aa2484bb0bb3e434991139, type: 3}
     - target: {fileID: 7717432838032351096, guid: 6bd8e06a4a89f3a48b5bd4e2b9b6f009, type: 3}
       propertyPath: barracksObject
       value: 
