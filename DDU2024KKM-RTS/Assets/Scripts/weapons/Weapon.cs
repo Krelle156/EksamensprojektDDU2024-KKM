@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    [SerializeField] protected Transform barrel;
     public Projectile bullet, tempBullet;
     protected int firerateRPM, ammunition;
     protected float range;
@@ -12,7 +13,7 @@ public abstract class Weapon : MonoBehaviour
     protected float muzzleFlashTimer = 0;
 
     float startDirection;
-    protected float maxRotation = 5f;
+    protected float maxRotation = 180f;
 
     [SerializeField] protected AudioSource audioSource;
 
@@ -20,6 +21,7 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void Awake()
     {
         startDirection = transform.localEulerAngles.z;
+        if (barrel != null) barrel = transform;
     }
 
     public int getfr (){
@@ -77,12 +79,12 @@ public abstract class Weapon : MonoBehaviour
         if (tempAngle < 0 && tempAngle2 > -maxRotation) transform.Rotate(new Vector3(0, 0, -1));
         if (tempAngle > 0 && tempAngle2 < maxRotation) transform.Rotate(new Vector3(0, 0, 1));
 
-        if (cool <= 0)
+        if (cool <= 0 && Mathf.Abs(tempAngle)<1)
         {
             cool = maxcool;
             muzzleFlashTimer = maxcool;
             tempBullet = Instantiate(bullet, transform.position, transform.rotation);
-            tempBullet.Launch(((Vector2)transform.position-target).magnitude, transform.up, 5f + accuracy);
+            tempBullet.Launch(((Vector2)barrel.position-target).magnitude, transform.up, 5f + accuracy);
             tempBullet.SetAllegiance(allegiance);
 
             if (audioSource != null)
