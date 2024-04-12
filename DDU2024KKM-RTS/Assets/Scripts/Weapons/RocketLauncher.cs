@@ -5,6 +5,7 @@ using UnityEngine;
 public class RocketLauncher : Mobile
 {
     [SerializeField] protected BallisticProjectile rocket;
+    protected BallisticProjectile tempRocket;
     int rockets = 12;
     float coolDown, maxCoolDown;
     float spread = 10;
@@ -34,7 +35,8 @@ public class RocketLauncher : Mobile
         if (coolDown <= 0 && rockets>0)
         {
             rockets--;
-            Instantiate(rocket, transform.position, Quaternion.Euler(0,0, transform.rotation.z+Random.Range(-spread,spread)));
+            tempRocket=Instantiate(rocket, transform.position, Quaternion.Euler(0,0, transform.rotation.z+Random.Range(-spread,spread)));
+            tempRocket.Launch(20,transform.up,spread);
             coolDown = maxCoolDown;
         }
     }

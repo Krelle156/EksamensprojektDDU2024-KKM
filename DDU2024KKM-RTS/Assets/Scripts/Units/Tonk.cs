@@ -46,13 +46,14 @@ public class Tonk : Mobile
     {
 
         //this really shouldn't be here, it is another band-aid fix
-        if (Mathf.Abs(DesiredRotation()) < 1 && target != null)
+        if (target != null)
         {
+            weapon.Fire(target.position, transform.up, 1, allegiance);
             if (DesiredRotation() > 1) TurnLeft();
             if (DesiredRotation() < -1) TurnRight();
             if (target.TryGetComponent<Unit>(out Unit u))
             {
-                if (u.allegiance != 0 && u.allegiance != allegiance) StandardAttack();
+                //if (u.allegiance != 0 && u.allegiance != allegiance) StandardAttack();
             }
         }
 

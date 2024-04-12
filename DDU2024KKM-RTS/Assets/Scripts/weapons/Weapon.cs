@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
+    [SerializeField] protected Transform barrel;
     public Projectile bullet, tempBullet;
     protected int firerateRPM, ammunition;
     protected float range;
@@ -11,12 +12,16 @@ public abstract class Weapon : MonoBehaviour
     protected float maxcool = 1, cool = 0;
     protected float muzzleFlashTimer = 0;
 
+    float startDirection;
+    protected float maxRotation = 180f, traverseSpeed = 30f;
+
     [SerializeField] protected AudioSource audioSource;
 
     protected float spread = 5f;
     protected virtual void Awake()
     {
-
+        startDirection = transform.localEulerAngles.z;
+        if (barrel != null) barrel = transform;
     }
 
     public int getfr (){
@@ -57,6 +62,30 @@ public abstract class Weapon : MonoBehaviour
             tempBullet = Instantiate(bullet, transform.position, transform.rotation);
             tempBullet.Launch(range, transform.up, 5f+accuracy);
             tempBullet.SetAllegiance(GetComponentInParent<Unit>().allegiance);
+
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
+        }
+    }
+
+    public void Fire(Vector2 target, Vector2 up, float accuracy, int allegiance)
+    {
+        float tempAngle = Vector2.SignedAngle(transform.up, target - (Vector2)transform.position);
+        float tempAngle2 = Vector2.SignedAngle(up, transform.up);
+
+
+        if (tempAngle < 0 && tempAngle2 > -maxRotation) transform.Rotate(new Vector3(0, 0, -traverseSpeed * Time.deltaTime)); ;
+        if (tempAngle > 0 && tempAngle2 < maxRotation) transform.Rotate(new Vector3(0, 0, traverseSpeed * Time.deltaTime));
+
+        if (cool <= 0 && Mathf.Abs(tempAngle)<1)
+        {
+            cool = maxcool;
+            muzzleFlashTimer = maxcool;
+            tempBullet = Instantiate(bullet, transform.position, transform.rotation);
+            tempBullet.Launch(((Vector2)barrel.position-target).magnitude, transform.up, 5f + accuracy);
+            tempBullet.SetAllegiance(allegiance);
 
             if (audioSource != null)
             {
